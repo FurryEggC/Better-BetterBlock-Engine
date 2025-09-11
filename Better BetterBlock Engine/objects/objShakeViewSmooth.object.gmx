@@ -34,6 +34,7 @@ ang = false;
 
 a = 0;
 a0 = random(360);
+
 </string>
           </argument>
         </arguments>
@@ -63,6 +64,7 @@ a += angSpd;
 if (hor) view_xview = lengthdir_x(radius, a);
 if (vert) view_yview = lengthdir_y(radius, a);
 if (ang) view_angle = lengthdir_x(max_A, a + a0);
+
 </string>
           </argument>
         </arguments>

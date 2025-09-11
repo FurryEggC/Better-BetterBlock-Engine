@@ -86,6 +86,7 @@
       <sprite>sprites\sprMiniBlockMask</sprite>
       <sprite>sprites\sprSlipBlockMask</sprite>
       <sprite>sprites\sprKillerBlock</sprite>
+      <sprite>sprites\sprColorfulBlock</sprite>
       <sprite>sprites\sprBlock</sprite>
       <sprite>sprites\sprBlock2</sprite>
       <sprite>sprites\sprSlideBlock</sprite>
@@ -290,6 +291,7 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shdGray.shader</shader>
     <shader type="GLSLES">shaders\shdRadio.shader</shader>
+    <shader type="GLSLES">shaders\shdColorful.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -487,6 +489,13 @@
       <object>objects\objElectricWave</object>
       <object>objects\objGrayEffect</object>
       <object>objects\objTelevisionEffect</object>
+      <object>objects\objColorfulEffectControl</object>
+      <object>objects\objColorfulEffectParent</object>
+      <object>objects\objColorfulEffectKillerParent</object>
+    </objects>
+    <objects name="testobj">
+      <object>objects\objColorfulObject</object>
+      <object>objects\objColorfulKillerObject</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -499,6 +508,7 @@
     </rooms>
     <room>rooms\rSampleRoom</room>
     <room>rooms\rTestRoom</room>
+    <room>rooms\rTestRoom2</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>
