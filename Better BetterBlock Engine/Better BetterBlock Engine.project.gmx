@@ -301,6 +301,8 @@
   </fonts>
   <objects name="objects">
     <object>objects\objBetterBlock</object>
+    <object>objects\objPushBlock</object>
+    <object>objects\objMutiPushBlock</object>
     <object>objects\objMovingPlatform</object>
     <object>objects\objSpikeUp</object>
     <object>objects\objSpikeRight</object>
@@ -509,6 +511,7 @@
     <room>rooms\rSampleRoom</room>
     <room>rooms\rTestRoom</room>
     <room>rooms\rTestRoom2</room>
+    <room>rooms\rTestRoom3</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>

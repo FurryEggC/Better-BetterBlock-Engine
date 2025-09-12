@@ -108,7 +108,8 @@ audio_pause_sound(global.currentMusic);
           <argument>
             <kind>1</kind>
             <string>///game checks
-
+    
+    scrSetRoomCaption();    //keep caption updated
 
 //set linear interpolation depending on what the current smoothing setting is
 texture_set_interpolation(global.smoothingMode);
@@ -241,8 +242,6 @@ if (global.gameStarted)
         
         audio_master_gain(global.volumeLevel/100);  //set master gain
     }
-    
-    scrSetRoomCaption();    //keep caption updated
 }
 </string>
           </argument>
@@ -518,6 +517,10 @@ if (global.debugOverlay)
     scrDrawTextOutline(20,140,"Infinite jump: "+string(global.debugInfJump),c_black,c_white);
     scrDrawTextOutline(20,160,"FPS: "+string(fps),c_black,c_white);
     scrDrawTextOutline(20,180,"Real FPS: "+string(fps_real),c_black,c_white);
+    
+    var cnt = 0;
+    with all cnt++;
+    scrDrawTextOutline(20,200,"Instance Count: "+string(cnt),c_black,c_white);
 }
 </string>
           </argument>
