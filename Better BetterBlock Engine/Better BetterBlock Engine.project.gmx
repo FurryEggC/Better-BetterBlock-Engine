@@ -302,8 +302,6 @@
   </fonts>
   <objects name="objects">
     <object>objects\objBetterBlock</object>
-    <object>objects\objPushBlock</object>
-    <object>objects\objMutiPushBlock</object>
     <object>objects\objMovingPlatform</object>
     <object>objects\objSpikeUp</object>
     <object>objects\objSpikeRight</object>
@@ -444,6 +442,10 @@
       <object>objects\objGravityDown</object>
       <object>objects\objObjCircle</object>
       <object>objects\objObjBar</object>
+      <objects name="pushBlock">
+        <object>objects\objPushBlock</object>
+        <object>objects\objMutiPushBlock</object>
+      </objects>
       <objects name="mutiJumps">
         <object>objects\objSingleJumpStar</object>
         <object>objects\objDoubleJumpStar</object>
