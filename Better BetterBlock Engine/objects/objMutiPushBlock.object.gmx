@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>objBetterBlock</parentName>
+  <parentName>objBetterBlockBase</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -31,81 +31,17 @@ airPush = 0;
 // This object is kinda complicated and hacky due to solid blocks when I made it a year ago, sorry about that ;) -Patrick
 
 // You can customize these values
-pushSpeed = 2
-grav = 0.2
-maxFallSpeed = 9
+pushSpeed = 2;
+grav = 0.2;
+maxFallSpeed = 9;
 
 // Used internally
-h = 0
-v = 0
-xMoved = 0
-yMoved = 0
-xPrev = 0
-yPrev = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_inherited();
-
-
-if h != 0 and not (place_meeting(x-1, y, objPlayer) or place_meeting(x+1, y, objPlayer)) {
-    x = xPrev;
-    y = yPrev;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>h = 0;
-
-// collide with player
-if place_meeting(x-1, y, objPlayer) &amp;&amp; scrButtonCheck(global.rightButton) {
-    h = pushSpeed;
-}
-if place_meeting(x+1, y, objPlayer) &amp;&amp; scrButtonCheck(global.leftButton) {
-    h = -pushSpeed;
-}
-
-if (!airPush &amp;&amp; !place_meeting(x, y+1*sign(grav), objBetterBlock)) {
-    h = 0;
-}
+h = 0;
+v = 0;
+xMoved = 0;
+yMoved = 0;
+xPrev = 0;
+yPrev = 0;
 
 </string>
           </argument>
@@ -130,22 +66,29 @@ if (!airPush &amp;&amp; !place_meeting(x, y+1*sign(grav), objBetterBlock)) {
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-
 xPrev = x;
 yPrev = y;
 
-// collide with self
-if (scrButtonCheck(global.rightButton) &amp;&amp; place_meeting(x-1, y, objMutiPushBlock)) {
-    var obj = instance_place(x-1, y, objMutiPushBlock);
-    h = obj.h;
+h = 0;
+if place_meeting(x-1, y, objPlayer) &amp;&amp; scrButtonCheck(global.rightButton) {
+    var flag = 1;
+    with (objPlayer) {
+        if (place_meeting(x + 1, y, objBetterBlock)) {
+            flag = 0;
+        }
+    }
+    if (flag) h = pushSpeed;
 }
-if (scrButtonCheck(global.leftButton) &amp;&amp; place_meeting(x+1, y, objMutiPushBlock)) {
-    var obj = instance_place(x+1, y, objMutiPushBlock);
-    h = obj.h;
+if place_meeting(x+1, y, objPlayer) &amp;&amp; scrButtonCheck(global.leftButton) {
+    var flag = 1;
+    with (objPlayer) {
+        if (place_meeting(x - 1, y, objBetterBlock)) {
+            flag = 0;
+        }
+    }
+    if (flag) h = -pushSpeed;
 }
-
-
-if (!airPush &amp;&amp; !place_meeting(x, y+1*sign(grav), objBetterBlock)) {
+if (!airPush &amp;&amp; !place_meeting(x, y+1*sign(grav), objBetterBlockBase)) {
     h = 0;
 }
 
@@ -155,27 +98,18 @@ if (abs(v) &gt; maxFallSpeed) {
 }
 
 // Move horizontally, pixel by pixel, until hit a wall or fall off a ledge.
-repeat abs(h) {
-    x += sign(h)
-    if place_meeting(x, y, objBetterBlock) {
-        x -= sign(h);
-        break;
-    }
-    if (!airPush &amp;&amp; !place_meeting(x, y+1*sign(grav), objBetterBlock)) {
-        break;
-    }
-}
+scrMutiPushBlockMove();
 
 
 // Move vertically either all at once, or pixel by pixel if hitting the floor.
 
-if not place_meeting(x, y+v, objBetterBlock) {
+if not place_meeting(x, y+v, objBetterBlockBase) {
     y += v;
 }
 else {
     repeat (abs(v) * 10) {
         y += sign(v) * grav;
-        if place_meeting(x, y, objBetterBlock) {
+        if place_meeting(x, y, objBetterBlockBase) {
             y -= sign(v) * grav;
             break;
         }
@@ -186,7 +120,6 @@ else {
 /*if place_meeting(x, y, objPlayer) {
     scrKillPlayer()
 }*/
-
 
 xMoved = x;
 yMoved = y;
@@ -213,7 +146,8 @@ yMoved = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = xMoved;
+            <string>event_inherited();
+x = xMoved;
 y = yMoved;
 
 </string>

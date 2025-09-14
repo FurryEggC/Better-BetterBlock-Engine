@@ -57,14 +57,14 @@ if (instance_exists(objPlayer)){
     with (objPlayer) //reset the riding variable
         riding = noone;
     
-    if (instance_exists(objBetterBlock) || instance_exists(objBetterMovingPlatform)){
-        with (objBetterBlock) //Horizontal Movement
+    if (instance_exists(objBetterBlockBase) || instance_exists(objBetterMovingPlatform)){
+        with (objBetterBlockBase) //Horizontal Movement
             event_user(0);
-        with (objBetterBlock) //Vertical movement
+        with (objBetterBlockBase) //Vertical movement
             event_user(1);
-        with (objBetterBlock) //Platform behavior
+        with (objBetterBlockBase) //Platform behavior
             event_user(2);
-        with (objBetterBlock) //Set Values for next frame
+        with (objBetterBlockBase) //Set Values for next frame
             event_user(3);
             
         with (objBetterMovingPlatform)
@@ -96,7 +96,7 @@ if (instance_exists(objPlayer)){
         }
     }
 }else{
-    with (objBetterBlock)
+    with (objBetterBlockBase)
         wasCarrying = false;
     with (objBetterMovingPlatform)
         wasCarrying = false;

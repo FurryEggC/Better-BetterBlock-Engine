@@ -286,6 +286,7 @@
       <script>scripts\scrMakeCircle.gml</script>
       <script>scripts\scrColorBlendFunction.gml</script>
       <script>scripts\scrPerlinNoise.gml</script>
+      <script>scripts\scrMutiPushBlockMove.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -341,6 +342,7 @@
       <object>objects\objGameOver</object>
     </objects>
     <objects name="blocks">
+      <object>objects\objBetterBlockBase</object>
       <object>objects\objBlock</object>
       <object>objects\objMiniBlock</object>
       <objects name="Better Block Objects">

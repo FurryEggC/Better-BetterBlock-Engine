@@ -9,7 +9,7 @@ else{
         return false;
 }
 
-if (t_id.object_index == objBetterBlock || object_is_ancestor(t_id.object_index, objBetterBlock))
+if (t_id.object_index == objBetterBlockBase || object_is_ancestor(t_id.object_index, objBetterBlockBase))
     return true;
 else
     return false;
