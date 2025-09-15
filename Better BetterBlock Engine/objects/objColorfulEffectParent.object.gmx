@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-
-shader = shader_set(shdColorful);
+            <string>shader = shdColorful;
 u_time = shader_get_uniform(shader, "u_time");
 
 </string>
@@ -53,8 +51,9 @@ u_time = shader_get_uniform(shader, "u_time");
           <argument>
             <kind>1</kind>
             <string>shader_set(shader);
+    if (!instance_exists(objColorfulEffectControl)) show_error("didn't find objColorfulEffectControl!", 1);
     shader_set_uniform_f(u_time, objColorfulEffectControl.t);
-draw_self();
+    draw_self();
 shader_reset();
 
 </string>

@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = -1;
-intense_x = 3;
+            <string>intense_x = 3;
 intense_y = 3;
 </string>
           </argument>

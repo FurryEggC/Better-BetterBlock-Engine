@@ -3,8 +3,8 @@
   <caption></caption>
   <width>800</width>
   <height>608</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -27,8 +27,8 @@
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>0</page>
-    <xoffset>40</xoffset>
-    <yoffset>25</yoffset>
+    <xoffset>-122</xoffset>
+    <yoffset>-44</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -60,10 +60,6 @@
     <instance objName="objSpikeUp" x="256" y="544" name="inst_B7856D0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPushBlock" x="448" y="448" name="inst_70A3072F" locked="0" code="airPush = 1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPushBlock" x="480" y="544" name="inst_53C9231D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objColorfulObject" x="64" y="96" name="inst_5861942D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objColorfulKillerObject" x="160" y="128" name="inst_83965F1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objColorfulKillerObject" x="128" y="160" name="inst_AF4DD1DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objColorfulEffectControl" x="32" y="32" name="inst_46415F8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBetterBlock" x="32" y="480" name="inst_66E177E0" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBetterBlock" x="128" y="448" name="inst_A0874542" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="160" y="448" name="inst_F4F45AE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -77,6 +73,20 @@
     <instance objName="objMutiPushBlock" x="128" y="224" name="inst_6740A5CD" locked="0" code="airPush = 1;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMutiPushBlock" x="192" y="544" name="inst_7EDF372E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMutiPushBlock" x="192" y="512" name="inst_C382C646" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objShakeViewHard" x="64" y="32" name="inst_DCA30758" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objElectricWave" x="96" y="32" name="inst_B10AD6D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulEffectControl" x="32" y="32" name="inst_62B4906C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulBlock" x="176" y="32" name="inst_7B01FC2A" locked="0" code="" scaleX="1" scaleY="3.5" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulBlock" x="208" y="112" name="inst_11E1F533" locked="0" code="" scaleX="1.5" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="304" y="128" name="inst_5A5DA182" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="304" y="112" name="inst_014A5286" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="304" y="96" name="inst_0E73370E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="304" y="80" name="inst_3441DAA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="320" y="112" name="inst_8A95B4BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="336" y="112" name="inst_2FB45995" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="288" y="112" name="inst_A69AE2F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="304" y="64" name="inst_3D925DC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulKillerObject" x="352" y="112" name="inst_3B8FA36D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bOriginal" x="0" y="544" w="32" h="32" xo="32" yo="32" id="10001992" name="inst_720D942E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -28,6 +28,7 @@
             <string>event_inherited();
 
 bounce = true;  //set the platform to bounce against walls
+
 </string>
           </argument>
         </arguments>

@@ -14,6 +14,7 @@ void main() {
     v_vPosition = vec2(in_Position.xy);
 }
 
+
 //######################_==_YOYO_SHADER_MARKER_==_######################@~varying vec4 v_vColour;
 varying vec2 v_vPosition;
 varying vec2 v_vTexcoord;
@@ -29,7 +30,7 @@ vec3 hsv2rgb(float h, float st, float v) {
 void main() {
     float hue = 0.0;
     hue = mod((v_vPosition.x + v_vPosition.y)/3.0 + u_time, 256.0);
- 
+
     vec3 hsv_color = hsv2rgb(hue / 255.0, 0.6, 1.0);
     gl_FragColor = vec4(hsv_color, texture2D(gm_BaseTexture, v_vTexcoord).a) * v_vColour;
 }

@@ -16,8 +16,8 @@
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1016</w>
-    <h>600</h>
+    <w>1296</w>
+    <h>768</h>
     <showGrid>0</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>
@@ -27,8 +27,8 @@
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>0</page>
-    <xoffset>-131</xoffset>
-    <yoffset>-60</yoffset>
+    <xoffset>-55</xoffset>
+    <yoffset>-27</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -103,11 +103,12 @@
     <instance objName="objCircleLightThingParent" x="272" y="336" name="inst_090C7317" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSmoothCamera" x="96" y="32" name="inst_F3054030" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTelevisionEffect" x="32" y="32" name="inst_E7818AC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objGrayEffect" x="64" y="32" name="inst_3FCE72E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="352" y="480" name="inst_7977CF09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMovingPlatform" x="32" y="224" name="inst_F3AC06B7" locked="0" code="hspeed = 2;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="64" y="224" name="inst_C3BAF3F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCircleLight" x="128" y="32" name="inst_A823334F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objGrayEffect" x="64" y="32" name="inst_8D5FCBD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objColorfulEffectControl" x="160" y="32" name="inst_0E4A830B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bOriginal" x="0" y="544" w="32" h="32" xo="32" yo="32" id="10001992" name="inst_720D942E" depth="7" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

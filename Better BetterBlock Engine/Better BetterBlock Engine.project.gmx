@@ -497,11 +497,12 @@
       <object>objects\objTelevisionEffect</object>
       <object>objects\objColorfulEffectControl</object>
       <object>objects\objColorfulEffectParent</object>
+      <object>objects\objColorfulEffectParentBlock</object>
       <object>objects\objColorfulEffectKillerParent</object>
-    </objects>
-    <objects name="testobj">
-      <object>objects\objColorfulObject</object>
-      <object>objects\objColorfulKillerObject</object>
+      <objects name="colorfulObj">
+        <object>objects\objColorfulBlock</object>
+        <object>objects\objColorfulKillerObject</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -516,6 +517,7 @@
     <room>rooms\rTestRoom</room>
     <room>rooms\rTestRoom2</room>
     <room>rooms\rTestRoom3</room>
+    <room>rooms\rTestRoom4</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>

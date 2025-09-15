@@ -131,6 +131,30 @@ Animation_sliding[4] = sprPlayerSliding5;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Special draw
+shader = shdColorful;
+u_time = shader_get_uniform(shader, "u_time");
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -640,35 +664,6 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="objBetterBlockBase">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Push out to avoid colliding with objects embedded in Better Blocks
-PhSpd = (x - xprevious);
-PvSpd = (y - yprevious);
-with (other){
-    event_user(0);
-    event_user(1);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="objPlayerKiller">
       <action>
         <libid>1</libid>
@@ -799,6 +794,35 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="objBetterBlockBase">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Push out to avoid colliding with objects embedded in Better Blocks
+PhSpd = (x - xprevious);
+PvSpd = (y - yprevious);
+with (other){
+    event_user(0);
+    event_user(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -823,6 +847,31 @@ djump = global.jump - 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// For shader
+specialDraw = instance_exists(objColorfulEffectControl);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -842,6 +891,11 @@ djump = global.jump - 1;
             <kind>1</kind>
             <string>///draw the player
 
+if (specialDraw) {
+    shader_set(shader);
+    shader_set_uniform_f(u_time, objColorfulEffectControl.t);
+}
+
 var drawX = x;
 var drawY = y;
 
@@ -853,6 +907,8 @@ draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_y
 //draw the player's hitbox
 if (global.debugShowHitbox)
     draw_sprite_ext(mask_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha*0.8);
+    
+if (specialDraw) shader_reset();
 </string>
           </argument>
         </arguments>
