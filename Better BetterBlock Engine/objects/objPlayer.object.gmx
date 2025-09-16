@@ -151,6 +151,8 @@ Animation_sliding[4] = sprPlayerSliding5;
 shader = shdColorful;
 u_time = shader_get_uniform(shader, "u_time");
 
+specialDraw = instance_exists(objColorfulEffectControl);
+
 </string>
           </argument>
         </arguments>
@@ -865,7 +867,7 @@ djump = global.jump - 1;
           <argument>
             <kind>1</kind>
             <string>/// For shader
-specialDraw = instance_exists(objColorfulEffectControl);
+
 
 </string>
           </argument>

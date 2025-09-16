@@ -287,6 +287,7 @@
       <script>scripts\scrColorBlendFunction.gml</script>
       <script>scripts\scrPerlinNoise.gml</script>
       <script>scripts\scrMutiPushBlockMove.gml</script>
+      <script>scripts\scrMoveCloserSmooth.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -488,6 +489,7 @@
     <objects name="view">
       <object>objects\objCamera</object>
       <object>objects\objSmoothCamera</object>
+      <object>objects\objSmoothCameraSetter</object>
       <object>objects\objCircleLight</object>
       <object>objects\objCircleLightThingParent</object>
       <object>objects\objShakeViewSmooth</object>
