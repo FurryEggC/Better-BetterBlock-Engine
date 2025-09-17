@@ -28,6 +28,7 @@
       <sound>sound\sndLoseStar</sound>
       <sound>sound\sndPlatformCa</sound>
       <sound>sound\sndBubbleBreak</sound>
+      <sound>sound\sndDotkidChange</sound>
     </sounds>
     <sounds name="music">
       <sound>sound\musOnDeath</sound>
@@ -81,6 +82,12 @@
         <sprite>sprites\sprPlayerJump5</sprite>
         <sprite>sprites\sprPlayerRunning5</sprite>
         <sprite>sprites\sprPlayerSliding5</sprite>
+      </sprites>
+      <sprites name="dotkid">
+        <sprite>sprites\sprPlayerMaskDotkid</sprite>
+        <sprite>sprites\sprPlayerMaskDotkidFlip</sprite>
+        <sprite>sprites\sprPlayerDotkid</sprite>
+        <sprite>sprites\sprPlayerDotkidCircle</sprite>
       </sprites>
     </sprites>
     <sprites name="blocks">
@@ -139,24 +146,37 @@
       <sprite>sprites\sprMiku</sprite>
     </sprites>
     <sprites name="misc">
-      <sprite>sprites\sprWater</sprite>
-      <sprite>sprites\sprWater1</sprite>
-      <sprite>sprites\sprWater2</sprite>
-      <sprite>sprites\sprWater3</sprite>
-      <sprite>sprites\sprWater2Cherry</sprite>
-      <sprite>sprites\sprWater3Cherry</sprite>
       <sprite>sprites\sprWalljumpR</sprite>
       <sprite>sprites\sprWalljumpL</sprite>
       <sprite>sprites\sprJumpRefresher</sprite>
       <sprite>sprites\sprSign</sprite>
-      <sprite>sprites\sprGravityUp</sprite>
-      <sprite>sprites\sprGravityDown</sprite>
-      <sprite>sprites\sprGravityUpNoRefresh</sprite>
-      <sprite>sprites\sprGravityDownNoRefresh</sprite>
+      <sprites name="dotkid">
+        <sprite>sprites\sprDotkidChanger</sprite>
+        <sprite>sprites\sprDeDotkid</sprite>
+        <sprite>sprites\sprToDotkid</sprite>
+      </sprites>
+      <sprites name="water">
+        <sprite>sprites\sprWater</sprite>
+        <sprite>sprites\sprWater1</sprite>
+        <sprite>sprites\sprWater2</sprite>
+        <sprite>sprites\sprWater3</sprite>
+        <sprite>sprites\sprWaterCherry</sprite>
+        <sprite>sprites\sprWater1Cherry</sprite>
+        <sprite>sprites\sprWater2Cherry</sprite>
+        <sprite>sprites\sprWater3Cherry</sprite>
+      </sprites>
+      <sprites name="flip">
+        <sprite>sprites\sprGravityUp</sprite>
+        <sprite>sprites\sprGravityUpNoRefresh</sprite>
+        <sprite>sprites\sprGravityDown</sprite>
+        <sprite>sprites\sprGravityDownNoRefresh</sprite>
+      </sprites>
       <sprites name="bubble">
         <sprite>sprites\sprBubbleEffect</sprite>
         <sprite>sprites\sprBubble</sprite>
         <sprite>sprites\sprFlipBubble</sprite>
+        <sprite>sprites\sprBubbleSpawn</sprite>
+        <sprite>sprites\sprFlipBubbleSpawn</sprite>
       </sprites>
       <sprites name="mutiJumps">
         <sprite>sprites\sprSingleJumpStar</sprite>
@@ -267,6 +287,7 @@
       <script>scripts\scrSetPlayerMask.gml</script>
       <script>scripts\scrKillPlayer.gml</script>
       <script>scripts\scrFlipGrav.gml</script>
+      <script>scripts\scrToggleDotkid.gml</script>
       <script>scripts\scrVineAction.gml</script>
     </scripts>
     <scripts name="world">
@@ -453,21 +474,39 @@
       <object>objects\objCherryTrigger</object>
     </objects>
     <objects name="misc">
-      <object>objects\objBubbleParticle</object>
-      <object>objects\objFlipBubble</object>
-      <object>objects\objBubble</object>
       <object>objects\objWater</object>
       <object>objects\sprWater0</object>
-      <object>objects\objWater2Cherry</object>
-      <object>objects\objWater3Cherry</object>
       <object>objects\objOnceVineSpriteR</object>
       <object>objects\objOnceVineSpriteL</object>
       <object>objects\objJumpRefresher</object>
       <object>objects\objSign</object>
-      <object>objects\objGravityUp</object>
-      <object>objects\objGravityDown</object>
       <object>objects\objObjCircle</object>
       <object>objects\objObjBar</object>
+      <objects name="water">
+        <object>objects\objWaterParents</object>
+        <object>objects\objWaterCherry</object>
+        <object>objects\sprWater0Cherry</object>
+        <object>objects\objWater2Cherry</object>
+        <object>objects\objWater3Cherry</object>
+      </objects>
+      <objects name="flipGrav">
+        <object>objects\objGravityUp</object>
+        <object>objects\objGravityUpNoRefresh</object>
+        <object>objects\objGravityDown</object>
+        <object>objects\objGravityDownNoRefresh</object>
+      </objects>
+      <objects name="dotkid">
+        <object>objects\objDotkidChange</object>
+        <object>objects\objToDotkid</object>
+        <object>objects\objDeDotkid</object>
+      </objects>
+      <objects name="bubble">
+        <object>objects\objBubble</object>
+        <object>objects\objFlipBubble</object>
+        <object>objects\objBubbleRefresher</object>
+        <object>objects\objFlipBubbleRefresher</object>
+        <object>objects\objBubbleParticle</object>
+      </objects>
       <objects name="pushBlock">
         <object>objects\objPushBlock</object>
         <object>objects\objMutiPushBlock</object>

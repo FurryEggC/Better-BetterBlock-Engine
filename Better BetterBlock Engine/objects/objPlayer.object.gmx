@@ -156,7 +156,7 @@ Animation_sliding[4] = sprPlayerSliding5;
 shader = shdColorful;
 u_time = shader_get_uniform(shader, "u_time");
 
-specialDraw = instance_exists(objColorfulEffectControl);
+specialDraw = instance_exists(objColorfulEffectControl) &amp;&amp; (global.skin == 3 || global.skin == 4);
 
 </string>
           </argument>
@@ -205,13 +205,19 @@ with (objBow)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ((x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height) &amp;&amp; global.edgeDeath)  //check if player has left the room
+            <string>/// Death Check And Animation
+
+// check if player has left the room
+if ((x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height) &amp;&amp; global.edgeDeath)  
     scrKillPlayer();
 
-//update player sprite
-if (global.playerAnimationFix)
-{
-    //block/vine checks
+// update player sprite
+// dotkid check
+if (global.dotkid) {
+    sprite_index = sprPlayerDotkidCircle;
+}
+else if (global.playerAnimationFix) {  // normal check
+    // block/vine checks
     if (place_free(x,y+global.grav) &amp;&amp; !instance_exists(riding)) var notOnBlock = true else var notOnBlock = false
     var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
     var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
@@ -286,6 +292,7 @@ leftToOrigin = (sprite_get_xoffset(mask_index) - sprite_get_bbox_left(mask_index
 rightToOrigin = (sprite_get_bbox_right(mask_index) - sprite_get_xoffset(mask_index) + 1)*image_xscale;
 topToOrigin = (sprite_get_yoffset(mask_index) - sprite_get_bbox_top(mask_index))*image_yscale;
 bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_index) + 1)*image_yscale;
+
 </string>
           </argument>
         </arguments>
@@ -315,16 +322,19 @@ if instance_exists(riding) event_user(0);  // onBlock check
 {
     // skin change
     if (can_change) {
-        if scrButtonCheckPressed(global.skinLeftButton) {global.skin -= 1;}
-        if scrButtonCheckPressed(global.skinRightButton) {global.skin += 1;}
+        if scrButtonCheckPressed(global.skinLeftButton) global.skin -= 1;
+        if scrButtonCheckPressed(global.skinRightButton) global.skin += 1;
         
         if (global.skin &lt; 0) {global.skin += total_skin;}
         else if (global.skin &gt;= total_skin) {global.skin -= total_skin;}
+        
+        if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) specialDraw = instance_exists(objColorfulEffectControl);
+        else specialDraw = 0;
     }
     
-    // change blend in 3,4
+    // change blend in 3, 4 and dotkid
     if (can_blend) {
-        if (global.skin == 3 || global.skin == 4) {
+        if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) {
             global.skinBlend += 3*scrButtonCheck(global.upButton) - 3*scrButtonCheck(global.downButton);
             global.skinBlend = clamp(global.skinBlend,0,256 * 5);
             image_blend = make_color_hsv((global.skinBlend) mod 256, scrColorBlendFunction(global.skinBlend), clamp(global.skinBlend, 0, 255));
@@ -511,48 +521,10 @@ if (global.adAlign &amp;&amp; place_meeting(x,y+(global.grav),objBlock) &amp;&am
 }
 
 
-//walljumps
+// walljumps
 scrVineAction();
-/*
-if (onVineL || onVineR)
-{
-    if (onVineR)
-        xScale = -1;
-    else
-        xScale = 1;
-    
-    vspeed = 2 * global.grav;
-    sprite_index = sprPlayerSliding;
-    image_speed = 1/2;
-    
-    //pressed away from the vine
-    if (onVineL &amp;&amp; scrButtonCheckPressed(global.rightButton)) || (onVineR &amp;&amp; scrButtonCheckPressed(global.leftButton))
-    {
-        if (scrButtonCheck(global.jumpButton))  //jumping off vine
-        {
-            if (onVineR)
-                hspeed = -15;
-            else
-                hspeed = 15;
-            
-            vspeed = -9 * global.grav;
-            audio_play_sound(sndWallJump,0,false);
-            sprite_index = sprPlayerJump;
-        }
-        else    //moving off vine
-        {
-            if (onVineR)
-                hspeed = -3;
-            else
-                hspeed = 3;
-            
-            sprite_index = sprPlayerFall;
-        }
-    }
-}
-*/
 
-//slopes
+// slopes
 
 if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
 {
@@ -601,7 +573,7 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         }
     }
     
-    //moving down a slope
+    // moving down a slope
     if (!notOnBlock)
     {
         var onSlope = (place_meeting(x,y+(global.grav),objSlope));    //treat normal blocks the same as slopes if we're standing on a slope
@@ -612,7 +584,7 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         while (slopeCheck)
         {
             ySlope = 0;
-            //check how far we should move down
+            // check how far we should move down
             while ((!place_meeting(x+hTest,y-ySlope+(global.grav),objSlope) || (onSlope &amp;&amp; !place_meeting(x+hTest,y-ySlope+(global.grav),objBlock))) &amp;&amp; ySlope*global.grav &gt; -floor(moveLimit*(hTest/hspeed)))
             {
                 ySlope -= global.grav;
@@ -667,13 +639,13 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         {
             ySlope = 0;
             
-            //check how far we have to move up
+            // check how far we have to move up
             while (place_meeting(x+hTest,y-ySlope,objSlope) &amp;&amp; ySlope*global.grav &lt; floor(moveLimit*(hTest/hspeed)))
             {
                 ySlope += global.grav;
             }
             
-            //check if we actually need to move up
+            // check if we actually need to move up
             if (place_free(x+hTest,y-ySlope))
             {            
                 y -= ySlope;
@@ -705,7 +677,7 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         }
     }
     
-    //set xprevious/yprevious coordinates for future solid collisions
+    // set xprevious/yprevious coordinates for future solid collisions
     xprevious = x;
     yprevious = y;
 }
@@ -730,6 +702,34 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
           <argument>
             <kind>1</kind>
             <string>/// After Original System
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objWaterParents">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Bubble Broke
+if (inBubble) {
+    with inBubble event_user(0);
+    inBubble = noone;
+}
 
 </string>
           </argument>
@@ -908,13 +908,14 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Push out to avoid colliding with objects embedded in Better Blocks
+            <string>/// Push out to avoid colliding with objects embedded in Better Blocks
 PhSpd = (x - xprevious);
 PvSpd = (y - yprevious);
 with (other){
     event_user(0);
     event_user(1);
 }
+
 </string>
           </argument>
         </arguments>

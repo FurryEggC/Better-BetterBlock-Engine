@@ -38,6 +38,8 @@ if (loadFile)
         global.saveGrav = ds_map_find_value(saveMap,"saveGrav");
         
         global.saveJump = ds_map_find_value(saveMap,"saveJump");
+        global.saveDotkid = ds_map_find_value(saveMap,"saveDotkid");
+        
         global.saveSkin = ds_map_find_value(saveMap,"saveSkin");
         global.saveSkinBlend = ds_map_find_value(saveMap,"saveSkinBlend");
         global.saveBow = ds_map_find_value(saveMap,"saveBow");
@@ -110,6 +112,8 @@ global.autosave = false;    //disable autosaving since we're loading the game
 
 global.grav = global.saveGrav;
 global.jump = global.saveJump;
+global.dotkid = global.saveDotkid;
+
 global.skin = global.saveSkin;
 global.skinBlend = global.saveSkinBlend;
 global.bow = global.saveBow;

@@ -1,4 +1,4 @@
-///sets configurable global options
+/// sets configurable global options
 
 global.debugMode = true;       //enables debug keys (check objWorld step to see all of them), make sure to set this to "false" before releasing your game
 window_set_size(800*2, 608*2);  // easy to see for me, remember to //

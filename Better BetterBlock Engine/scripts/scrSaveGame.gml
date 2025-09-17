@@ -13,6 +13,7 @@ if (savePosition)
     global.saveGrav = global.grav;
     
     global.saveJump = global.jump;
+    global.saveDotkid = global.dotkid;
     
     /* Please tell me what are fucking these
     
@@ -62,6 +63,8 @@ ds_map_add(saveMap,"savePlayerY",global.savePlayerY);
 ds_map_add(saveMap,"saveGrav",global.saveGrav);
 
 ds_map_add(saveMap,"saveJump",global.saveJump);
+ds_map_add(saveMap,"saveDotkid",global.saveDotkid);
+
 ds_map_add(saveMap,"saveSkin",global.saveSkin);
 ds_map_add(saveMap,"saveSkinBlend",global.saveSkinBlend);
 ds_map_add(saveMap,"saveBow",global.saveBow);

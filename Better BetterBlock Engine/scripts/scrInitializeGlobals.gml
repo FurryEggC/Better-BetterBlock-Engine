@@ -12,6 +12,8 @@ global.savePlayerX = 0;
 global.savePlayerY = 0;
 global.grav = 1;
 global.saveGrav = 1;
+global.dotkid = 0;
+global.saveDotkid = 0;
 
 global.jump = 2;  // How many jumps could player jump
 global.saveJump = 2;
