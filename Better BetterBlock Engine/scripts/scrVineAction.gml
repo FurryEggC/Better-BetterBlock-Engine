@@ -21,27 +21,21 @@ if (onVineL || onVineR)
     image_speed = 1/2;
     
     //pressed away from the vine
-    if (onVineL && scrButtonCheckPressed(global.rightButton)) || (onVineR && scrButtonCheckPressed(global.leftButton))
-    {
-        if (scrButtonCheck(global.jumpButton))  //jumping off vine
-        {
-            if (onVineR)
-                hspeed = -15;
-            else
-                hspeed = 15;
+    if (onVineL && scrButtonCheckPressed(global.rightButton)) || (onVineR && scrButtonCheckPressed(global.leftButton)) {
+        // jumping off vine
+        if (scrButtonCheck(global.jumpButton)) {
+            if (onVineR) hspeed = -15;
+            else hspeed = 15;
             
             if (collisionObj.refresh) djump = min(djump + 1, global.jump - 1);
-            with collisionObj if once event_user(0);
+            with collisionObj if once event_user(0);  // destory the vine
             vspeed = -9 * global.grav;
             audio_play_sound(sndWallJump,0,false);
             sprite_index = sprPlayerJump;
         }
-        else    //moving off vine
-        {
-            if (onVineR)
-                hspeed = -3;
-            else
-                hspeed = 3;
+        else {  // moving off vine
+            if (onVineR) hspeed = -3;
+            else hspeed = 3;
             
             if (collisionObj.refresh && collisionObj.kind) djump = min(djump + 1, global.jump - 1);
             sprite_index = sprPlayerFall;

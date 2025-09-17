@@ -26,6 +26,8 @@
       <sound>sound\sndShootRefresher</sound>
       <sound>sound\sndGainStar</sound>
       <sound>sound\sndLoseStar</sound>
+      <sound>sound\sndPlatformCa</sound>
+      <sound>sound\sndBubbleBreak</sound>
     </sounds>
     <sounds name="music">
       <sound>sound\musOnDeath</sound>
@@ -111,7 +113,16 @@
       <sprite>sprites\sprBetterBlockYIChain</sprite>
       <sprite>sprites\sprBetterBlockYIPlatform</sprite>
       <sprite>sprites\sprMovingPlatform</sprite>
+      <sprite>sprites\sprFakeMovingPlatform</sprite>
       <sprite>sprites\sprMovingPlatformWhite</sprite>
+      <sprites name="cusorHint">
+        <sprite>sprites\sprTouchMovingPlatformFakeHint</sprite>
+        <sprite>sprites\sprTouchMovingPlatformFakeHintUp</sprite>
+        <sprite>sprites\sprTouchMovingPlatformFakeNotMovingHint</sprite>
+        <sprite>sprites\sprTouchMovingPlatformFakeNotMovingHintUp</sprite>
+        <sprite>sprites\sprTouchMovingPlatformHint</sprite>
+        <sprite>sprites\sprTouchMovingPlatformHintUp</sprite>
+      </sprites>
     </sprites>
     <sprites name="killers">
       <sprite>sprites\sprSpikeUp</sprite>
@@ -140,6 +151,13 @@
       <sprite>sprites\sprSign</sprite>
       <sprite>sprites\sprGravityUp</sprite>
       <sprite>sprites\sprGravityDown</sprite>
+      <sprite>sprites\sprGravityUpNoRefresh</sprite>
+      <sprite>sprites\sprGravityDownNoRefresh</sprite>
+      <sprites name="bubble">
+        <sprite>sprites\sprBubbleEffect</sprite>
+        <sprite>sprites\sprBubble</sprite>
+        <sprite>sprites\sprFlipBubble</sprite>
+      </sprites>
       <sprites name="mutiJumps">
         <sprite>sprites\sprSingleJumpStar</sprite>
         <sprite>sprites\sprDoubleJumpStar</sprite>
@@ -300,6 +318,7 @@
     <font>fonts\fDefault24</font>
     <font>fonts\fDefault18</font>
     <font>fonts\fDefault12</font>
+    <font>fonts\fTouchMovingPlatformHint</font>
   </fonts>
   <objects name="objects">
     <object>objects\objBetterBlock</object>
@@ -379,6 +398,9 @@
       <object>objects\objPlatform</object>
       <object>objects\objBetterMovingPlatform</object>
       <object>objects\objMovingPlatformNoBounce</object>
+      <object>objects\objTouchMovingFakePlatformParent</object>
+      <object>objects\objTouchMovingPlatformFake</object>
+      <object>objects\objTouchMovingPlatform</object>
       <objects name="Better Platform Objects">
         <object>objects\objBetterBlockWheelPlatform</object>
         <object>objects\objBetterBlockWheelCtrl</object>
@@ -431,6 +453,9 @@
       <object>objects\objCherryTrigger</object>
     </objects>
     <objects name="misc">
+      <object>objects\objBubbleParticle</object>
+      <object>objects\objFlipBubble</object>
+      <object>objects\objBubble</object>
       <object>objects\objWater</object>
       <object>objects\sprWater0</object>
       <object>objects\objWater2Cherry</object>
@@ -520,6 +545,9 @@
     <room>rooms\rTestRoom2</room>
     <room>rooms\rTestRoom3</room>
     <room>rooms\rTestRoom4</room>
+    <room>rooms\rTestRoom5</room>
+    <room>rooms\rTestRoom6</room>
+    <room>rooms\rTestRoom7</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>

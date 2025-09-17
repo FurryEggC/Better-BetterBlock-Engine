@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>frozen = false; //sets if the player can move or not
+            <string>/// Default Settings and variables
+frozen = false; //sets if the player can move or not
 
 jump = 8.5 * global.grav; //set how fast the player jumps
 jump2 = 7 * global.grav; //sets how fast the player double jumps
@@ -39,6 +40,10 @@ onPlatform = false; //sets if player is currently standing on a platform
 
 bulletMax = 4;  // max numbers of bullet
 bulletSpd = 16;  // speed of bullet
+
+/// ------------------- New Gimmicks
+inBubble = noone;  // the condition of inBubble, noone bubble
+bubbleSpdMax = 3;  // the speed of inBubble
 
 xScale = 1; //sets the direction the player is facing (1 is facing right, -1 is facing left)
 
@@ -331,6 +336,49 @@ if instance_exists(riding) event_user(0);  // onBlock check
     if scrButtonCheckPressed(global.bowButton) global.bow = 1 - global.bow;
     
     scrSaveGame(false);  // save skin &amp; bow config
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Gimmick Related Gravity And Speed
+gravity = 0.4 * global.grav;
+maxSpeed = 3;
+maxVspeed = 9;
+
+// change after them
+if (inBubble) {
+    if (inBubble.reverse == 0) {
+        gravity = -0.3 * global.grav;
+        if (global.grav == 1) {
+            if (vspeed &lt; -bubbleSpdMax) vspeed = -bubbleSpdMax;
+        }
+        else if (vspeed &gt; bubbleSpdMax) vspeed = bubbleSpdMax;
+    }
+    else if (inBubble.reverse == 1) {
+        gravity = 0.3 * global.grav;
+        if (global.grav == 1) {
+            if (vspeed &gt; bubbleSpdMax) vspeed = bubbleSpdMax;
+        }
+        else if (vspeed &lt; -bubbleSpdMax) vspeed = -bubbleSpdMax;
+    }
 }
 
 </string>
@@ -665,6 +713,52 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// After Original System
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objKillerBlock">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scrKillPlayer();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="objPlayerKiller">
       <action>
@@ -683,7 +777,8 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scrKillPlayer();
+            <string>if (!inBubble) scrKillPlayer();
+
 </string>
           </argument>
         </arguments>
@@ -719,7 +814,7 @@ if (global.grav == 1)   //normal
         }
         
         onPlatform = true;
-        djump = global.jump - 1;
+        event_user(0);
     }
 }
 else    //flipped
@@ -733,7 +828,7 @@ else    //flipped
         }
         
         onPlatform = true;
-        djump = global.jump - 1;
+        event_user(0);
     }
 }
 </string>
@@ -764,13 +859,13 @@ if (!place_free(x+hspeed,y))
 {
     if (global.grav == 1)   //normal
     {
-        if(hspeed &lt;= 0){move_contact_solid(180,abs(hspeed));}
-        if(hspeed &gt; 0){move_contact_solid(0,abs(hspeed));}
+        if(hspeed &lt;= 0){move_contact_solid(180,abs(hspeed));event_user(3);}  // rignt wall
+        if(hspeed &gt; 0){move_contact_solid(0,abs(hspeed));event_user(2);}  // left wall
     }
     else    //flipped
     {
-        if(hspeed &lt; 0){move_contact_solid(180,abs(hspeed));}
-        if(hspeed &gt;= 0){move_contact_solid(0,abs(hspeed));}
+        if(hspeed &lt; 0){move_contact_solid(180,abs(hspeed));event_user(3);}
+        if(hspeed &gt;= 0){move_contact_solid(0,abs(hspeed));event_user(2);}
     }
     hspeed = 0;
 }
@@ -779,13 +874,13 @@ if (!place_free(x,y+vspeed))
 {
     if (global.grav == 1)   //normal
     {
-        if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));}
-        if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));djump=global.jump - 1;}
+        if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));event_user(1);}
+        if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));event_user(0);}
     }
     else    //flipped
     {
-        if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));djump=global.jump - 1;}
-        if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));}
+        if(vspeed &lt;= 0){move_contact_solid(90,abs(vspeed));event_user(0);}
+        if(vspeed &gt; 0){move_contact_solid(270,abs(vspeed));event_user(1);}
     }
     vspeed = 0;
 }
@@ -825,6 +920,96 @@ with (other){
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Right Side Collision Action
+
+// Bubble Broke
+if (inBubble) {
+    with inBubble event_user(0);
+    inBubble = noone;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Left Side Collision Action
+
+// Bubble Broke
+if (inBubble) {
+    with inBubble event_user(0);
+    inBubble = noone;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Bonk block Action
+
+// Bubble Broke
+if (inBubble) {
+    with inBubble event_user(0);
+    inBubble = noone;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -844,30 +1029,12 @@ with (other){
             <kind>1</kind>
             <string>/// On Block action
 djump = global.jump - 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// For shader
 
+// Bubble Broke
+if (inBubble) {
+    with inBubble event_user(0);
+    inBubble = noone;
+}
 
 </string>
           </argument>
