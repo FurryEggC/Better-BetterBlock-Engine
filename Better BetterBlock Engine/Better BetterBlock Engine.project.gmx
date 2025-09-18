@@ -327,6 +327,10 @@
       <script>scripts\scrPerlinNoise.gml</script>
       <script>scripts\scrMutiPushBlockMove.gml</script>
       <script>scripts\scrMoveCloserSmooth.gml</script>
+      <script>scripts\scrArrayShuffle.gml</script>
+      <script>scripts\scrCreateMoving.gml</script>
+      <script>scripts\scrSmoothDestroy.gml</script>
+      <script>scripts\scrSmoothCreate.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -361,7 +365,12 @@
     <object>objects\objSaveBlocker</object>
     <object>objects\objOutsideRoomChanger</object>
     <object>objects\objRoomChangerFadeOut</object>
-    <object>objects\objPerlinCherry</object>
+    <objects name="testObj">
+      <object>objects\objPerlinCherry</object>
+      <object>objects\objCreateMoreMotionTest</object>
+      <object>objects\objColorfulKillerObject</object>
+      <object>objects\objColorfulBlock</object>
+    </objects>
     <objects name="world">
       <object>objects\objWorld</object>
       <object>objects\objPlayMusic</object>
@@ -463,8 +472,19 @@
         </objects>
       </objects>
     </objects>
+    <objects name="motion">
+      <object>objects\objMoreMotionParentKiller</object>
+      <object>objects\objMoreMotionParent</object>
+      <object>objects\objCherryMoreMotion</object>
+      <object>objects\objSpikeMotionDown</object>
+      <object>objects\objSpikeMotionRight</object>
+      <object>objects\objSpikeMotionLeft</object>
+      <object>objects\objSpikeMotionUp</object>
+    </objects>
     <objects name="triggers">
       <object>objects\objFreeTrigger</object>
+      <object>objects\objSmoothCreate</object>
+      <object>objects\objSmoothDestroy</object>
       <object>objects\objTriggerButton</object>
       <object>objects\objKillerTrigger</object>
       <object>objects\objSpikeTriggerUp</object>
@@ -565,10 +585,8 @@
       <object>objects\objColorfulEffectParent</object>
       <object>objects\objColorfulEffectParentBlock</object>
       <object>objects\objColorfulEffectKillerParent</object>
-      <objects name="colorfulObj">
-        <object>objects\objColorfulBlock</object>
-        <object>objects\objColorfulKillerObject</object>
-      </objects>
+      <object>objects\objAnimationDisappear</object>
+      <object>objects\objAnimationAppear</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -92,6 +92,9 @@
     <instance objName="objSpikeLeft" x="400" y="96" name="inst_C0BBB248" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="320" y="112" name="inst_61DE06E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="320" y="144" name="inst_C36753A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSmoothCreate" x="192" y="448" name="inst_7AC2C947" locked="0" code="obj = objCherry;&#xA;cx = 64;&#xA;cy = 400;&#xA;ct = 10;&#xA;ang = 30;&#xA;visible = 1;&#xA;&#xA;" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objSmoothDestroy" x="352" y="448" name="inst_2AB44A0B" locked="0" code="i = inst_947AF924;&#xA;time = 15;&#xA;&#xA;" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objCreateMoreMotionTest" x="208" y="320" name="inst_E9ABC10A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bOriginal" x="0" y="544" w="32" h="32" xo="32" yo="32" id="10001992" name="inst_720D942E" depth="7" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
