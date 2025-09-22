@@ -10,7 +10,7 @@
   <persistent>0</persistent>
   <colour>16777088</colour>
   <showcolour>-1</showcolour>
-  <code>with objBetterBlock visible = 1;</code>
+  <code>with objBlock visible = 1;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -26,7 +26,7 @@
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>0</page>
+    <page>1</page>
     <xoffset>-122</xoffset>
     <yoffset>-44</yoffset>
   </makerSettings>
@@ -73,8 +73,6 @@
     <instance objName="objMutiPushBlock" x="128" y="224" name="inst_6740A5CD" locked="0" code="airPush = 1;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMutiPushBlock" x="192" y="544" name="inst_7EDF372E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMutiPushBlock" x="192" y="512" name="inst_C382C646" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objShakeViewHard" x="64" y="32" name="inst_DCA30758" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objElectricWave" x="96" y="32" name="inst_B10AD6D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objColorfulEffectControl" x="32" y="32" name="inst_62B4906C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objColorfulBlock" x="176" y="32" name="inst_7B01FC2A" locked="0" code="" scaleX="1" scaleY="3.5" colour="4294967295" rotation="0"/>
     <instance objName="objColorfulBlock" x="208" y="112" name="inst_11E1F533" locked="0" code="" scaleX="1.5" scaleY="1" colour="4294967295" rotation="0"/>

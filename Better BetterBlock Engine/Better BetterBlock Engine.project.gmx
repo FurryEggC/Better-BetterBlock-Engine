@@ -34,6 +34,7 @@
       <sound>sound\musOnDeath</sound>
       <sound>sound\musGuyRock</sound>
       <sound>sound\musMegaman</sound>
+      <sound>sound\musNull</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -500,7 +501,9 @@
       <object>objects\objOnceVineSpriteL</object>
       <object>objects\objJumpRefresher</object>
       <object>objects\objSign</object>
+      <object>objects\objAutoSign</object>
       <object>objects\objObjCircle</object>
+      <object>objects\objObjCircleGap</object>
       <object>objects\objObjBar</object>
       <objects name="water">
         <object>objects\objWaterParents</object>
