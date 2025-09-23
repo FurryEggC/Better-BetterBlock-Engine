@@ -25,23 +25,57 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>motion = 1;
+            <string>/// Abstract Declare
+if (object_index == objMoreMotionParent) {
+    show_error("objMoreMotionParent could not be replaced!", 1);
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Default Value Set
+
+motion = 1;
 /*
     motion 1 : jump up and rest
-        t_jump(half way), lenth, dir(90 - up, 0 - right), t_gap
+        t_jump(half way), length, dir(90 - up, 0 - right), t_gap
     motion 2 : trigonometric move
-        cycle, lenth, dir
-    motion 3 : 
+        cycle, length, dir
+    motion 3 : bazier move
+        cycle, length, dir, pr1, pr2, xs(default xstart), ys(default ystart)
+    motion 4 :
 */
 t_jump = 50;
-lenth = 2;
+length = 2;
 dir = 90;
 t_gap = 20;
 
 cycle = 80;
 
+pr1 = 0.5;
+pr2 = 1.5;
+xs = xstart;
+ys = ystart;
+
 t = 0;
-frozen = 0;
+bazier_t = 0;
 
 </string>
           </argument>
@@ -66,8 +100,9 @@ frozen = 0;
           <argument>
             <kind>1</kind>
             <string>/// run t and do something
-if (!frozen) t++;
+t++;
 
+if (bazier_t &lt; 1) bazier_t += 1 / cycle;
 
 </string>
           </argument>
@@ -92,12 +127,13 @@ if (!frozen) t++;
             <string>/// motion 1 : jump up and rest
 if (motion == 1) {
     if (t &gt;= t_jump * 2 + t_gap) t -= t_jump * 2 + t_gap;
-    var go_lenth = -(lenth / t_jump / t_jump) * t * (t - 2 * t_jump);
-    if (t &gt;= t_jump * 2) go_lenth = 0;
-    var xoff = lengthdir_x(go_lenth, dir), yoff = lengthdir_y(go_lenth, dir);
+    var go_length = -(length / t_jump / t_jump) * t * (t - 2 * t_jump);
+    if (t &gt;= t_jump * 2) go_length = 0;
+    var xoff = lengthdir_x(go_length, dir), yoff = lengthdir_y(go_length, dir);
     x = xstart + xoff;
     y = ystart + yoff;
 }
+
 
 </string>
           </argument>
@@ -122,10 +158,35 @@ if (motion == 1) {
             <string>/// motion 2 : trigonometric move
 if (motion == 2) {
     if (t &gt;= cycle) t-= cycle;
-    var go_lenth = lenth * sin(2 * pi / cycle * t);
-    var xoff = lengthdir_x(go_lenth, dir), yoff = lengthdir_y(go_lenth, dir);
+    var go_length = length * sin(2 * pi / cycle * t);
+    var xoff = lengthdir_x(go_length, dir), yoff = lengthdir_y(go_length, dir);
     x = xstart + xoff;
     y = ystart + yoff;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// motion 3 : bazier move
+if (motion == 3) {
+    scrBazierMove(bazier_t,dir,length,pr1,pr2,xs,ys);
 }
 
 </string>
@@ -150,7 +211,7 @@ if (motion == 2) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lenth *= 32;
+            <string>length *= 32;
 
 </string>
           </argument>

@@ -332,6 +332,7 @@
       <script>scripts\scrCreateMoving.gml</script>
       <script>scripts\scrSmoothDestroy.gml</script>
       <script>scripts\scrSmoothCreate.gml</script>
+      <script>scripts\scrBazierMove.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -371,6 +372,7 @@
       <object>objects\objCreateMoreMotionTest</object>
       <object>objects\objColorfulKillerObject</object>
       <object>objects\objColorfulBlock</object>
+      <object>objects\objConstantBazierMotionTest</object>
     </objects>
     <objects name="world">
       <object>objects\objWorld</object>
@@ -474,8 +476,8 @@
       </objects>
     </objects>
     <objects name="motion">
-      <object>objects\objMoreMotionParentKiller</object>
       <object>objects\objMoreMotionParent</object>
+      <object>objects\objMoreMotionParentKiller</object>
       <object>objects\objCherryMoreMotion</object>
       <object>objects\objSpikeMotionDown</object>
       <object>objects\objSpikeMotionRight</object>
