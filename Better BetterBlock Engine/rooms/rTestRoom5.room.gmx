@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>16777088</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>with objBlock visible = 1;
+with objSavePrecise image_blend = c_red;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -26,9 +27,9 @@
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>0</page>
-    <xoffset>-209</xoffset>
-    <yoffset>-22</yoffset>
+    <page>1</page>
+    <xoffset>-135</xoffset>
+    <yoffset>89</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -52,11 +53,19 @@
   </views>
   <instances>
     <instance objName="objPlayerStart" x="96" y="544" name="inst_EFE472C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBetterBlock" x="32" y="576" name="inst_7E68668B" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSave" x="32" y="544" name="inst_8616E9DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBetterBlock" x="0" y="0" name="inst_9A5703D3" locked="0" code="" scaleX="1" scaleY="19" colour="4294967295" rotation="0"/>
-    <instance objName="objBetterBlock" x="768" y="0" name="inst_999A3BA3" locked="0" code="" scaleX="1" scaleY="19" colour="4294967295" rotation="0"/>
-    <instance objName="objBetterBlock" x="32" y="0" name="inst_19844D47" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="0" y="0" name="inst_16965CB6" locked="0" code="" scaleX="25" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="768" y="32" name="inst_943EBFCC" locked="0" code="" scaleX="1" scaleY="17" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="0" y="576" name="inst_A9C4E735" locked="0" code="" scaleX="25" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="0" y="32" name="inst_8397235D" locked="0" code="" scaleX="1" scaleY="17" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="160" y="480" name="inst_E964777B" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="224" y="512" name="inst_6FCD3B6F" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="288" y="544" name="inst_F9E74BED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="256" y="416" name="inst_4FE6368E" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="352" y="448" name="inst_ACC31BBD" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="32" y="352" name="inst_F9A2F3B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBetterBlock" x="64" y="352" name="inst_029A026F" locked="0" code="image_blend = c_red;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSavePrecise" x="288" y="384" name="inst_9A8377C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bOriginal" x="0" y="544" w="32" h="32" xo="32" yo="32" id="10001992" name="inst_720D942E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

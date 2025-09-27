@@ -30,8 +30,8 @@ if (savePosition)
     
     // floor player position to match standard engine behavior
     global.savePlayerX = floor(global.savePlayerX);
-    */
     global.savePlayerY = floor(global.savePlayerY);
+    */
     
     
     for (var i = 0; i < global.secretItemTotal; i++)
