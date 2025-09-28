@@ -133,6 +133,7 @@
       </sprites>
     </sprites>
     <sprites name="killers">
+      <sprite>sprites\sprSpikeTexture</sprite>
       <sprite>sprites\sprSpikeUp</sprite>
       <sprite>sprites\sprSpikeRight</sprite>
       <sprite>sprites\sprSpikeLeft</sprite>
