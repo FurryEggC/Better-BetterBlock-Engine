@@ -6,15 +6,9 @@ var len = argument2;
 var pr1 = argument3;
 var pr2 = argument4;
 
-var sx, sy;
-if (argument_count == 7) {
-    sx = argument5;
-    sy = argument6;
-}
-else {
-    sx = xstart;
-    sy = ystart;
-}
+var xs, ys;
+xs = argument5;
+ys = argument6;
 
 var bazierValue;
 bazierValue =  3 * t * (1 - t) * (1 - t) * pr1 + 3 * (t * t) * (1 - t) * pr2 + t * t * t;

@@ -335,6 +335,8 @@
       <script>scripts\scrSmoothDestroy.gml</script>
       <script>scripts\scrSmoothCreate.gml</script>
       <script>scripts\scrBazierMove.gml</script>
+      <script>scripts\scrCreateShadow.gml</script>
+      <script>scripts\scrShadeFollow.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -378,6 +380,8 @@
       <object>objects\objColorfulKillerObject</object>
       <object>objects\objColorfulBlock</object>
       <object>objects\objConstantBazierMotionTest</object>
+      <object>objects\objShadeTest</object>
+      <object>objects\objShadeEffectTest</object>
     </objects>
     <objects name="world">
       <object>objects\objWorld</object>
@@ -596,6 +600,9 @@
       <object>objects\objColorfulEffectKillerParent</object>
       <object>objects\objAnimationDisappear</object>
       <object>objects\objAnimationAppear</object>
+      <object>objects\objShade</object>
+      <object>objects\objShadeParent</object>
+      <object>objects\objShadeEffect</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -614,6 +621,7 @@
     <room>rooms\rTestRoom5</room>
     <room>rooms\rTestRoom6</room>
     <room>rooms\rTestRoom7</room>
+    <room>rooms\rTestRoom8</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>
