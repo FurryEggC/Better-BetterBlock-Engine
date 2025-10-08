@@ -16,8 +16,8 @@
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1016</w>
-    <h>600</h>
+    <w>1296</w>
+    <h>768</h>
     <showGrid>0</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>
@@ -26,9 +26,9 @@
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>3</page>
-    <xoffset>-81</xoffset>
-    <yoffset>43</yoffset>
+    <page>0</page>
+    <xoffset>331</xoffset>
+    <yoffset>708</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -115,6 +115,8 @@
     <instance objName="objSmoothCamera" x="0" y="0" name="inst_48F917AB" locked="0" code="snapDiv = 10;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSmoothCameraSetter" x="656" y="832" name="inst_BFEBDC7B" locked="0" code="visible = 1;&#xA;toX = 896;&#xA;toY = 800;&#xA;snapDiv = 10;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSmoothCameraSetter" x="1120" y="832" name="inst_7F229A41" locked="0" code="visible = 1;&#xA;snapDiv = 10;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCreateFlashLight" x="864" y="1152" name="inst_500EAFD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCreateFlashLight" x="944" y="1088" name="inst_02738894" locked="0" code="color = c_black;&#xA;alpha = 1;&#xA;fadeTime = 10;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

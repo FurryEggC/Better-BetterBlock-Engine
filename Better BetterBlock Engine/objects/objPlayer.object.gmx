@@ -41,6 +41,9 @@ onPlatform = false; //sets if player is currently standing on a platform
 bulletMax = 4;  // max numbers of bullet
 bulletSpd = 16;  // speed of bullet
 
+hitTimes = 0;  // hit limit of death, 0 to off hitMode
+hitGap = 50;  // hit decrease after frames
+
 /// ------------------- New Gimmicks
 inBubble = noone;  // the condition of inBubble, noone bubble
 bubbleSpdMax = 3;  // the speed of inBubble
@@ -183,6 +186,32 @@ specialDraw = instance_exists(objColorfulEffectControl) &amp;&amp; (global.skin 
             <string>//when the player is destroyed, also destroy the bow
 with (objBow)
     instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// For hitMode
+global.noDeath = false;
+image_alpha = 1;
+
 </string>
           </argument>
         </arguments>
@@ -753,7 +782,11 @@ if (inBubble) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scrKillPlayer();
+            <string>// Bubble Broke
+if (inBubble) {
+    with inBubble event_user(0);
+    inBubble = noone;
+}
 
 </string>
           </argument>
@@ -777,7 +810,16 @@ if (inBubble) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!inBubble) scrKillPlayer();
+            <string>if (!inBubble) {
+    if (hitTimes &gt; 0 &amp;&amp; !global.noDeath) {
+        hitTimes--;
+        global.noDeath = 1;
+        alarm[0] = hitGap;
+        audio_play_sound(sndDeath,0,false);
+        image_alpha = 0.6;  // god mode shortly
+    }
+    else scrKillPlayer();
+}
 
 </string>
           </argument>
@@ -1072,6 +1114,7 @@ var drawY = y;
 if (global.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
     drawY += 1;
 
+       
 draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
 
 //draw the player's hitbox
@@ -1100,6 +1143,7 @@ if (specialDraw) shader_reset();
           <argument>
             <kind>1</kind>
             <string>/// debug draw
+//draw_text(x, y - 40, hitTimes);
 
 </string>
           </argument>

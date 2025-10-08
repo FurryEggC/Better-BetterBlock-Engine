@@ -11,6 +11,7 @@ switch (room)                       //determines which song to play
         roomSong = musNull;  // use musNull instear of -1 to prevent bugs
         break;
     case rTestRoom:
+    case rTestRoom6:
         roomSong = musGuyRock;
         break;
     case rSampleRoom:

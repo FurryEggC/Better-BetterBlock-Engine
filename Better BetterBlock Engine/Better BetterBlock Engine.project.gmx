@@ -515,6 +515,7 @@
       <object>objects\objObjCircle</object>
       <object>objects\objObjCircleGap</object>
       <object>objects\objObjBar</object>
+      <object>objects\objSetPlayerHitMode</object>
       <objects name="water">
         <object>objects\objWaterParents</object>
         <object>objects\objWaterCherry</object>
@@ -603,6 +604,8 @@
       <object>objects\objShade</object>
       <object>objects\objShadeParent</object>
       <object>objects\objShadeEffect</object>
+      <object>objects\objCreateFlashLight</object>
+      <object>objects\objSuddenFlashLight</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -621,7 +624,6 @@
     <room>rooms\rTestRoom5</room>
     <room>rooms\rTestRoom6</room>
     <room>rooms\rTestRoom7</room>
-    <room>rooms\rTestRoom8</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>

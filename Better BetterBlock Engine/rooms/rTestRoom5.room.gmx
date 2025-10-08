@@ -28,8 +28,8 @@ with objSavePrecise image_blend = c_red;</code>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>1</page>
-    <xoffset>-26</xoffset>
-    <yoffset>23</yoffset>
+    <xoffset>-191</xoffset>
+    <yoffset>-61</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
