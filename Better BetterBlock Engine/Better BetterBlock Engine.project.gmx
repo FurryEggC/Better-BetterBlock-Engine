@@ -353,7 +353,6 @@
   </fonts>
   <objects name="objects">
     <object>objects\objBlock</object>
-    <object>objects\objBetterBlock</object>
     <object>objects\objMovingPlatform</object>
     <object>objects\objSpikeUp</object>
     <object>objects\objSpikeRight</object>
@@ -402,6 +401,7 @@
       <object>objects\objGameOver</object>
     </objects>
     <objects name="blocks">
+      <object>objects\objBetterBlock</object>
       <object>objects\objBetterBlockBase</object>
       <object>objects\objMiniBlock</object>
       <objects name="Better Block Objects">

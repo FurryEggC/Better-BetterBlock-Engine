@@ -63,9 +63,9 @@ yspeed = 0;
 {
     if (bounce)
     {
-        if (place_meeting(x+hspeed,y,objBetterBlock)) {hspeed = -hspeed;}
+        if (place_meeting(x+hspeed,y,objBlock)) {hspeed = -hspeed;}
         
-        if (place_meeting(x,y+vspeed+yspeed,objBetterBlock)) 
+        if (place_meeting(x,y+vspeed+yspeed,objBlock)) 
         {
             if (vspeed != 0) 
             {

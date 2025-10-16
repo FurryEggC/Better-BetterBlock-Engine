@@ -63,9 +63,9 @@ if (speed != 0 || yspeed != 0)  //make sure the platform is moving before doing 
 {
     if (bounce)
     {
-        if (instance_place(x+hspeed,y,objBetterBlockBase)) {hspeed = -hspeed;}
+        if (instance_place(x+hspeed,y,objBlock)) {hspeed = -hspeed;}
         
-        if (instance_place(x,y+vspeed+yspeed,objBetterBlockBase)) 
+        if (instance_place(x,y+vspeed+yspeed,objBlock)) 
         {
             if (vspeed != 0) 
             {
