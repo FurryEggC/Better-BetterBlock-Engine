@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>10</depth>
   <persistent>0</persistent>
-  <parentName>objRoomChanger</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,16 +27,15 @@
             <kind>1</kind>
             <string>//this warp only activates when the player leaves the room, it can be used on the edges of rooms for smoother room transitions
 
-event_inherited();
+roomTo = rTemplate;
 
-//can be changed in creation code
-smoothTransition = true;   //sets whether the player wraps around the screen for a smooth transition to the next room (this requires the room sizes to be the same)
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="objPlayer">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -53,38 +52,28 @@ smoothTransition = true;   //sets whether the player wraps around the screen for
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (other.x &lt; 0 || other.x &gt; room_width || other.y &lt; 0 || other.y &gt; room_height)  //check if player has left the room
-{
-    if (!smoothTransition)  //not using smooth transition, use default warp
+            <string>if (instance_place(x, y, objPlayer)) {
+    if (objPlayer.x &lt; 0 || objPlayer.x &gt; room_width || objPlayer.y &lt; 0 || objPlayer.y &gt; room_height)  //check if player has left the room
     {
-        event_inherited();
-    }
-    else        //using smooth transition, wrap around the screen then warp
-    {
-        if (other.x &lt; 0)
-        {
-            other.x += room_width;
-            other.y -= other.vspeed;
+        if (objPlayer.x &lt; 0) {
+            objPlayer.x += room_width;
+            objPlayer.y -= objPlayer.vspeed;
         }
-        if (other.x &gt; room_width)
-        {
-            other.x -= room_width;
-            other.y -= other.vspeed;
+        if (objPlayer.x &gt; room_width) {
+            objPlayer.x -= room_width;
+            objPlayer.y -= objPlayer.vspeed;
         }
-        if (other.y &lt; 0)
-        {
-            if scrButtonCheck(global.leftButton) other.x += 3;
-            else if scrButtonCheck(global.rightButton) other.x -= 3;
-            other.y += room_height;
+        if (objPlayer.y &lt; 0) {
+            if scrButtonCheck(global.leftButton) objPlayer.x += 3;
+            else if scrButtonCheck(global.rightButton) objPlayer.x -= 3;
+            objPlayer.y += room_height;
         }
-        if (other.y &gt; room_height)
-        {
-            if scrButtonCheck(global.leftButton) other.x += 3;
-            else if scrButtonCheck(global.rightButton) other.x -= 3;
-            other.y -= room_height;
+        if (objPlayer.y &gt; room_height) {
+            if scrButtonCheck(global.leftButton) objPlayer.x += 3;
+            else if scrButtonCheck(global.rightButton) objPlayer.x -= 3;
+            objPlayer.y -= room_height;
         }
-        
-        room_goto(roomTo);
+        if (roomTo != room) room_goto(roomTo);
     }
 }
 </string>

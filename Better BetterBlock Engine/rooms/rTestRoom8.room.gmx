@@ -16,8 +16,8 @@
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1296</w>
-    <h>768</h>
+    <w>992</w>
+    <h>600</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>
@@ -27,8 +27,8 @@
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>0</page>
-    <xoffset>-68</xoffset>
-    <yoffset>-112</yoffset>
+    <xoffset>-51</xoffset>
+    <yoffset>-49</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -51,10 +51,10 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="objBlock" x="0" y="-32" name="inst_CF2F94F6" locked="0" code="" scaleX="1" scaleY="20.6451606750488" colour="4294967295" rotation="0"/>
-    <instance objName="objBlock" x="128" y="0" name="inst_A725C38C" locked="0" code="" scaleX="21" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="0" y="-32" name="inst_CF2F94F6" locked="0" code="" scaleX="1" scaleY="19" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="64" y="0" name="inst_A725C38C" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="768" y="32" name="inst_2DB51AF8" locked="0" code="" scaleX="1" scaleY="18" colour="4294967295" rotation="0"/>
-    <instance objName="objBlock" x="64" y="576" name="inst_0E6C3CD3" locked="0" code="" scaleX="22" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="32" y="576" name="inst_0E6C3CD3" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSave" x="64" y="96" name="inst_2550E3B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="32" y="128" name="inst_F6074547" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="32" y="96" name="inst_A0287B9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -163,8 +163,7 @@
     <instance objName="objSavePrecise" x="704" y="224" name="inst_16006795" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSavePrecise" x="64" y="352" name="inst_1208472D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSavePrecise" x="704" y="480" name="inst_65742BB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objOutsideRoomChanger" x="32" y="-32" name="inst_8D8F5AF2" locked="0" code="roomTo = rTestRoom6;" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objOutsideRoomChanger" x="32" y="608" name="inst_087C7E08" locked="0" code="roomTo = rTestRoom8;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objOutsideRoomChanger" x="32" y="-32" name="inst_5AE0A4EB" locked="0" code="roomTo = rTestRoom7;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bOriginal" x="32" y="128" w="32" h="32" xo="0" yo="32" id="10004422" name="inst_150E5A46" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -249,6 +248,7 @@
     <tile bgName="bOriginal" x="736" y="512" w="32" h="32" xo="0" yo="32" id="10004501" name="inst_FC591E64" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bOriginal" x="96" y="576" w="32" h="32" xo="0" yo="32" id="10004502" name="inst_7444C885" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bOriginal" x="64" y="576" w="32" h="32" xo="0" yo="32" id="10004503" name="inst_01EAF116" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bOriginal" x="32" y="576" w="32" h="32" xo="0" yo="32" id="10004504" name="inst_BF75E857" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bOriginal" x="0" y="0" w="32" h="32" xo="32" yo="32" id="10004510" name="inst_B5BA3F3B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bOriginal" x="0" y="32" w="32" h="32" xo="32" yo="32" id="10004511" name="inst_4EB86165" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bOriginal" x="0" y="64" w="32" h="32" xo="32" yo="32" id="10004512" name="inst_2C25292E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -349,6 +349,8 @@
     <tile bgName="bOriginal" x="192" y="0" w="32" h="32" xo="32" yo="32" id="10004627" name="inst_DD8F6E2E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bOriginal" x="160" y="0" w="32" h="32" xo="32" yo="32" id="10004628" name="inst_A765D2CA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bOriginal" x="128" y="0" w="32" h="32" xo="32" yo="32" id="10004629" name="inst_CC6D67CE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bOriginal" x="96" y="0" w="32" h="32" xo="32" yo="32" id="10004630" name="inst_0142B35A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bOriginal" x="64" y="0" w="32" h="32" xo="32" yo="32" id="10004631" name="inst_E8827516" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

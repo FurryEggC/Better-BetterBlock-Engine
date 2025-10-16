@@ -473,13 +473,6 @@
         <objects name="BetterBlock">
           <object>objects\objBetterBlockHammerBro</object>
           <object>objects\objBetterBlockHammer</object>
-          <object>objects\objBetterBlockMiku</object>
-        </objects>
-        <objects name="miku">
-          <object>objects\objMiku</object>
-          <object>objects\objCherryRandomCol</object>
-          <object>objects\objCherryRandomColExplode</object>
-          <object>objects\objCherryRandomColBounce</object>
         </objects>
       </objects>
     </objects>
@@ -624,6 +617,7 @@
     <room>rooms\rTestRoom5</room>
     <room>rooms\rTestRoom6</room>
     <room>rooms\rTestRoom7</room>
+    <room>rooms\rTestRoom8</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>

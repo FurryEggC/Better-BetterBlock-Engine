@@ -47,6 +47,7 @@ hitGap = 50;  // hit decrease after frames
 /// ------------------- New Gimmicks
 inBubble = noone;  // the condition of inBubble, noone bubble
 bubbleSpdMax = 3;  // the speed of inBubble
+global.noDeath = 0;
 
 xScale = 1; //sets the direction the player is facing (1 is facing right, -1 is facing left)
 

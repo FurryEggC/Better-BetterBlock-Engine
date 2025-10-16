@@ -186,7 +186,7 @@ if (motion == 2) {
             <kind>1</kind>
             <string>/// motion 3 : bazier move
 if (motion == 3) {
-    scrBazierMove(bazier_t,dir,length,pr1,pr2,sx,sy);
+    scrBazierMove(bazier_t,dir,length,pr1,pr2,xs,ys);
 }
 
 </string>
