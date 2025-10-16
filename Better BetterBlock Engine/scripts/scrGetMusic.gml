@@ -10,12 +10,8 @@ switch (room)                       //determines which song to play
     case rDifficultySelect:
         roomSong = musNull;  // use musNull instear of -1 to prevent bugs
         break;
-    case rTestRoom:
-    case rTestRoom6:
-        roomSong = musGuyRock;
-        break;
     case rSampleRoom:
-        roomSong = musMegaman;
+        roomSong = musGuyRock;
         break;
     default:                        //default option in case the room does not have a song set
         roomSong = musNull;

@@ -53,20 +53,14 @@ gravity = (0.1+random(0.2)) * global.grav;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///snap to the block (works for non-solid instances too)
-if (!scrIsBlock(other)) exit;
-
-//Redundant for solid instances
-x = xprevious;
+            <string>x = xprevious;
 y = yprevious;
 
-//Replace move_contact_solid
-scrMoveContactObject(sign(hspeed), 0, abs(hspeed), other.id);
-scrMoveContactObject(0, sign(vspeed), abs(vspeed), other.id);
+move_contact_solid(dir, -1);
 
-//Same as in the original code
 speed = 0;
 gravity = 0;
+
 </string>
           </argument>
         </arguments>

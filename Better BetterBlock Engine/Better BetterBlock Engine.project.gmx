@@ -319,16 +319,11 @@
       </scripts>
     </scripts>
     <scripts name="functions">
-      <script>scripts\scrMoveContactObject.gml</script>
-      <script>scripts\scrIsBlock.gml</script>
-      <script>scripts\scrIsBetterBlock.gml</script>
-      <script>scripts\scrIsBetterPlatform.gml</script>
       <script>scripts\scrDrawTextOutline.gml</script>
       <script>scripts\scrMakeShapes.gml</script>
       <script>scripts\scrMakeCircle.gml</script>
       <script>scripts\scrColorBlendFunction.gml</script>
       <script>scripts\scrPerlinNoise.gml</script>
-      <script>scripts\scrMutiPushBlockMove.gml</script>
       <script>scripts\scrMoveCloserSmooth.gml</script>
       <script>scripts\scrArrayShuffle.gml</script>
       <script>scripts\scrCreateMoving.gml</script>
@@ -353,7 +348,6 @@
   </fonts>
   <objects name="objects">
     <object>objects\objBlock</object>
-    <object>objects\objBetterBlock</object>
     <object>objects\objMovingPlatform</object>
     <object>objects\objSpikeUp</object>
     <object>objects\objSpikeRight</object>
@@ -402,24 +396,7 @@
       <object>objects\objGameOver</object>
     </objects>
     <objects name="blocks">
-      <object>objects\objBetterBlockBase</object>
       <object>objects\objMiniBlock</object>
-      <objects name="Better Block Objects">
-        <object>objects\objBetterBlockDonutBlock</object>
-        <object>objects\objBetterBlockExpandCtrl</object>
-        <object>objects\objBetterBlockExpandBlock</object>
-        <object>objects\objBetterBlockScalingBlock</object>
-        <object>objects\objBetterBlockHammerBrosBlock</object>
-        <objects name="BetterBlock Avoidance">
-          <object>objects\objBetterBlockAvoB01</object>
-          <object>objects\objBetterBlockAvoB02</object>
-          <object>objects\objBetterBlockAvoB03</object>
-          <object>objects\objBetterBlockAvoB04</object>
-          <object>objects\objBetterBlockAvoB04b</object>
-          <object>objects\objBetterBlockAvoB05</object>
-          <object>objects\objBetterBlockAvoDonutBlock</object>
-        </objects>
-      </objects>
       <object>objects\objSlipBlock</object>
       <object>objects\objBossBlock</object>
       <object>objects\objBlockInvis</object>
@@ -437,28 +414,13 @@
     </objects>
     <objects name="platforms">
       <object>objects\objPlatform</object>
-      <object>objects\objBetterMovingPlatform</object>
       <object>objects\objMovingPlatformNoBounce</object>
       <object>objects\objTouchMovingFakePlatformParent</object>
       <object>objects\objTouchMovingPlatformFake</object>
       <object>objects\objTouchMovingPlatform</object>
-      <objects name="Better Platform Objects">
-        <object>objects\objBetterBlockWheelPlatform</object>
-        <object>objects\objBetterBlockWheelCtrl</object>
-        <objects name="BetterBlock Avoidance">
-          <object>objects\objBetterBlockAvoP01</object>
-          <object>objects\objBetterBlockAvoP02</object>
-          <object>objects\objBetterBlockAvoP03</object>
-          <object>objects\objBetterBlockAvoP04</object>
-          <object>objects\objBetterBlockAvoP05</object>
-          <object>objects\objBetterBlockAvoP05b</object>
-          <object>objects\objBetterBlockAvoP06</object>
-        </objects>
-      </objects>
       <object>objects\objBlockRise</object>
       <object>objects\objBlockFall</object>
     </objects>
-    <object>objects\objBetterBlockCtrl</object>
     <objects name="killers">
       <object>objects\objPlayerKiller</object>
       <object>objects\objCherry</object>
@@ -467,14 +429,6 @@
       <object>objects\objCherryBounceLat</object>
       <object>objects\objCherryBounceVert</object>
       <object>objects\objKillerBlock</object>
-      <objects name="bosses">
-        <object>objects\objCherryEnemyTest</object>
-        <object>objects\objCherryBossTest</object>
-        <objects name="BetterBlock">
-          <object>objects\objBetterBlockHammerBro</object>
-          <object>objects\objBetterBlockHammer</object>
-        </objects>
-      </objects>
     </objects>
     <objects name="motion">
       <object>objects\objMoreMotionParent</object>
@@ -533,10 +487,6 @@
         <object>objects\objBubbleRefresher</object>
         <object>objects\objFlipBubbleRefresher</object>
         <object>objects\objBubbleParticle</object>
-      </objects>
-      <objects name="pushBlock">
-        <object>objects\objPushBlock</object>
-        <object>objects\objMutiPushBlock</object>
       </objects>
       <objects name="mutiJumps">
         <object>objects\objSingleJumpStar</object>
@@ -610,14 +560,6 @@
       <room>rooms\rDifficultySelect</room>
     </rooms>
     <room>rooms\rSampleRoom</room>
-    <room>rooms\rTestRoom</room>
-    <room>rooms\rTestRoom2</room>
-    <room>rooms\rTestRoom3</room>
-    <room>rooms\rTestRoom4</room>
-    <room>rooms\rTestRoom5</room>
-    <room>rooms\rTestRoom6</room>
-    <room>rooms\rTestRoom7</room>
-    <room>rooms\rTestRoom8</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>
