@@ -303,7 +303,6 @@
       <script>scripts\scrSetRoomCaption.gml</script>
       <script>scripts\scrDrawButtonInfo.gml</script>
       <script>scripts\scrGetKeybind.gml</script>
-      <script>scripts\scrGetControllerBind.gml</script>
       <script>scripts\scrToggleMusic.gml</script>
       <script>scripts\scrRestartGame.gml</script>
       <script>scripts\scrSetVsync.gml</script>
@@ -312,7 +311,6 @@
       <script>scripts\scrPlayMusic.gml</script>
       <script>scripts\scrStopMusic.gml</script>
       <scripts name="controls">
-        <script>scripts\scrAnyControllerButton.gml</script>
         <script>scripts\scrButtonCheck.gml</script>
         <script>scripts\scrButtonCheckPressed.gml</script>
         <script>scripts\scrButtonCheckReleased.gml</script>
@@ -389,7 +387,6 @@
       <object>objects\objDifficultyMenu</object>
       <object>objects\objOptionsMenu</object>
       <object>objects\objKeyboardControlsMenu</object>
-      <object>objects\objControllerMenu</object>
     </objects>
     <objects name="player">
       <object>objects\objPlayerStart</object>

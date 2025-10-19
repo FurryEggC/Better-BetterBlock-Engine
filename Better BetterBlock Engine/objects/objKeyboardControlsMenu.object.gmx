@@ -60,28 +60,28 @@ strSelect[20] = "Gimmick C Button";
 strSelect[21] = "Reset Controls";
 
 //get current controls
-strKey[0] = scrGetKeybind(global.leftButton[0]);
-strKey[1] = scrGetKeybind(global.rightButton[0]);
-strKey[2] = scrGetKeybind(global.upButton[0]);
-strKey[3] = scrGetKeybind(global.downButton[0]);
-strKey[4] = scrGetKeybind(global.jumpButton[0]);
-strKey[5] = scrGetKeybind(global.shootButton[0]);
-strKey[6] = scrGetKeybind(global.restartButton[0]);
-strKey[7] = scrGetKeybind(global.skipButton[0]);
-strKey[8] = scrGetKeybind(global.suicideButton[0]);
-strKey[9] = scrGetKeybind(global.pauseButton[0]);
+strKey[0] = scrGetKeybind(global.leftButton);
+strKey[1] = scrGetKeybind(global.rightButton);
+strKey[2] = scrGetKeybind(global.upButton);
+strKey[3] = scrGetKeybind(global.downButton);
+strKey[4] = scrGetKeybind(global.jumpButton);
+strKey[5] = scrGetKeybind(global.shootButton);
+strKey[6] = scrGetKeybind(global.restartButton);
+strKey[7] = scrGetKeybind(global.skipButton);
+strKey[8] = scrGetKeybind(global.suicideButton);
+strKey[9] = scrGetKeybind(global.pauseButton);
 strKey[10] = "";
 
-strKey[11] = scrGetKeybind(global.alignLeftButton[0]);
-strKey[12] = scrGetKeybind(global.alignRightButton[0]);
-strKey[13] = scrGetKeybind(global.hubButton[0]);
-strKey[14] = scrGetKeybind(global.confirmButton[0]);
-strKey[15] = scrGetKeybind(global.bowButton[0]);
-strKey[16] = scrGetKeybind(global.skinLeftButton[0]);
-strKey[17] = scrGetKeybind(global.skinRightButton[0]);
-strKey[18] = scrGetKeybind(global.gimmickAButton[0]);
-strKey[19] = scrGetKeybind(global.gimmickBButton[0]);
-strKey[20] = scrGetKeybind(global.gimmickCButton[0]);
+strKey[11] = scrGetKeybind(global.alignLeftButton);
+strKey[12] = scrGetKeybind(global.alignRightButton);
+strKey[13] = scrGetKeybind(global.hubButton);
+strKey[14] = scrGetKeybind(global.confirmButton);
+strKey[15] = scrGetKeybind(global.bowButton);
+strKey[16] = scrGetKeybind(global.skinLeftButton);
+strKey[17] = scrGetKeybind(global.skinRightButton);
+strKey[18] = scrGetKeybind(global.gimmickAButton);
+strKey[19] = scrGetKeybind(global.gimmickBButton);
+strKey[20] = scrGetKeybind(global.gimmickCButton);
 strKey[21] = "";
 
 playerIndex = 0;
@@ -164,27 +164,27 @@ if (!settingKey)
         else
         {
             //default controls
-            global.leftButton[0] = vk_left;
-            global.rightButton[0] = vk_right;
-            global.upButton[0] = vk_up;
-            global.downButton[0] = vk_down;
-            global.jumpButton[0] = vk_shift;
-            global.shootButton[0] = ord("Z");
-            global.restartButton[0] = ord("R");
-            global.skipButton[0] = ord("S");
-            global.suicideButton[0] = ord("Q");
-            global.pauseButton[0] = ord("P");
+            global.leftButton = vk_left;
+            global.rightButton = vk_right;
+            global.upButton = vk_up;
+            global.downButton = vk_down;
+            global.jumpButton = vk_shift;
+            global.shootButton = ord("Z");
+            global.restartButton = ord("R");
+            global.skipButton = ord("S");
+            global.suicideButton = ord("Q");
+            global.pauseButton = ord("P");
             
-            global.alignLeftButton[0] = ord("A");
-            global.alignRightButton[0] = ord("D");
-            global.hubButton[0] = vk_backspace;
-            global.confirmButton[0] = vk_enter;
-            global.bowButton[0] = ord("B");
-            global.skinLeftButton[0] = ord("1");
-            global.skinRightButton[0] = ord("2");
-            global.gimmickAButton[0] = ord("X");
-            global.gimmickBButton[0] = ord("C");
-            global.gimmickCButton[0] = ord("V");
+            global.alignLeftButton = ord("A");
+            global.alignRightButton = ord("D");
+            global.hubButton = vk_backspace;
+            global.confirmButton = vk_enter;
+            global.bowButton = ord("B");
+            global.skinLeftButton = ord("1");
+            global.skinRightButton = ord("2");
+            global.gimmickAButton = ord("X");
+            global.gimmickBButton = ord("C");
+            global.gimmickCButton = ord("V");
             
             resetPrompt = true;
             alarm[0] = 60;
@@ -212,61 +212,55 @@ else
         if (keyChange == 160 || keyChange == 161)   //check if current key pressed is either shift key
             keyChange = 16; //set it to work for both shift keys
         
-        if (select == 0) {global.leftButton[0] = keyChange;}
-        else if (select == 1) {global.rightButton[0] = keyChange;}
-        else if (select == 2) {global.upButton[0] = keyChange;}
-        else if (select == 3) {global.downButton[0] = keyChange;}
-        else if (select == 4) {global.jumpButton[0] = keyChange;}
-        else if (select == 5) {global.shootButton[0] = keyChange;}
-        else if (select == 6) {global.restartButton[0] = keyChange;}
-        else if (select == 7) {global.skipButton[0] = keyChange;}
-        else if (select == 8) {global.suicideButton[0] = keyChange;}
-        else if (select == 9) {global.pauseButton[0] = keyChange;}
+        if (select == 0) {global.leftButton = keyChange;}
+        else if (select == 1) {global.rightButton = keyChange;}
+        else if (select == 2) {global.upButton = keyChange;}
+        else if (select == 3) {global.downButton = keyChange;}
+        else if (select == 4) {global.jumpButton = keyChange;}
+        else if (select == 5) {global.shootButton = keyChange;}
+        else if (select == 6) {global.restartButton = keyChange;}
+        else if (select == 7) {global.skipButton = keyChange;}
+        else if (select == 8) {global.suicideButton = keyChange;}
+        else if (select == 9) {global.pauseButton = keyChange;}
         
-        else if (select == 11) {global.alignLeftButton[0] = keyChange;}
-        else if (select == 12) {global.alignRightButton[0] = keyChange;}
-        else if (select == 13) {global.hubButton[0] = keyChange;}
-        else if (select == 14) {global.confirmButton[0] = keyChange;}
-        else if (select == 15) {global.bowButton[0] = keyChange;}
-        else if (select == 16) {global.skinLeftButton[0] = keyChange;}
-        else if (select == 17) {global.skinRightButton[0] = keyChange;}
-        else if (select == 18) {global.gimmickAButton[0] = keyChange;}
-        else if (select == 19) {global.gimmickBButton[0] = keyChange;}
-        else if (select == 20) {global.gimmickCButton[0] = keyChange;}
+        else if (select == 11) {global.alignLeftButton = keyChange;}
+        else if (select == 12) {global.alignRightButton = keyChange;}
+        else if (select == 13) {global.hubButton = keyChange;}
+        else if (select == 14) {global.confirmButton = keyChange;}
+        else if (select == 15) {global.bowButton = keyChange;}
+        else if (select == 16) {global.skinLeftButton = keyChange;}
+        else if (select == 17) {global.skinRightButton = keyChange;}
+        else if (select == 18) {global.gimmickAButton = keyChange;}
+        else if (select == 19) {global.gimmickBButton = keyChange;}
+        else if (select == 20) {global.gimmickCButton = keyChange;}
         
         settingKey = false;
     }
-    /*
-    else if (scrAnyControllerButton() != -1)    //check if a controller button was pressed, exit prompt
-    {
-        settingKey = false;
-    }
-    */
 }
 
 // get current controls
-strKey[0] = scrGetKeybind(global.leftButton[0]);
-strKey[1] = scrGetKeybind(global.rightButton[0]);
-strKey[2] = scrGetKeybind(global.upButton[0]);
-strKey[3] = scrGetKeybind(global.downButton[0]);
-strKey[4] = scrGetKeybind(global.jumpButton[0]);
-strKey[5] = scrGetKeybind(global.shootButton[0]);
-strKey[6] = scrGetKeybind(global.restartButton[0]);
-strKey[7] = scrGetKeybind(global.skipButton[0]);
-strKey[8] = scrGetKeybind(global.suicideButton[0]);
-strKey[9] = scrGetKeybind(global.pauseButton[0]);
+strKey[0] = scrGetKeybind(global.leftButton);
+strKey[1] = scrGetKeybind(global.rightButton);
+strKey[2] = scrGetKeybind(global.upButton);
+strKey[3] = scrGetKeybind(global.downButton);
+strKey[4] = scrGetKeybind(global.jumpButton);
+strKey[5] = scrGetKeybind(global.shootButton);
+strKey[6] = scrGetKeybind(global.restartButton);
+strKey[7] = scrGetKeybind(global.skipButton);
+strKey[8] = scrGetKeybind(global.suicideButton);
+strKey[9] = scrGetKeybind(global.pauseButton);
 strKey[10] = "";
 
-strKey[11] = scrGetKeybind(global.alignLeftButton[0]);
-strKey[12] = scrGetKeybind(global.alignRightButton[0]);
-strKey[13] = scrGetKeybind(global.hubButton[0]);
-strKey[14] = scrGetKeybind(global.confirmButton[0]);
-strKey[15] = scrGetKeybind(global.bowButton[0]);
-strKey[16] = scrGetKeybind(global.skinLeftButton[0]);
-strKey[17] = scrGetKeybind(global.skinRightButton[0]);
-strKey[18] = scrGetKeybind(global.gimmickAButton[0]);
-strKey[19] = scrGetKeybind(global.gimmickBButton[0]);
-strKey[20] = scrGetKeybind(global.gimmickCButton[0]);
+strKey[11] = scrGetKeybind(global.alignLeftButton);
+strKey[12] = scrGetKeybind(global.alignRightButton);
+strKey[13] = scrGetKeybind(global.hubButton);
+strKey[14] = scrGetKeybind(global.confirmButton);
+strKey[15] = scrGetKeybind(global.bowButton);
+strKey[16] = scrGetKeybind(global.skinLeftButton);
+strKey[17] = scrGetKeybind(global.skinRightButton);
+strKey[18] = scrGetKeybind(global.gimmickAButton);
+strKey[19] = scrGetKeybind(global.gimmickBButton);
+strKey[20] = scrGetKeybind(global.gimmickCButton);
 strKey[21] = "";
 
 
@@ -357,7 +351,9 @@ else {
 
 scrDrawButtonInfo(false);
 draw_set_halign(fa_middle);
-draw_text(400,556,"[" + scrGetKeybind(global.menuOptionsButton[0]) + "] Page ("+ string(page+1) +"/2) ");
+
+// page next
+draw_text(400,556,"[" + scrGetKeybind(global.menuOptionsButton) + "] Page ("+ string(page+1) +"/2) ");
 
 </string>
           </argument>
