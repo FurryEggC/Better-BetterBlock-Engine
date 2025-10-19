@@ -16,23 +16,14 @@ if (savePosition)
     global.saveDotkid = global.dotkid;
     
     
-    /* Please tell me what are fucking these
-    // check if player is saving inside of a wall or in the ceiling when the player's position is floored to prevent save locking
-    with (objPlayer) {
-        if (!place_free(floor(global.savePlayerX),global.savePlayerY)) global.savePlayerX += 1;
-        if (!place_free(global.savePlayerX,floor(global.savePlayerY))) global.savePlayerY += 1;
-        if (!place_free(floor(global.savePlayerX),floor(global.savePlayerY))) {
-            global.savePlayerX += 1;
-            global.savePlayerY += 1;
-        }
-    }
-    
-    
-    // floor player position to match standard engine behavior
-    global.savePlayerX = floor(global.savePlayerX);
-    */
+    global.savePlayerX = round(global.savePlayerX);  // floor(341.00) = 340 wtf
     global.savePlayerY = floor(global.savePlayerY);
     
+    // if saving in a wall, must be up
+    with (objPlayer) {
+        if (!place_free(global.savePlayerX,global.savePlayerY)) global.savePlayerY += 1;
+
+    }
     
     for (var i = 0; i < global.secretItemTotal; i++)
     {
