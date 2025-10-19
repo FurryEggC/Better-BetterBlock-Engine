@@ -222,7 +222,6 @@
       <script>scripts\scrSetRoomCaption.gml</script>
       <script>scripts\scrDrawButtonInfo.gml</script>
       <script>scripts\scrGetKeybind.gml</script>
-      <script>scripts\scrGetControllerBind.gml</script>
       <script>scripts\scrToggleMusic.gml</script>
       <script>scripts\scrRestartGame.gml</script>
       <script>scripts\scrSetVsync.gml</script>
@@ -363,6 +362,7 @@
       <room>rooms\rDifficultySelect</room>
     </rooms>
     <room>rooms\rSampleRoom</room>
+    <room>rooms\rTest</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>

@@ -14,24 +14,15 @@ if (savePosition)
     
     global.saveJump = global.jump;
     
-    
-    /* Please tell me what are fucking these
-    // check if player is saving inside of a wall or in the ceiling when the player's position is floored to prevent save locking
-    with (objPlayer) {
-        if (!place_free(floor(global.savePlayerX),global.savePlayerY)) global.savePlayerX += 1;
-        if (!place_free(global.savePlayerX,floor(global.savePlayerY))) global.savePlayerY += 1;
-        if (!place_free(floor(global.savePlayerX),floor(global.savePlayerY))) {
-            global.savePlayerX += 1;
-            global.savePlayerY += 1;
-        }
-    }
-    
-    
     // floor player position to match standard engine behavior
-    global.savePlayerX = floor(global.savePlayerX);
-    */
+    global.savePlayerX = round(global.savePlayerX);  // floor(421.00) = 420 omg
     global.savePlayerY = floor(global.savePlayerY);
     
+    // if player is inside of a wall, it must be stuck up
+    with (objPlayer) {
+        if (!place_free(global.savePlayerX,global.savePlayerY)) global.savePlayerY += 1;
+    }
+
     
     for (var i = 0; i < global.secretItemTotal; i++) {
         global.saveSecretItem[i] = global.secretItem[i];
