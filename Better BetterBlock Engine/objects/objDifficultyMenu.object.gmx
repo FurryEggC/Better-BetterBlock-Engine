@@ -79,13 +79,6 @@ for (var i = 0; i &lt; 3; i++)
             if (is_undefined(difficulty[i]))
                 difficulty[i] = 0;
             
-            for (var j = 0; j &lt; 8; j++)
-            {
-                boss[j,i] = ds_map_find_value(saveMap,"saveBossItem["+string(j)+"]");
-                if (is_undefined(boss[j,i]))
-                    boss[j,i] = false;
-            }
-            
             clear[i] = ds_map_find_value(saveMap,"saveGameClear");
             if (is_undefined(clear[i]))
                 clear[i] = false;
@@ -98,10 +91,6 @@ for (var i = 0; i &lt; 3; i++)
             death[i] = 0;
             time[i] = 0;
             difficulty[i] = 0;
-            for (var j = 0; j &lt; 8; j++)
-            {
-                boss[j,i] = false;
-            }
             clear[i] = false;
         }
     }
@@ -352,14 +341,6 @@ else
         
         if(clear[i]){draw_text(x+i*xSeperation+63,y+215,"Clear!!")}
         
-        if(boss[0,i]){draw_sprite(sprBossItem,-1,x+i*xSeperation+0,y+128)}
-        if(boss[1,i]){draw_sprite(sprBossItem,-1,x+i*xSeperation+32,y+128)}
-        if(boss[2,i]){draw_sprite(sprBossItem,-1,x+i*xSeperation+64,y+128)}
-        if(boss[3,i]){draw_sprite(sprBossItem,-1,x+i*xSeperation+96,y+128)}
-        if(boss[4,i]){draw_sprite(sprBossItem,-1,x+i*xSeperation+0,y+160)}
-        if(boss[5,i]){draw_sprite(sprBossItem,-1,x+i*xSeperation+32,y+160)}
-        if(boss[6,i]){draw_sprite(sprBossItem,-1,x+i*xSeperation+64,y+160)}
-        if(boss[7,i]){draw_sprite(sprBossItem,-1,x+i*xSeperation+96,y+160)}
     }
     else
     {

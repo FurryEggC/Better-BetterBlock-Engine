@@ -45,8 +45,6 @@ hitTimes = 0;  // hit limit of death, 0 to off hitMode
 hitGap = 50;  // hit decrease after frames
 
 /// ------------------- New Gimmicks
-inBubble = noone;  // the condition of inBubble, noone bubble
-bubbleSpdMax = 3;  // the speed of inBubble
 global.noDeath = 0;
 
 xScale = 1; //sets the direction the player is facing (1 is facing right, -1 is facing left)
@@ -61,22 +59,6 @@ if (global.autosave) //save the game if currently set to autosave
     global.autosave = false;
 }
 
-//[Better Block]
-//used to check if riding a platform will put the player into/through a block
-platCheck = 0;
-platCounter = 0;
-//the Better Platform/Block which the player is on, if there is one
-riding = noone;
-//records player movement
-PhSpd = 0;
-PvSpd = 0;
-//amount pushed by Better Blocks (used to carry the player)
-hPush = 0;
-//Version 1.1: used to store the relationship between the player's origin and their bbox
-leftToOrigin = (sprite_get_xoffset(mask_index) - sprite_get_bbox_left(mask_index))*image_xscale;
-rightToOrigin = (sprite_get_bbox_right(mask_index) - sprite_get_xoffset(mask_index) + 1)*image_xscale;
-topToOrigin = (sprite_get_yoffset(mask_index) - sprite_get_bbox_top(mask_index))*image_yscale;
-bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_index) + 1)*image_yscale;
 </string>
           </argument>
         </arguments>
@@ -136,32 +118,6 @@ Animation_idle[4] = sprPlayerIdle5;
 Animation_jump[4] = sprPlayerJump5;
 Animation_fall[4] = sprPlayerFall5;
 Animation_sliding[4] = sprPlayerSliding5;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Special draw
-shader = shdColorful;
-u_time = shader_get_uniform(shader, "u_time");
-
-specialDraw = instance_exists(objColorfulEffectControl) &amp;&amp; (global.skin == 3 || global.skin == 4);
-
 </string>
           </argument>
         </arguments>
@@ -242,55 +198,51 @@ if ((x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height) &amp;&amp;
     scrKillPlayer();
 
 // update player sprite
-// dotkid check
-if (global.dotkid) {
-    sprite_index = sprPlayerDotkidCircle;
-}
-else if (global.playerAnimationFix) {  // normal check
-    // block/vine checks
-    if (place_free(x,y+global.grav) &amp;&amp; !instance_exists(riding)) var notOnBlock = true else var notOnBlock = false
-    var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
-    var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
-    
-    if (!onVineR &amp;&amp; !onVineL)   //not touching any vines or standing on a Better Block (possibly above a vine)
+
+// block/vine checks
+if (place_free(x,y+global.grav)) var notOnBlock = true else var notOnBlock = false
+var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
+var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
+
+if (!onVineR &amp;&amp; !onVineL)   //not touching any vines or standing on Block (possibly above a vine)
+{
+    if (onPlatform || !notOnBlock)  //standing on something
     {
-        if (onPlatform || !notOnBlock)  //standing on something
+        //check if moving left/right
+        var L = (scrButtonCheck(global.leftButton) || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.leftButton)));
+        var R = (scrButtonCheck(global.rightButton) || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.rightButton)));
+        
+        if ((L || R) &amp;&amp; !frozen)
         {
-            //check if moving left/right
-            var L = (scrButtonCheck(global.leftButton) || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.leftButton)));
-            var R = (scrButtonCheck(global.rightButton) || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.rightButton)));
-            
-            if ((L || R) &amp;&amp; !frozen)
-            {
-                sprite_index = Animation_running[global.skin];
-                image_speed = 1/2;
-            }
-            else
-            {
-                sprite_index = Animation_idle[global.skin];
-                image_speed = 1/5;
-            }
+            sprite_index = Animation_running[global.skin];
+            image_speed = 1/2;
         }
-        else    //in the air
-        { 
-            if ((vspeed * global.grav) &lt; 0)
-            {
-                sprite_index = Animation_jump[global.skin];
-                image_speed = 1/2;
-            }
-            else
-            {
-                sprite_index = Animation_fall[global.skin];
-                image_speed = 1/2;
-            }
+        else
+        {
+            sprite_index = Animation_idle[global.skin];
+            image_speed = 1/5;
         }
     }
-    else    //touching a vine
-    {
-        sprite_index = Animation_sliding[global.skin];
-        image_speed = 1/2;
+    else    //in the air
+    { 
+        if ((vspeed * global.grav) &lt; 0)
+        {
+            sprite_index = Animation_jump[global.skin];
+            image_speed = 1/2;
+        }
+        else
+        {
+            sprite_index = Animation_fall[global.skin];
+            image_speed = 1/2;
+        }
     }
 }
+else    //touching a vine
+{
+    sprite_index = Animation_sliding[global.skin];
+    image_speed = 1/2;
+}
+
 </string>
           </argument>
         </arguments>
@@ -314,7 +266,6 @@ else if (global.playerAnimationFix) {  // normal check
           <argument>
             <kind>1</kind>
             <string>/// Before Origninal System
-if instance_exists(riding) event_user(0);  // onBlock check
 
 // Skin Changing And Bow System
 {
@@ -325,14 +276,11 @@ if instance_exists(riding) event_user(0);  // onBlock check
         
         if (global.skin &lt; 0) {global.skin += total_skin;}
         else if (global.skin &gt;= total_skin) {global.skin -= total_skin;}
-        
-        if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) specialDraw = instance_exists(objColorfulEffectControl);
-        else specialDraw = 0;
     }
     
-    // change blend in 3, 4 and dotkid
+    // change blend in 3, 4
     if (can_blend) {
-        if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) {
+        if (global.skin == 3 || global.skin == 4) {
             global.skinBlend += 3*scrButtonCheck(global.upButton) - 3*scrButtonCheck(global.downButton);
             global.skinBlend = clamp(global.skinBlend,0,256 * 5);
             image_blend = make_color_hsv((global.skinBlend) mod 256, scrColorBlendFunction(global.skinBlend), clamp(global.skinBlend, 0, 255));
@@ -372,22 +320,6 @@ maxSpeed = 3;
 maxVspeed = 9;
 
 // change after them
-if (inBubble) {
-    if (inBubble.reverse == 0) {
-        gravity = -0.3 * global.grav;
-        if (global.grav == 1) {
-            if (vspeed &lt; -bubbleSpdMax) vspeed = -bubbleSpdMax;
-        }
-        else if (vspeed &gt; bubbleSpdMax) vspeed = bubbleSpdMax;
-    }
-    else if (inBubble.reverse == 1) {
-        gravity = 0.3 * global.grav;
-        if (global.grav == 1) {
-            if (vspeed &gt; bubbleSpdMax) vspeed = bubbleSpdMax;
-        }
-        else if (vspeed &lt; -bubbleSpdMax) vspeed = -bubbleSpdMax;
-    }
-}
 
 </string>
           </argument>
@@ -417,86 +349,29 @@ var R = (scrButtonCheck(global.rightButton) || (global.directionalTapFix &amp;&a
 
 var h = 0;
 
-if (!frozen)    //don't move if frozen
-{
-    if (R)
-        h = 1;
-    else if (L)
-        h = -1;
+if (!frozen) {   //don't move if frozen
+    if (R) h = 1;
+    else if (L) h = -1;
 }
 
-var slipBlockTouching = instance_place(x,y+(1*global.grav),objSlipBlock);   //check if on a slip block
-
 //vine checks
-var notOnBlock = (place_free(x,y+(global.grav)) &amp;&amp; !instance_exists(riding));
+var notOnBlock = (place_free(x,y+(global.grav)));
 var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
 var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
 
-if (h != 0)  //player is moving
-{
-    if (!onVineR &amp;&amp; !onVineL)   //make sure not currently touching a vine
-    {
+if (h != 0) {  //player is moving
+    if (!onVineR &amp;&amp; !onVineL) {  //make sure not currently touching a vine
         xScale = h;
     }
-    if ((h == -1 &amp;&amp; !onVineR) || (h == 1 &amp;&amp; !onVineL))
-    {
-        if (slipBlockTouching == noone) //not touching a slip block, move immediately at full speed
-        {
-            hspeed = maxSpeed * h;
-        }
-        else    //touching a slip block, use acceleration
-        {
-            hspeed += (slipBlockTouching.slip) * h;
-            
-            if (abs(hspeed) &gt; maxSpeed)
-                hspeed = maxSpeed * h;
-        }
-        
-        sprite_index = sprPlayerRunning;
-        image_speed = 0.5;
+    if ((h == -1 &amp;&amp; !onVineR) || (h == 1 &amp;&amp; !onVineL)) {
+        hspeed = maxSpeed * h;
     }
 }
-else    //player is not moving
-{
-    if (slipBlockTouching == noone) //not touching a slip block, stop immediately
-        hspeed = 0;
-    else    //touching a slip block, slow down
-    {
-        if (hspeed &gt; 0)
-        {
-            hspeed -= slipBlockTouching.slip;
-            
-            if (hspeed &lt;= 0)
-                hspeed = 0;
-        }
-        else if (hspeed &lt; 0)
-        {
-            hspeed += slipBlockTouching.slip;
-            
-            if (hspeed &gt;= 0)
-                hspeed = 0;
-        }
-    }
-  
-    sprite_index = sprPlayerIdle;
-    image_speed = 0.2;
+else {   //player is not moving
+    hspeed = 0;
 }
 
-
-if (!onPlatform)    //check if standing on a platform
-{
-    if((vspeed * global.grav) &lt; -0.05) {sprite_index = sprPlayerJump;}
-    else if((vspeed * global.grav) &gt; 0.05) {sprite_index = sprPlayerFall;}
-}
-else
-{
-    if (!place_meeting(x,y+(4*global.grav),objPlatform)){onPlatform = false};
-}
-
-var slideBlockTouching = instance_place(x,y+(global.grav),objSlideBlock);   //check if on a slide block
-
-if (slideBlockTouching != noone)    //on a slide block, start moving with it
-    hspeed += slideBlockTouching.h;
+if (!place_meeting(x,y+(4*global.grav),objPlatform)) {onPlatform = false};
 
 if (abs(vspeed) &gt; maxVspeed) {vspeed = sign(vspeed)*maxVspeed;} //check if moving vertically faster than max speed
 
@@ -522,163 +397,6 @@ if (global.adAlign &amp;&amp; place_meeting(x,y+(global.grav),objBlock) &amp;&am
 // walljumps
 scrVineAction();
 
-// slopes
-
-if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
-{
-    var moveLimit = 12;    //sets how high/low the player can go to snap onto a slope, this can be increased to make the player able to run over steeper slopes (ie setting it to abs(hspeed)*2 allows the player to run over slopes twice as steep)
-    
-    var slopeCheck;
-    var hTest;
-    
-    var ySlope;
-    
-    //falling onto a slope
-    if (place_meeting(x+hspeed,y+vspeed+gravity,objSlope) &amp;&amp; (vspeed+gravity)*global.grav &gt; 0 &amp;&amp; notOnBlock)
-    {
-        var xLast = x;
-        var yLast = y;
-        var hLast = hspeed;
-        var vLast = vspeed;
-        
-        vspeed += gravity;
-        
-        x += hspeed;
-        hspeed = 0;
-        
-        if(!place_free(x,y+vspeed))
-        {
-            if (global.grav == 1)   //normal
-                move_contact_solid(270,abs(vspeed));
-            else    //flipped
-                move_contact_solid(90,abs(vspeed));
-            vspeed = 0;
-        }
-        
-        y += vspeed;            
-        
-        if (!place_free(x,y+(global.grav)) &amp;&amp; place_free(x,y))  //snapped onto the slope properly
-        {
-            djump = global.jump - 1;
-            notOnBlock = false;
-        }
-        else    //did not snap onto the slope, return to previous position
-        {
-            x = xLast;
-            y = yLast;
-            hspeed = hLast;
-            vspeed = vLast;
-        }
-    }
-    
-    // moving down a slope
-    if (!notOnBlock)
-    {
-        var onSlope = (place_meeting(x,y+(global.grav),objSlope));    //treat normal blocks the same as slopes if we're standing on a slope
-        
-        slopeCheck = true;
-        hTest = hspeed;
-        
-        while (slopeCheck)
-        {
-            ySlope = 0;
-            // check how far we should move down
-            while ((!place_meeting(x+hTest,y-ySlope+(global.grav),objSlope) || (onSlope &amp;&amp; !place_meeting(x+hTest,y-ySlope+(global.grav),objBlock))) &amp;&amp; ySlope*global.grav &gt; -floor(moveLimit*(hTest/hspeed)))
-            {
-                ySlope -= global.grav;
-            }
-            
-            //check if we actually need to move down
-            if (place_meeting(x+hTest,y-ySlope+(global.grav),objSlope) || (onSlope &amp;&amp; place_meeting(x+hTest,y-ySlope+(global.grav),objBlock)))
-            {
-                if (ySlope != 0 &amp;&amp; !place_meeting(x+hTest,y-ySlope,objBlock))
-                {
-                    y -= ySlope;
-                    
-                    x += hTest;
-                    hspeed = 0;
-                    
-                    slopeCheck = false;
-                }
-                else
-                {
-                    if (hTest &gt; 0)
-                    {
-                        hTest -= 1;
-                        if (hTest &lt;= 0)
-                            slopeCheck = false;
-                    }
-                    else if (hTest &lt; 0)
-                    {
-                        hTest += 1;
-                        if (hTest &gt;= 0)
-                            slopeCheck = false;
-                    }
-                    else
-                    {
-                        slopeCheck = false;
-                    }
-                }
-            }
-            else
-            {
-                slopeCheck = false;
-            }
-        }
-    }
-    
-    //moving up a slope
-    if (place_meeting(x+hspeed,y,objSlope))
-    {
-        slopeCheck = true;
-        hTest = hspeed;
-        
-        while (slopeCheck)
-        {
-            ySlope = 0;
-            
-            // check how far we have to move up
-            while (place_meeting(x+hTest,y-ySlope,objSlope) &amp;&amp; ySlope*global.grav &lt; floor(moveLimit*(hTest/hspeed)))
-            {
-                ySlope += global.grav;
-            }
-            
-            // check if we actually need to move up
-            if (place_free(x+hTest,y-ySlope))
-            {            
-                y -= ySlope;
-                
-                x += hTest;
-                hspeed = 0;
-                
-                slopeCheck = false;
-            }
-            else
-            {
-                if (hTest &gt; 0)
-                {
-                    hTest -= 1;
-                    if (hTest &lt;= 0)
-                        slopeCheck = false;
-                }
-                else if (hTest &lt; 0)
-                {
-                    hTest += 1;
-                    if (hTest &gt;= 0)
-                        slopeCheck = false;
-                }
-                else
-                {
-                    slopeCheck = false;
-                }
-            }
-        }
-    }
-    
-    // set xprevious/yprevious coordinates for future solid collisions
-    xprevious = x;
-    yprevious = y;
-}
 </string>
           </argument>
         </arguments>
@@ -700,34 +418,6 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
           <argument>
             <kind>1</kind>
             <string>/// After Original System
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="objWaterParents">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// Bubble Broke
-if (inBubble) {
-    with inBubble event_user(0);
-    inBubble = noone;
-}
 
 </string>
           </argument>
@@ -779,16 +469,14 @@ if (inBubble) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!inBubble) {
-    if (hitTimes &gt; 0 &amp;&amp; !global.noDeath) {
-        hitTimes--;
-        global.noDeath = 1;
-        alarm[0] = hitGap;
-        audio_play_sound(sndDeath,0,false);
-        image_alpha = 0.6;  // god mode shortly
-    }
-    else scrKillPlayer();
+            <string>if (hitTimes &gt; 0 &amp;&amp; !global.noDeath) {
+    hitTimes--;
+    global.noDeath = 1;
+    alarm[0] = hitGap;
+    audio_play_sound(sndDeath,0,false);
+    image_alpha = 0.6;  // god mode shortly
 }
+else scrKillPlayer();
 
 </string>
           </argument>
@@ -917,12 +605,6 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
             <kind>1</kind>
             <string>/// Right Side Collision Action
 
-// Bubble Broke
-if (inBubble) {
-    with inBubble event_user(0);
-    inBubble = noone;
-}
-
 </string>
           </argument>
         </arguments>
@@ -946,12 +628,6 @@ if (inBubble) {
           <argument>
             <kind>1</kind>
             <string>/// Left Side Collision Action
-
-// Bubble Broke
-if (inBubble) {
-    with inBubble event_user(0);
-    inBubble = noone;
-}
 
 </string>
           </argument>
@@ -977,11 +653,6 @@ if (inBubble) {
             <kind>1</kind>
             <string>/// Bonk block Action
 
-// Bubble Broke
-if (inBubble) {
-    with inBubble event_user(0);
-    inBubble = noone;
-}
 
 </string>
           </argument>
@@ -1008,12 +679,6 @@ if (inBubble) {
             <string>/// On Block action
 djump = global.jump - 1;
 
-// Bubble Broke
-if (inBubble) {
-    with inBubble event_user(0);
-    inBubble = noone;
-}
-
 </string>
           </argument>
         </arguments>
@@ -1037,12 +702,6 @@ if (inBubble) {
           <argument>
             <kind>1</kind>
             <string>///draw the player
-
-if (specialDraw) {
-    shader_set(shader);
-    shader_set_uniform_f(u_time, objColorfulEffectControl.t);
-}
-
 var drawX = x;
 var drawY = y;
 
@@ -1055,8 +714,7 @@ draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_y
 //draw the player's hitbox
 if (global.debugShowHitbox)
     draw_sprite_ext(mask_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha*0.8);
-    
-if (specialDraw) shader_reset();
+
 </string>
           </argument>
         </arguments>

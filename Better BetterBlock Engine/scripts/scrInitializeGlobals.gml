@@ -7,13 +7,17 @@ global.difficulty = 0;  // I wanna delete that
 global.death = 0;
 global.time = 0;
 global.timeMicro = 0;
+
+for (var i = 0; i <= global.stageTotal; i++) {
+    global.stageDeath[i] = 0;
+    global.stageTime[i] = 0;
+}
+
 global.saveRoom = "";
 global.savePlayerX = 0;
 global.savePlayerY = 0;
 global.grav = 1;
 global.saveGrav = 1;
-global.dotkid = 0;
-global.saveDotkid = 0;
 
 global.jump = 2;  // How many jumps could player jump
 global.saveJump = 2;
@@ -24,16 +28,9 @@ global.saveSkinBlend = 0;  // skin blend
 global.bow = 1;
 global.saveBow = 1;
 
-for (var i = global.secretItemTotal-1; i >= 0; i--)
-{
+for (var i = global.secretItemTotal-1; i >= 0; i--) {
     global.secretItem[i] = false;
     global.saveSecretItem[i] = false;
-}
-
-for (var i = global.bossItemTotal-1; i >= 0; i--)
-{
-    global.bossItem[i] = false;
-    global.saveBossItem[i] = false;
 }
 
 global.gameClear = false;
@@ -71,7 +68,5 @@ global.windowHeightPrev = 0;
 
 display_set_gui_size(surface_get_width(application_surface),surface_get_height(application_surface));  //set the correct gui size for the Draw GUI event
 
-global.controllerMode = false;  //keeps track of whether to use keyboard or controller
-global.controllerDelay = -1;    //handles delay between switching between keyboard/controller so that the player can't use both at the same time
-
 randomize();    //make sure the game starts with a random seed for RNG
+

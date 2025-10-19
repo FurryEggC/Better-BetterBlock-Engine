@@ -12,23 +12,11 @@
       <sound>sound\sndShoot</sound>
       <sound>sound\sndDeath</sound>
       <sound>sound\sndItem</sound>
-      <sound>sound\sndBlockChange</sound>
-      <sound>sound\sndBossHit</sound>
-      <sound>sound\sndCherry</sound>
-      <sound>sound\sndBreak</sound>
-      <sound>sound\sndGlass</sound>
-      <sound>sound\sndSpikeTrap</sound>
-      <sound>sound\sndBetterBlockWheel</sound>
-      <sound>sound\sndBetterBlockEnemyDie</sound>
       <sound>sound\sndSave</sound>
       <sound>sound\sndFlip</sound>
-      <sound>sound\sndTrigger</sound>
-      <sound>sound\sndShootRefresher</sound>
-      <sound>sound\sndGainStar</sound>
       <sound>sound\sndLoseStar</sound>
+      <sound>sound\sndGainStar</sound>
       <sound>sound\sndPlatformCa</sound>
-      <sound>sound\sndBubbleBreak</sound>
-      <sound>sound\sndDotkidChange</sound>
     </sounds>
     <sounds name="music">
       <sound>sound\musOnDeath</sound>
@@ -84,53 +72,20 @@
         <sprite>sprites\sprPlayerRunning5</sprite>
         <sprite>sprites\sprPlayerSliding5</sprite>
       </sprites>
-      <sprites name="dotkid">
-        <sprite>sprites\sprPlayerMaskDotkid</sprite>
-        <sprite>sprites\sprPlayerMaskDotkidFlip</sprite>
-        <sprite>sprites\sprPlayerDotkid</sprite>
-        <sprite>sprites\sprPlayerDotkidCircle</sprite>
-      </sprites>
     </sprites>
     <sprites name="blocks">
       <sprite>sprites\sprBlockMask</sprite>
       <sprite>sprites\sprMiniBlockMask</sprite>
       <sprite>sprites\sprSlipBlockMask</sprite>
       <sprite>sprites\sprKillerBlock</sprite>
-      <sprite>sprites\sprColorfulBlock</sprite>
       <sprite>sprites\sprBlock</sprite>
       <sprite>sprites\sprBlock2</sprite>
-      <sprite>sprites\sprSlideBlock</sprite>
-      <sprite>sprites\sprSlideBlockR</sprite>
-      <sprite>sprites\sprSlideBlockL</sprite>
-      <sprite>sprites\sprBetterBlockDonutBlock</sprite>
-      <sprite>sprites\sprBetterBlockDonutBlockBW</sprite>
-      <sprite>sprites\sprBetterBlockExpandBlock</sprite>
-      <sprite>sprites\sprBetterBlockScaleBlock</sprite>
-      <sprite>sprites\sprBetterBlockHammerBrosBlock</sprite>
       <sprite>sprites\sprSaveBlocker</sprite>
-    </sprites>
-    <sprites name="slopes">
-      <sprite>sprites\sprSlopeBlock</sprite>
-      <sprite>sprites\sprSlopeDownLeft</sprite>
-      <sprite>sprites\sprSlopeDownRight</sprite>
-      <sprite>sprites\sprSlopeUpLeft</sprite>
-      <sprite>sprites\sprSlopeUpRight</sprite>
     </sprites>
     <sprites name="platforms">
       <sprite>sprites\sprPlatform</sprite>
-      <sprite>sprites\sprBetterBlockYIChain</sprite>
-      <sprite>sprites\sprBetterBlockYIPlatform</sprite>
       <sprite>sprites\sprMovingPlatform</sprite>
       <sprite>sprites\sprFakeMovingPlatform</sprite>
-      <sprite>sprites\sprMovingPlatformWhite</sprite>
-      <sprites name="cusorHint">
-        <sprite>sprites\sprTouchMovingPlatformFakeHint</sprite>
-        <sprite>sprites\sprTouchMovingPlatformFakeHintUp</sprite>
-        <sprite>sprites\sprTouchMovingPlatformFakeNotMovingHint</sprite>
-        <sprite>sprites\sprTouchMovingPlatformFakeNotMovingHintUp</sprite>
-        <sprite>sprites\sprTouchMovingPlatformHint</sprite>
-        <sprite>sprites\sprTouchMovingPlatformHintUp</sprite>
-      </sprites>
     </sprites>
     <sprites name="killers">
       <sprite>sprites\sprSpikeTexture</sprite>
@@ -142,21 +97,12 @@
       <sprite>sprites\sprMiniRight</sprite>
       <sprite>sprites\sprMiniLeft</sprite>
       <sprite>sprites\sprMiniDown</sprite>
-      <sprite>sprites\sprBetterBlockHammer</sprite>
-      <sprite>sprites\sprBetterBlockHammerBro</sprite>
-      <sprite>sprites\sprBetterBlockMiku</sprite>
-      <sprite>sprites\sprMiku</sprite>
     </sprites>
     <sprites name="misc">
       <sprite>sprites\sprWalljumpR</sprite>
       <sprite>sprites\sprWalljumpL</sprite>
       <sprite>sprites\sprJumpRefresher</sprite>
       <sprite>sprites\sprSign</sprite>
-      <sprites name="dotkid">
-        <sprite>sprites\sprDotkidChanger</sprite>
-        <sprite>sprites\sprDeDotkid</sprite>
-        <sprite>sprites\sprToDotkid</sprite>
-      </sprites>
       <sprites name="water">
         <sprite>sprites\sprWater</sprite>
         <sprite>sprites\sprWater1</sprite>
@@ -173,39 +119,14 @@
         <sprite>sprites\sprGravityDown</sprite>
         <sprite>sprites\sprGravityDownNoRefresh</sprite>
       </sprites>
-      <sprites name="bubble">
-        <sprite>sprites\sprBubbleEffect</sprite>
-        <sprite>sprites\sprBubble</sprite>
-        <sprite>sprites\sprFlipBubble</sprite>
-        <sprite>sprites\sprBubbleSpawn</sprite>
-        <sprite>sprites\sprFlipBubbleSpawn</sprite>
-      </sprites>
       <sprites name="mutiJumps">
         <sprite>sprites\sprSingleJumpStar</sprite>
         <sprite>sprites\sprDoubleJumpStar</sprite>
         <sprite>sprites\sprTripleJumpStar</sprite>
         <sprite>sprites\sprNumJumpStar</sprite>
       </sprites>
-      <sprites name="shootRefresher">
-        <sprite>sprites\sprShootRefresherL</sprite>
-        <sprite>sprites\sprShootRefresherR</sprite>
-        <sprite>sprites\sprToggleShootRefresherL</sprite>
-        <sprite>sprites\sprToggleShootRefresherR</sprite>
-        <sprite>sprites\sprFlipShootRefresherL</sprite>
-        <sprite>sprites\sprFlipShootRefresherR</sprite>
-        <sprite>sprites\sprBulletStop</sprite>
-        <sprite>sprites\sprBulletContinue</sprite>
-        <sprite>sprites\sprBulletSpeedChange</sprite>
-      </sprites>
     </sprites>
-    <sprites name="triggers">
-      <sprite>sprites\sprTriggerMask</sprite>
-      <sprite>sprites\sprButton</sprite>
-      <sprite>sprites\sprSpikeTriggerDown</sprite>
-      <sprite>sprites\sprSpikeTriggerLeft</sprite>
-      <sprite>sprites\sprSpikeTriggerRight</sprite>
-      <sprite>sprites\sprSpikeTriggerUp</sprite>
-    </sprites>
+    <sprite>sprites\sprTriggerMask</sprite>
     <sprites name="saves">
       <sprite>sprites\sprSaveMask</sprite>
       <sprite>sprites\sprSave</sprite>
@@ -218,7 +139,6 @@
     </sprites>
     <sprites name="items">
       <sprite>sprites\sprSecretItem</sprite>
-      <sprite>sprites\sprBossItem</sprite>
     </sprites>
     <sprites name="cherries">
       <sprite>sprites\sprCherryWhite</sprite>
@@ -289,7 +209,6 @@
       <script>scripts\scrSetPlayerMask.gml</script>
       <script>scripts\scrKillPlayer.gml</script>
       <script>scripts\scrFlipGrav.gml</script>
-      <script>scripts\scrToggleDotkid.gml</script>
       <script>scripts\scrVineAction.gml</script>
     </scripts>
     <scripts name="world">
@@ -311,8 +230,10 @@
       <script>scripts\scrGetMusic.gml</script>
       <script>scripts\scrPlayMusic.gml</script>
       <script>scripts\scrStopMusic.gml</script>
+      <script>scripts\scrFindStage.gml</script>
+      <script>scripts\scrUpdateRecord.gml</script>
+      <script>scripts\scrLoadRecord.gml</script>
       <scripts name="controls">
-        <script>scripts\scrAnyControllerButton.gml</script>
         <script>scripts\scrButtonCheck.gml</script>
         <script>scripts\scrButtonCheckPressed.gml</script>
         <script>scripts\scrButtonCheckReleased.gml</script>
@@ -323,22 +244,10 @@
       <script>scripts\scrMakeShapes.gml</script>
       <script>scripts\scrMakeCircle.gml</script>
       <script>scripts\scrColorBlendFunction.gml</script>
-      <script>scripts\scrPerlinNoise.gml</script>
       <script>scripts\scrMoveCloserSmooth.gml</script>
       <script>scripts\scrArrayShuffle.gml</script>
-      <script>scripts\scrCreateMoving.gml</script>
-      <script>scripts\scrSmoothDestroy.gml</script>
-      <script>scripts\scrSmoothCreate.gml</script>
-      <script>scripts\scrBazierMove.gml</script>
-      <script>scripts\scrCreateShadow.gml</script>
-      <script>scripts\scrShadeFollow.gml</script>
     </scripts>
   </scripts>
-  <shaders name="shaders">
-    <shader type="GLSLES">shaders\shdGray.shader</shader>
-    <shader type="GLSLES">shaders\shdRadio.shader</shader>
-    <shader type="GLSLES">shaders\shdColorful.shader</shader>
-  </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
     <font>fonts\fDefault24</font>
@@ -359,6 +268,7 @@
     <object>objects\objMiniDown</object>
     <object>objects\objWalljumpL</object>
     <object>objects\objWalljumpR</object>
+    <object>objects\objJumpRefresher</object>
     <object>objects\objWater2</object>
     <object>objects\objWater3</object>
     <object>objects\objSave</object>
@@ -368,23 +278,16 @@
     <object>objects\objSaveBlocker</object>
     <object>objects\objOutsideRoomChanger</object>
     <object>objects\objRoomChangerFadeOut</object>
-    <objects name="testObj">
-      <object>objects\objPerlinCherry</object>
-      <object>objects\objCreateMoreMotionTest</object>
-      <object>objects\objColorfulKillerObject</object>
-      <object>objects\objColorfulBlock</object>
-      <object>objects\objConstantBazierMotionTest</object>
-      <object>objects\objShadeTest</object>
-      <object>objects\objShadeEffectTest</object>
-    </objects>
     <objects name="world">
-      <object>objects\objWorld</object>
       <object>objects\objPlayMusic</object>
+      <object>objects\objCamera</object>
+      <object>objects\objSmoothCamera</object>
+      <object>objects\objWorld</object>
       <object>objects\objTitleMenu</object>
       <object>objects\objDifficultyMenu</object>
       <object>objects\objOptionsMenu</object>
       <object>objects\objKeyboardControlsMenu</object>
-      <object>objects\objControllerMenu</object>
+      <object>objects\objClearRoom</object>
     </objects>
     <objects name="player">
       <object>objects\objPlayerStart</object>
@@ -397,71 +300,27 @@
     </objects>
     <objects name="blocks">
       <object>objects\objMiniBlock</object>
-      <object>objects\objSlipBlock</object>
-      <object>objects\objBossBlock</object>
-      <object>objects\objBlockInvis</object>
-      <object>objects\objBlockFake</object>
-      <object>objects\objSlideBlock</object>
-      <object>objects\objSlideBlockL</object>
-      <object>objects\objSlideBlockR</object>
-    </objects>
-    <objects name="slopes">
-      <object>objects\objSlope</object>
-      <object>objects\objSlopeDownLeft</object>
-      <object>objects\objSlopeDownRight</object>
-      <object>objects\objSlopeUpLeft</object>
-      <object>objects\objSlopeUpRight</object>
     </objects>
     <objects name="platforms">
       <object>objects\objPlatform</object>
       <object>objects\objMovingPlatformNoBounce</object>
+      <object>objects\objTouchMovingPlatform</object>
       <object>objects\objTouchMovingFakePlatformParent</object>
       <object>objects\objTouchMovingPlatformFake</object>
-      <object>objects\objTouchMovingPlatform</object>
-      <object>objects\objBlockRise</object>
-      <object>objects\objBlockFall</object>
     </objects>
     <objects name="killers">
       <object>objects\objPlayerKiller</object>
       <object>objects\objCherry</object>
       <object>objects\objCherryBounce</object>
-      <object>objects\objCherryBounceRandom</object>
-      <object>objects\objCherryBounceLat</object>
-      <object>objects\objCherryBounceVert</object>
       <object>objects\objKillerBlock</object>
-    </objects>
-    <objects name="motion">
-      <object>objects\objMoreMotionParent</object>
-      <object>objects\objMoreMotionParentKiller</object>
-      <object>objects\objCherryMoreMotion</object>
-      <object>objects\objSpikeMotionDown</object>
-      <object>objects\objSpikeMotionRight</object>
-      <object>objects\objSpikeMotionLeft</object>
-      <object>objects\objSpikeMotionUp</object>
-    </objects>
-    <objects name="triggers">
-      <object>objects\objFreeTrigger</object>
-      <object>objects\objSmoothCreate</object>
-      <object>objects\objSmoothDestroy</object>
-      <object>objects\objTriggerButton</object>
-      <object>objects\objKillerTrigger</object>
-      <object>objects\objSpikeTriggerUp</object>
-      <object>objects\objSpikeTriggerRight</object>
-      <object>objects\objSpikeTriggerLeft</object>
-      <object>objects\objSpikeTriggerDown</object>
-      <object>objects\objCherryTrigger</object>
     </objects>
     <objects name="misc">
       <object>objects\objWater</object>
       <object>objects\sprWater0</object>
       <object>objects\objOnceVineSpriteR</object>
       <object>objects\objOnceVineSpriteL</object>
-      <object>objects\objJumpRefresher</object>
       <object>objects\objSign</object>
       <object>objects\objAutoSign</object>
-      <object>objects\objObjCircle</object>
-      <object>objects\objObjCircleGap</object>
-      <object>objects\objObjBar</object>
       <object>objects\objSetPlayerHitMode</object>
       <objects name="water">
         <object>objects\objWaterParents</object>
@@ -476,35 +335,11 @@
         <object>objects\objGravityDown</object>
         <object>objects\objGravityDownNoRefresh</object>
       </objects>
-      <objects name="dotkid">
-        <object>objects\objDotkidChange</object>
-        <object>objects\objToDotkid</object>
-        <object>objects\objDeDotkid</object>
-      </objects>
-      <objects name="bubble">
-        <object>objects\objBubble</object>
-        <object>objects\objFlipBubble</object>
-        <object>objects\objBubbleRefresher</object>
-        <object>objects\objFlipBubbleRefresher</object>
-        <object>objects\objBubbleParticle</object>
-      </objects>
       <objects name="mutiJumps">
         <object>objects\objSingleJumpStar</object>
         <object>objects\objDoubleJumpStar</object>
         <object>objects\objTrippleJumpStar</object>
         <object>objects\objNumJumpStar</object>
-      </objects>
-      <objects name="shootRefresher">
-        <object>objects\objShootRefresherParent</object>
-        <object>objects\objShootRefresherL</object>
-        <object>objects\objShootRefresherR</object>
-        <object>objects\objToggleShootRefresherL</object>
-        <object>objects\objToggleShootRefresherR</object>
-        <object>objects\objFlipShootRefresherL</object>
-        <object>objects\objFlipShootRefresherR</object>
-        <object>objects\objBulletStop</object>
-        <object>objects\objBulletSpeedChange</object>
-        <object>objects\objBulletContinue</object>
       </objects>
     </objects>
     <objects name="warps">
@@ -517,38 +352,6 @@
     <objects name="items">
       <object>objects\objSecretItem</object>
       <object>objects\objSecretIndicator</object>
-      <object>objects\objBossItem</object>
-      <object>objects\objBossIndicator</object>
-      <object>objects\objGameClear</object>
-    </objects>
-    <objects name="avoidance">
-      <object>objects\objCherryRandomColor</object>
-      <object>objects\objRandomArrow</object>
-      <object>objects\objRandomBullet</object>
-      <object>objects\objRandomBall</object>
-    </objects>
-    <objects name="view">
-      <object>objects\objCamera</object>
-      <object>objects\objSmoothCamera</object>
-      <object>objects\objSmoothCameraSetter</object>
-      <object>objects\objCircleLight</object>
-      <object>objects\objCircleLightThingParent</object>
-      <object>objects\objShakeViewSmooth</object>
-      <object>objects\objShakeViewHard</object>
-      <object>objects\objElectricWave</object>
-      <object>objects\objGrayEffect</object>
-      <object>objects\objTelevisionEffect</object>
-      <object>objects\objColorfulEffectControl</object>
-      <object>objects\objColorfulEffectParent</object>
-      <object>objects\objColorfulEffectParentBlock</object>
-      <object>objects\objColorfulEffectKillerParent</object>
-      <object>objects\objAnimationDisappear</object>
-      <object>objects\objAnimationAppear</object>
-      <object>objects\objShade</object>
-      <object>objects\objShadeParent</object>
-      <object>objects\objShadeEffect</object>
-      <object>objects\objCreateFlashLight</object>
-      <object>objects\objSuddenFlashLight</object>
     </objects>
   </objects>
   <rooms name="rooms">

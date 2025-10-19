@@ -10,44 +10,26 @@ ini_write_real("Settings","Smoothing_mode",global.smoothingMode);
 ini_write_real("Settings","Vsync_mode",global.vsyncMode);
 
 //keyboard controls
-ini_write_real("Controls","Left",global.leftButton[0]);
-ini_write_real("Controls","Right",global.rightButton[0]);
-ini_write_real("Controls","Up",global.upButton[0]);
-ini_write_real("Controls","Down",global.downButton[0]);
-ini_write_real("Controls","Jump",global.jumpButton[0]);
-ini_write_real("Controls","Shoot",global.shootButton[0]);
-ini_write_real("Controls","Restart",global.restartButton[0]);
-ini_write_real("Controls","Skip",global.skipButton[0]);
-ini_write_real("Controls","Suicide",global.suicideButton[0]);
-ini_write_real("Controls","Pause",global.pauseButton[0]);
-ini_write_real("Controls","Align_left",global.alignLeftButton[0]);
-ini_write_real("Controls","Align_right",global.alignRightButton[0]);
+ini_write_real("Controls","Left",global.leftButton);
+ini_write_real("Controls","Right",global.rightButton);
+ini_write_real("Controls","Up",global.upButton);
+ini_write_real("Controls","Down",global.downButton);
+ini_write_real("Controls","Jump",global.jumpButton);
+ini_write_real("Controls","Shoot",global.shootButton);
+ini_write_real("Controls","Restart",global.restartButton);
+ini_write_real("Controls","Skip",global.skipButton);
+ini_write_real("Controls","Suicide",global.suicideButton);
+ini_write_real("Controls","Pause",global.pauseButton);
+ini_write_real("Controls","Align_left",global.alignLeftButton);
+ini_write_real("Controls","Align_right",global.alignRightButton);
 // added
-ini_write_real("Controls","Hub",global.hubButton[0]);
-ini_write_real("Controls","Confirm",global.confirmButton[0]);
-ini_write_real("Controls","Bow",global.bowButton[0]);
-ini_write_real("Controls","Skin_left",global.skinLeftButton[0]);
-ini_write_real("Controls","Skin_right",global.skinRightButton[0]);
-ini_write_real("Controls","Gimmick_A",global.gimmickAButton[0]);
-ini_write_real("Controls","Gimmick_B",global.gimmickBButton[0]);
-ini_write_real("Controls","Gimmick_C",global.gimmickCButton[0]);
-
-if (global.controllerEnabled)
-{
-    //controller options
-    ini_write_real("Controller","Index",global.controllerIndex);
-    ini_write_real("Controller","Left",global.leftButton[1]);
-    ini_write_real("Controller","Right",global.rightButton[1]);
-    ini_write_real("Controller","Up",global.upButton[1]);
-    ini_write_real("Controller","Down",global.downButton[1]);
-    ini_write_real("Controller","Jump",global.jumpButton[1]);
-    ini_write_real("Controller","Shoot",global.shootButton[1]);
-    ini_write_real("Controller","Restart",global.restartButton[1]);
-    ini_write_real("Controller","Skip",global.skipButton[1]);
-    ini_write_real("Controller","Suicide",global.suicideButton[1]);
-    ini_write_real("Controller","Pause",global.pauseButton[1]);
-    ini_write_real("Controller","Align_left",global.alignLeftButton[1]);
-    ini_write_real("Controller","Align_right",global.alignRightButton[1]);
-}
+ini_write_real("Controls","Hub",global.hubButton);
+ini_write_real("Controls","Confirm",global.confirmButton);
+ini_write_real("Controls","Bow",global.bowButton);
+ini_write_real("Controls","Skin_left",global.skinLeftButton);
+ini_write_real("Controls","Skin_right",global.skinRightButton);
+ini_write_real("Controls","Gimmick_A",global.gimmickAButton);
+ini_write_real("Controls","Gimmick_B",global.gimmickBButton);
+ini_write_real("Controls","Gimmick_C",global.gimmickCButton);
 
 ini_close();

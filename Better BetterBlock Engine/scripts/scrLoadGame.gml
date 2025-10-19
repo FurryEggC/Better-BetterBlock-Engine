@@ -31,6 +31,11 @@ if (loadFile)
         global.time = ds_map_find_value(saveMap,"time");
         global.timeMicro = ds_map_find_value(saveMap,"timeMicro");
         
+        for (var i = 0; i <= global.stageTotal; i++) {
+            global.stageDeath[i] = ds_map_find_value(saveMap,"stageDeath["+string(i)+"]");
+            global.stageTime[i] = ds_map_find_value(saveMap,"stageTime["+string(i)+"]");
+        }
+        
         global.difficulty = ds_map_find_value(saveMap,"difficulty");
         global.saveRoom = ds_map_find_value(saveMap,"saveRoom");
         global.savePlayerX = ds_map_find_value(saveMap,"savePlayerX");
@@ -38,7 +43,6 @@ if (loadFile)
         global.saveGrav = ds_map_find_value(saveMap,"saveGrav");
         
         global.saveJump = ds_map_find_value(saveMap,"saveJump");
-        global.saveDotkid = ds_map_find_value(saveMap,"saveDotkid");
         
         global.saveSkin = ds_map_find_value(saveMap,"saveSkin");
         global.saveSkinBlend = ds_map_find_value(saveMap,"saveSkinBlend");
@@ -54,15 +58,10 @@ if (loadFile)
             saveValid = false;
         }
         
-        for (var i = 0; i < global.secretItemTotal; i++)
-        {
+        for (var i = 0; i < global.secretItemTotal; i++) {
             global.saveSecretItem[i] = ds_map_find_value(saveMap,"saveSecretItem["+string(i)+"]");
         }
         
-        for (var i = 0; i < global.bossItemTotal; i++)
-        {
-            global.saveBossItem[i] = ds_map_find_value(saveMap,"saveBossItem["+string(i)+"]");
-        }
         
         global.saveGameClear = ds_map_find_value(saveMap,"saveGameClear");
         
@@ -112,20 +111,13 @@ global.autosave = false;    //disable autosaving since we're loading the game
 
 global.grav = global.saveGrav;
 global.jump = global.saveJump;
-global.dotkid = global.saveDotkid;
 
 global.skin = global.saveSkin;
 global.skinBlend = global.saveSkinBlend;
 global.bow = global.saveBow;
 
-for (var i = 0; i < global.secretItemTotal; i++)
-{
+for (var i = 0; i < global.secretItemTotal; i++) {
     global.secretItem[i] = global.saveSecretItem[i];
-}
-
-for (var i = 0; i < global.bossItemTotal; i++)
-{
-    global.bossItem[i] = global.saveBossItem[i];
 }
 
 global.gameClear = global.saveGameClear;

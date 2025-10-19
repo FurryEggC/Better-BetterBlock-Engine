@@ -1,5 +1,5 @@
 /// scrVineAction()
-var notOnBlock = (place_free(x,y+(global.grav)) && !instance_exists(riding));
+var notOnBlock = (place_free(x,y+(global.grav)));
 var onVineL = (place_meeting(x-1,y,objWalljumpL) && notOnBlock);
 var onVineR = (place_meeting(x+1,y,objWalljumpR) && notOnBlock);
 
