@@ -17,8 +17,6 @@ if (onVineL || onVineR)
     }
     
     vspeed = 2 * global.grav;
-    sprite_index = sprPlayerSliding;
-    image_speed = 1/2;
     
     //pressed away from the vine
     if (onVineL && scrButtonCheckPressed(global.rightButton)) || (onVineR && scrButtonCheckPressed(global.leftButton)) {
@@ -31,14 +29,12 @@ if (onVineL || onVineR)
             with collisionObj if once event_user(0);  // destory the vine
             vspeed = -9 * global.grav;
             audio_play_sound(sndWallJump,0,false);
-            sprite_index = sprPlayerJump;
         }
         else {  // moving off vine
             if (onVineR) hspeed = -3;
             else hspeed = 3;
             
             if (collisionObj.refresh && collisionObj.kind) djump = min(djump + 1, global.jump - 1);
-            sprite_index = sprPlayerFall;
         }
     }
 }

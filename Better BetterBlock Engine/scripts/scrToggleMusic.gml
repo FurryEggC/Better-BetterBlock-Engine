@@ -14,8 +14,7 @@ if (!global.muteMusic)  //start playing music if the game is getting unmuted
         {
             with (objPlayMusic)
             {
-                if (BGM != -2)
-                    scrPlayMusic(BGM,true);
+                event_user(0);
             }
         }
     }

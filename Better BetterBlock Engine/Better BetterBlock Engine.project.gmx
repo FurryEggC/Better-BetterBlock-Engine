@@ -383,6 +383,8 @@
     <objects name="world">
       <object>objects\objWorld</object>
       <object>objects\objPlayMusic</object>
+      <object>objects\objPlayMusicByListSequence</object>
+      <object>objects\objPlayMusicByListRandom</object>
       <object>objects\objTitleMenu</object>
       <object>objects\objDifficultyMenu</object>
       <object>objects\objOptionsMenu</object>

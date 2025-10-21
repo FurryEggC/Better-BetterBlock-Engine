@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>objPlayMusic</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,8 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//set song to play in creation code
-BGM = -2;
+            <string>//set song sequence to play in creation code
+// musicList[0] = musGuyRock; musicList[1] = sndJump; ...
+musicList[0] = musGuyRock;
+index = 0;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_user(0);
 
 </string>
           </argument>
@@ -50,33 +77,21 @@ BGM = -2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Play Music
-if (BGM != -2)
-    scrPlayMusic(BGM,true);
+            <string>var songID = musicList[index];
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_user(0);
+if (!global.muteMusic) {  // mute check
+    if (global.currentMusicID != songID) {  // is playing?
+        global.currentMusicID = songID;
+        audio_stop_sound(global.currentMusic);
+        global.currentMusic = audio_play_sound(global.currentMusicID, 1, 0);
+    } else if (!audio_is_playing(global.currentMusic)) {  // current stop?
+        index = irandom(array_length_1d(musicList) - 1);
+        // change to next song
+        songID = musicList[index];
+        global.currentMusicID = songID;
+        global.currentMusic = audio_play_sound(global.currentMusicID, 1, 0);
+    }
+}
 
 </string>
           </argument>

@@ -18,3 +18,4 @@ if (!global.muteMusic)  //check if music is supposed to be muted
             global.currentMusic = audio_play_sound(global.currentMusicID,1,loopSong);
     }
 }
+

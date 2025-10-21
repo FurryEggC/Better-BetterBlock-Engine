@@ -246,7 +246,7 @@ if ((x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height) &amp;&amp;
 if (global.dotkid) {
     sprite_index = sprPlayerDotkidCircle;
 }
-else if (global.playerAnimationFix) {  // normal check
+else  {  // normal kid
     // block/vine checks
     if (place_free(x,y+global.grav) &amp;&amp; !instance_exists(riding)) var notOnBlock = true else var notOnBlock = false
     var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
@@ -483,9 +483,6 @@ if (h != 0)  //player is moving
             if (abs(hspeed) &gt; maxSpeed)
                 hspeed = maxSpeed * h;
         }
-        
-        sprite_index = sprPlayerRunning;
-        image_speed = 0.5;
     }
 }
 else    //player is not moving
@@ -509,21 +506,9 @@ else    //player is not moving
                 hspeed = 0;
         }
     }
-  
-    sprite_index = sprPlayerIdle;
-    image_speed = 0.2;
 }
 
-
-if (!onPlatform)    //check if standing on a platform
-{
-    if((vspeed * global.grav) &lt; -0.05) {sprite_index = sprPlayerJump;}
-    else if((vspeed * global.grav) &gt; 0.05) {sprite_index = sprPlayerFall;}
-}
-else
-{
-    if (!place_meeting(x,y+(4*global.grav),objPlatform)){onPlatform = false};
-}
+if (!place_meeting(x,y+(4*global.grav),objPlatform)){onPlatform = false};
 
 var slideBlockTouching = instance_place(x,y+(global.grav),objSlideBlock);   //check if on a slide block
 
