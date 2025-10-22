@@ -215,6 +215,7 @@
     </sprites>
     <sprites name="warps">
       <sprite>sprites\sprWarp</sprite>
+      <sprite>sprites\sprWhiteWarp</sprite>
     </sprites>
     <sprites name="items">
       <sprite>sprites\sprSecretItem</sprite>
@@ -335,6 +336,7 @@
       <script>scripts\scrBazierMove.gml</script>
       <script>scripts\scrCreateShadow.gml</script>
       <script>scripts\scrShadeFollow.gml</script>
+      <script>scripts\scrArrayContain.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -360,6 +362,7 @@
     <object>objects\objMiniRight</object>
     <object>objects\objMiniLeft</object>
     <object>objects\objMiniDown</object>
+    <object>objects\objSinglePageWarp</object>
     <object>objects\objWalljumpL</object>
     <object>objects\objWalljumpR</object>
     <object>objects\objWater2</object>
@@ -617,6 +620,8 @@
     <room>rooms\rTestRoom6</room>
     <room>rooms\rTestRoom7</room>
     <room>rooms\rTestRoom8</room>
+    <room>rooms\rTestRoom9</room>
+    <room>rooms\rTestRoom10</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>
