@@ -362,7 +362,6 @@
     <object>objects\objMiniRight</object>
     <object>objects\objMiniLeft</object>
     <object>objects\objMiniDown</object>
-    <object>objects\objSinglePageWarp</object>
     <object>objects\objWalljumpL</object>
     <object>objects\objWalljumpR</object>
     <object>objects\objWater2</object>
@@ -510,6 +509,7 @@
       <object>objects\objObjCircle</object>
       <object>objects\objObjCircleGap</object>
       <object>objects\objObjBar</object>
+      <object>objects\objSinglePageWarp</object>
       <object>objects\objSetPlayerHitMode</object>
       <objects name="water">
         <object>objects\objWaterParents</object>

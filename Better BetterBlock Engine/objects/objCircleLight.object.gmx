@@ -29,16 +29,17 @@
 radius = 320;
 
 if instance_exists(objPlayer) {
-    x_ = objPlayer.x;
-    y_ = objPlayer.y;
+    x_ = objPlayer.x - view_xview;
+    y_ = objPlayer.y - view_xview;
 }
 else {
     x_ = 0;
     y_ = 0;
 }
-width = room_width + 2 * 800;
-height = room_height + 2 * 608;
+width = view_wview;
+height = view_hview;
 light = surface_create(width, height);
+
 </string>
           </argument>
         </arguments>
@@ -86,15 +87,15 @@ light = surface_create(width, height);
           <argument>
             <kind>1</kind>
             <string>if instance_exists(objPlayer) {
-    x_ = objPlayer.x;
-    y_ = objPlayer.y;
+    x_ = objPlayer.x - view_xview;
+    y_ = objPlayer.y - view_yview;
 }
 
 if surface_exists(light)
 {
     surface_set_target(light);
     draw_set_color(color);
-    draw_rectangle(-800, -608, width, height, false);
+    draw_rectangle(0, 0, width, height, false);
     surface_reset_target();
 }
 else
@@ -103,8 +104,8 @@ else
 draw_set_blend_mode(bm_subtract);
 surface_set_target(light);
 
-draw_ellipse_colour(x_-radius+view_wview,y_-radius+view_hview,x_+radius+view_wview,y_+radius+view_hview, c_white, c_black, 0)
-with (objCircleLightThingParent) draw_ellipse_colour(x-radius+view_wview,y-radius+view_hview,x+radius+view_wview,y+radius+view_hview, c_white, c_black, 0)
+draw_ellipse_colour(x_-radius,y_-radius,x_+radius,y_+radius, c_white, c_black, 0)
+with (objCircleLightThingParent) draw_ellipse_colour(x-view_xview-radius,y-view_yview-radius,x-view_xview+radius,y-view_yview+radius, c_white, c_black, 0)
 
 surface_reset_target();
 draw_set_blend_mode(bm_normal);
@@ -133,6 +134,33 @@ draw_set_blend_mode(bm_normal);
             <kind>1</kind>
             <string>var rt = floor(255-alpha*255);
 color = make_colour_rgb(rt,rt,rt);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_blend_mode(bm_subtract);
+    if (surface_exists(light)) draw_surface(light, 0, 0);
+draw_set_blend_mode(bm_normal);
+
 </string>
           </argument>
         </arguments>
@@ -155,9 +183,8 @@ color = make_colour_rgb(rt,rt,rt);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_blend_mode(bm_subtract);
-    if (surface_exists(light)) draw_surface(light, -800, -608);
-draw_set_blend_mode(bm_normal);
+            <string>// Avoid drawing myself
+
 </string>
           </argument>
         </arguments>

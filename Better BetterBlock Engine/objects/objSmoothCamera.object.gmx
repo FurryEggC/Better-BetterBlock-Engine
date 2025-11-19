@@ -60,7 +60,9 @@ if (instance_exists(objPlayer)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (follow != 0 &amp;&amp; instance_exists(follow)) scrMoveCloserSmooth(follow.x, follow.y, snapDiv);
+            <string>if (follow != 0) {
+    if (instance_exists(follow)) scrMoveCloserSmooth(follow.x, follow.y, snapDiv);
+}
 else scrMoveCloserSmooth(followX, followY, snapDiv);
 
 </string>
