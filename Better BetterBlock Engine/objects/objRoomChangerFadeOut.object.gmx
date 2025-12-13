@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprTriggerMask</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -30,7 +30,7 @@
 warpX = 0;
 warpY = 0;
 roomTo = rTemplate;
-fadeTime = 3;
+fadeTime = 3;  // make sure fadeTime &gt; 1, while this object make sure 1 second wait in black screen
 fadeColor = c_black;
 
 
@@ -104,7 +104,7 @@ if (draw) {alpha += 1 / _frame;}
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="73">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -126,7 +126,7 @@ if (draw) {alpha += 1 / _frame;}
 var _alpha = draw_get_alpha();
 
 draw_set_alpha(alpha);
-draw_rectangle_colour(view_xview[view_current],view_yview[view_current],view_xview[view_current] + view_wview[view_current],view_yview[view_current] + view_hview[view_current],fadeColor,fadeColor,fadeColor,fadeColor,0);
+draw_rectangle_colour(0,0,view_wview[view_current],view_hview[view_current],fadeColor,fadeColor,fadeColor,fadeColor,0);
 
 draw_set_alpha(_alpha);
 </string>
