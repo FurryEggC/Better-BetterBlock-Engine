@@ -24,7 +24,7 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath)) {
         global.death += 1; // increment deaths
         global.stageDeath[scrFindStage(room)] += 1;
         
-        scrSaveGame(false);  // save death/time
+        scrSaveGame(false, false);  // save death/time
     }
     else    //death in the difficulty select room, restart the room
     {

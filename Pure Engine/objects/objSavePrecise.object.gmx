@@ -133,7 +133,7 @@ if (canSave &amp;&amp; instance_exists(objPlayer) &amp;&amp; global.grav == grav
         image_index = 1;
         image_speed = 0.017;
         audio_play_sound(sndSave,0,false);
-        scrSaveGamePrecise(true);
+        scrSaveGame(true, true);
     }
 }
 </string>

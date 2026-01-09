@@ -1,8 +1,9 @@
-///scrSaveGame(saveposition)
+///scrSaveGame(saveposition, precise)
 ///saves the game
 ///argument0 - sets whether the game should save the player's current location or just save the deaths/time
 
 var savePosition = argument0;
+var precise = argument1;
 
 //save the player's current location variables if the script is currently set to (we don't want to save the player's location if we're just updating death/time)
 if (savePosition)
@@ -14,13 +15,15 @@ if (savePosition)
     
     global.saveJump = global.jump;
     
-    // floor player position to match standard engine behavior
-    global.savePlayerX = round(global.savePlayerX);  // floor(421.00) = 420 omg
-    global.savePlayerY = floor(global.savePlayerY);
-    
-    // if player is inside of a wall, it must be stuck up
-    with (objPlayer) {
-        if (!place_free(global.savePlayerX,global.savePlayerY)) global.savePlayerY += 1;
+    if (!precise) {
+        // floor player position to match standard engine behavior
+        global.savePlayerX = round(global.savePlayerX);  // floor(421.00) = 420 omg
+        global.savePlayerY = floor(global.savePlayerY);
+        
+        // if player is inside of a wall, it must be stuck up
+        with (objPlayer) {
+            if (!place_free(global.savePlayerX,global.savePlayerY)) global.savePlayerY += 1;
+        }
     }
 
     

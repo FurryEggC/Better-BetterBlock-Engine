@@ -55,7 +55,7 @@ instance_create(x,y,objBow);
 
 if (global.autosave) //save the game if currently set to autosave
 {
-    scrSaveGame(true);
+    scrSaveGame(true, false);
     global.autosave = false;
 }
 
@@ -291,7 +291,7 @@ else    //touching a vine
     // bow
     if scrButtonCheckPressed(global.bowButton) global.bow = 1 - global.bow;
     
-    scrSaveGame(false);  // save skin &amp; bow config
+    scrSaveGame(false, false);  // save skin &amp; bow config
 }
 
 </string>
