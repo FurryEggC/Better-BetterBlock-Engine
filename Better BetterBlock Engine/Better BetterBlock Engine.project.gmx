@@ -352,6 +352,25 @@
     <font>fonts\fTouchMovingPlatformHint</font>
   </fonts>
   <objects name="objects">
+    <objects name="world">
+      <object>objects\objWorld</object>
+      <object>objects\objPlayMusic</object>
+      <object>objects\objPlayMusicByListSequence</object>
+      <object>objects\objPlayMusicByListRandom</object>
+      <object>objects\objTitleMenu</object>
+      <object>objects\objDifficultyMenu</object>
+      <object>objects\objOptionsMenu</object>
+      <object>objects\objKeyboardControlsMenu</object>
+    </objects>
+    <objects name="player">
+      <object>objects\objPlayerStart</object>
+      <object>objects\objPlayer</object>
+      <object>objects\objBow</object>
+      <object>objects\objBullet</object>
+      <object>objects\objBloodEmitter</object>
+      <object>objects\objBlood</object>
+      <object>objects\objGameOver</object>
+    </objects>
     <object>objects\objBlock</object>
     <object>objects\objMovingPlatform</object>
     <object>objects\objSpikeUp</object>
@@ -381,25 +400,6 @@
       <object>objects\objConstantBazierMotionTest</object>
       <object>objects\objShadeTest</object>
       <object>objects\objShadeEffectTest</object>
-    </objects>
-    <objects name="world">
-      <object>objects\objWorld</object>
-      <object>objects\objPlayMusic</object>
-      <object>objects\objPlayMusicByListSequence</object>
-      <object>objects\objPlayMusicByListRandom</object>
-      <object>objects\objTitleMenu</object>
-      <object>objects\objDifficultyMenu</object>
-      <object>objects\objOptionsMenu</object>
-      <object>objects\objKeyboardControlsMenu</object>
-    </objects>
-    <objects name="player">
-      <object>objects\objPlayerStart</object>
-      <object>objects\objPlayer</object>
-      <object>objects\objBow</object>
-      <object>objects\objBullet</object>
-      <object>objects\objBloodEmitter</object>
-      <object>objects\objBlood</object>
-      <object>objects\objGameOver</object>
     </objects>
     <objects name="blocks">
       <object>objects\objBetterBlock</object>

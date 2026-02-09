@@ -84,6 +84,13 @@ can_change = 1;
 can_blend = 1;
 total_skin = 5;
 
+/// convenient for other object detection
+animationRunning = false;
+animationIdle = false;
+animationJump = false;
+animationFall = false;
+animationSliding = false;
+
 // noraml kid
 Animation_running[0] = sprPlayerRunning;
 Animation_idle[0] = sprPlayerIdle;
@@ -118,6 +125,30 @@ Animation_idle[4] = sprPlayerIdle5;
 Animation_jump[4] = sprPlayerJump5;
 Animation_fall[4] = sprPlayerFall5;
 Animation_sliding[4] = sprPlayerSliding5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// New Gimmick
+/// --- Useful variable ---
+noGrav = false;  // set this variable true to make player noGrav
+
 </string>
           </argument>
         </arguments>
@@ -247,6 +278,29 @@ else    //touching a vine
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// After Collision
+// this means code here, player could through the wall or sth...
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -265,9 +319,7 @@ else    //touching a vine
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Before Origninal System
-
-// Skin Changing And Bow System
+            <string>/// Skin Changing And Bow System
 {
     // skin change
     if (can_change) {
@@ -314,12 +366,46 @@ else    //touching a vine
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Before Origninal And Gravity System
+
+/// --- Convenient Variables ---
+var pressed = scrButtonCheckPressed(vk_anykey);
+var left = scrButtonCheckPressed(global.leftButton);
+var right = scrButtonCheckPressed(global.rightButton);
+var up = scrButtonCheckPressed(global.upButton);
+var down = scrButtonCheckPressed(global.downButton);
+var shoot = scrButtonCheckPressed(global.shootButton);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Gimmick Related Gravity And Speed
 gravity = 0.4 * global.grav;
 maxSpeed = 3;
 maxVspeed = 9;
 
 // change after them
+if (noGrav) gravity = 0;
+else gravity = 0.4 * global.grav;
+
+// new gimmick below...
 
 </string>
           </argument>
@@ -441,7 +527,9 @@ scrVineAction();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (hitTimes &gt; 0 &amp;&amp; !global.noDeath) {
+            <string>if (!other.visible) exit;  // resonable...
+
+if (hitTimes &gt; 0 &amp;&amp; !global.noDeath) {
     hitTimes--;
     global.noDeath = 1;
     alarm[0] = hitGap;

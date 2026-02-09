@@ -48,7 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = true;
+            <string>image_alpha = 1;
+
 </string>
           </argument>
         </arguments>
@@ -94,13 +95,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (visible)
-{
+            <string>if (image_alpha == 1) {
     with (objPlayer) djump = min(global.jump - 1, djump + 1);
     
-    visible = false;
+    if (refreshTime == -1) instance_destroy();
+    
+    image_alpha = 0.4;
     alarm[0] = refreshTime;
 }
+
 </string>
           </argument>
         </arguments>

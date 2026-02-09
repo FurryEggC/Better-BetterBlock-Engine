@@ -102,6 +102,13 @@ can_change = 1;
 can_blend = 1;
 total_skin = 5;
 
+/// convenient for other object detection
+animationRunning = false;
+animationIdle = false;
+animationJump = false;
+animationFall = false;
+animationSliding = false;
+
 // noraml kid
 Animation_running[0] = sprPlayerRunning;
 Animation_idle[0] = sprPlayerIdle;
@@ -161,6 +168,30 @@ shader = shdColorful;
 u_time = shader_get_uniform(shader, "u_time");
 
 specialDraw = instance_exists(objColorfulEffectControl) &amp;&amp; (global.skin == 3 || global.skin == 4);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// New Gimmick
+/// --- Useful variable ---
+noGrav = false;  // set this variable true to make player noGrav
 
 </string>
           </argument>
@@ -242,17 +273,25 @@ if ((x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height) &amp;&amp;
     scrKillPlayer();
 
 // update player sprite
+// set these value false
+animationRunning = false;
+animationIdle = false;
+animationJump = false;
+animationFall = false;
+animationSliding = false;
+    
+// update player sprite
 // dotkid check
 if (global.dotkid) {
     sprite_index = sprPlayerDotkidCircle;
 }
 else  {  // normal kid
     // block/vine checks
-    if (place_free(x,y+global.grav) &amp;&amp; !instance_exists(riding)) var notOnBlock = true else var notOnBlock = false
+    if (place_free(x,y+global.grav)) var notOnBlock = true else var notOnBlock = false
     var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
     var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
     
-    if (!onVineR &amp;&amp; !onVineL)   //not touching any vines or standing on a Better Block (possibly above a vine)
+    if (!onVineR &amp;&amp; !onVineL)   //not touching any vines or standing on Block (possibly above a vine)
     {
         if (onPlatform || !notOnBlock)  //standing on something
         {
@@ -262,11 +301,13 @@ else  {  // normal kid
             
             if ((L || R) &amp;&amp; !frozen)
             {
+                animationRunning = true;
                 sprite_index = Animation_running[global.skin];
                 image_speed = 1/2;
             }
             else
             {
+                animationIdle = true;
                 sprite_index = Animation_idle[global.skin];
                 image_speed = 1/5;
             }
@@ -275,11 +316,13 @@ else  {  // normal kid
         { 
             if ((vspeed * global.grav) &lt; 0)
             {
+                animationJump = true;
                 sprite_index = Animation_jump[global.skin];
                 image_speed = 1/2;
             }
             else
             {
+                animationFall = true;
                 sprite_index = Animation_fall[global.skin];
                 image_speed = 1/2;
             }
@@ -287,10 +330,35 @@ else  {  // normal kid
     }
     else    //touching a vine
     {
+        animationSliding = true;
         sprite_index = Animation_sliding[global.skin];
         image_speed = 1/2;
     }
+
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// After Collision
+// this means code here, player could through the wall or sth...
+
 </string>
           </argument>
         </arguments>
@@ -345,10 +413,7 @@ bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_i
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Before Origninal System
-if instance_exists(riding) event_user(0);  // onBlock check
-
-// Skin Changing And Bow System
+            <string>/// Skin Changing And Bow System
 {
     // skin change
     if (can_change) {
@@ -398,12 +463,47 @@ if instance_exists(riding) event_user(0);  // onBlock check
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Before Origninal And Gravity System
+if instance_exists(riding) event_user(0);  // onBlock check
+
+/// --- Convenient Variables ---
+var pressed = scrButtonCheckPressed(vk_anykey);
+var left = scrButtonCheckPressed(global.leftButton);
+var right = scrButtonCheckPressed(global.rightButton);
+var up = scrButtonCheckPressed(global.upButton);
+var down = scrButtonCheckPressed(global.downButton);
+var shoot = scrButtonCheckPressed(global.shootButton);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Gimmick Related Gravity And Speed
 gravity = 0.4 * global.grav;
 maxSpeed = 3;
 maxVspeed = 9;
 
 // change after them
+if (noGrav) gravity = 0;
+else gravity = 0.4 * global.grav;
+
+// gimmick example
 if (inBubble) {
     if (inBubble.reverse == 0) {
         gravity = -0.3 * global.grav;
@@ -796,7 +896,9 @@ if (inBubble) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!inBubble) {
+            <string>if (!other.visible) exit;  // resonable...
+
+if (!inBubble) {
     if (hitTimes &gt; 0 &amp;&amp; !global.noDeath) {
         hitTimes--;
         global.noDeath = 1;

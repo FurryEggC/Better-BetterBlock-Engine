@@ -35,7 +35,7 @@ roomTo = rTemplate;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="4" ename="objPlayer">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -52,30 +52,29 @@ roomTo = rTemplate;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_place(x, y, objPlayer)) {
-    if (objPlayer.x &lt; 0 || objPlayer.x &gt; room_width || objPlayer.y &lt; 0 || objPlayer.y &gt; room_height)  //check if player has left the room
-    {
-        if (objPlayer.x &lt; 0) {
-            objPlayer.x += room_width;
-            objPlayer.y -= objPlayer.vspeed;
-        }
-        if (objPlayer.x &gt; room_width) {
-            objPlayer.x -= room_width;
-            objPlayer.y -= objPlayer.vspeed;
-        }
-        if (objPlayer.y &lt; 0) {
-            if scrButtonCheck(global.leftButton) objPlayer.x += 3;
-            else if scrButtonCheck(global.rightButton) objPlayer.x -= 3;
-            objPlayer.y += room_height;
-        }
-        if (objPlayer.y &gt; room_height) {
-            if scrButtonCheck(global.leftButton) objPlayer.x += 3;
-            else if scrButtonCheck(global.rightButton) objPlayer.x -= 3;
-            objPlayer.y -= room_height;
-        }
-        if (roomTo != room) room_goto(roomTo);
+            <string>if (objPlayer.x &lt; 0 || objPlayer.x &gt; room_width || objPlayer.y &lt; 0 || objPlayer.y &gt; room_height)  //check if player has left the room
+{
+    if (objPlayer.x &lt; 0) {
+        objPlayer.x += room_width;
+        objPlayer.y -= objPlayer.vspeed;
     }
+    if (objPlayer.x &gt; room_width) {
+        objPlayer.x -= room_width;
+        objPlayer.y -= objPlayer.vspeed;
+    }
+    if (objPlayer.y &lt; 0) {
+        if scrButtonCheck(global.leftButton) objPlayer.x += 3;
+        else if scrButtonCheck(global.rightButton) objPlayer.x -= 3;
+        objPlayer.y += room_height;
+    }
+    if (objPlayer.y &gt; room_height) {
+        if scrButtonCheck(global.leftButton) objPlayer.x += 3;
+        else if scrButtonCheck(global.rightButton) objPlayer.x -= 3;
+        objPlayer.y -= room_height;
+    }
+    if (roomTo != room) room_goto(roomTo);
 }
+    
 </string>
           </argument>
         </arguments>

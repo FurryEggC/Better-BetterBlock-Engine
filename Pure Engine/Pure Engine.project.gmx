@@ -254,26 +254,6 @@
     <font>fonts\fTouchMovingPlatformHint</font>
   </fonts>
   <objects name="objects">
-    <object>objects\objBlock</object>
-    <object>objects\objMovingPlatform</object>
-    <object>objects\objSpikeUp</object>
-    <object>objects\objSpikeRight</object>
-    <object>objects\objSpikeLeft</object>
-    <object>objects\objSpikeDown</object>
-    <object>objects\objMiniUp</object>
-    <object>objects\objMiniRight</object>
-    <object>objects\objMiniLeft</object>
-    <object>objects\objMiniDown</object>
-    <object>objects\objWalljumpL</object>
-    <object>objects\objWalljumpR</object>
-    <object>objects\objJumpRefresher</object>
-    <object>objects\objWater2</object>
-    <object>objects\objWater3</object>
-    <object>objects\objSave</object>
-    <object>objects\objSaveFlip</object>
-    <object>objects\objSaveBlocker</object>
-    <object>objects\objOutsideRoomChanger</object>
-    <object>objects\objRoomChangerFadeOut</object>
     <objects name="world">
       <object>objects\objPlayMusic</object>
       <object>objects\objCamera</object>
@@ -294,6 +274,26 @@
       <object>objects\objBlood</object>
       <object>objects\objGameOver</object>
     </objects>
+    <object>objects\objBlock</object>
+    <object>objects\objMovingPlatform</object>
+    <object>objects\objSpikeUp</object>
+    <object>objects\objSpikeRight</object>
+    <object>objects\objSpikeLeft</object>
+    <object>objects\objSpikeDown</object>
+    <object>objects\objMiniUp</object>
+    <object>objects\objMiniRight</object>
+    <object>objects\objMiniLeft</object>
+    <object>objects\objMiniDown</object>
+    <object>objects\objWalljumpL</object>
+    <object>objects\objWalljumpR</object>
+    <object>objects\objJumpRefresher</object>
+    <object>objects\objWater2</object>
+    <object>objects\objWater3</object>
+    <object>objects\objSave</object>
+    <object>objects\objSaveFlip</object>
+    <object>objects\objSaveBlocker</object>
+    <object>objects\objOutsideRoomChanger</object>
+    <object>objects\objRoomChangerFadeOut</object>
     <objects name="blocks">
       <object>objects\objMiniBlock</object>
     </objects>

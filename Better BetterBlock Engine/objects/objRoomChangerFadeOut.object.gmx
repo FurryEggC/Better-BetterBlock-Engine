@@ -64,7 +64,7 @@ alpha = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -81,24 +81,42 @@ alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_place(x,y,objPlayer) {
-    var frame = fadeTime * 50;
-    
-    draw = 1;
-    alarm[0] = frame;
-    with objPlayer instance_destroy();
-    
-    with objWorld {
-        fadeTime = frame;
-        event_user(0);
-    }
-}
-
-
-
-var _frame = (fadeTime - 1) * 50;
+            <string>var _frame = (fadeTime - 1) * 50;
 
 if (draw) {alpha += 1 / _frame;}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objPlayer">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var frame = fadeTime * 50;
+    
+draw = 1;
+alarm[0] = frame;
+with objPlayer instance_destroy();
+
+with objWorld {
+    fadeTime = frame;
+    event_user(0);
+}
+
 </string>
           </argument>
         </arguments>
