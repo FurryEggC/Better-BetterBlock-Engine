@@ -158,7 +158,7 @@ if (global.gameStarted)
     
     if (!global.gamePaused) //check if the game is currently paused
     {
-        if (scrButtonCheckPressed(global.restartButton))
+        if (!global.noRestart &amp;&amp; scrButtonCheckPressed(global.restartButton))
         {
             //stop death sound/music
             audio_stop_sound(global.deathSound);

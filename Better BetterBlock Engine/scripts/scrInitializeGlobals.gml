@@ -39,22 +39,23 @@ for (var i = global.bossItemTotal-1; i >= 0; i--)
 global.gameClear = false;
 global.saveGameClear = false;
 
-global.gameStarted = false;     //determines whether the game is in progress (enables saving, restarting, etc.)
-global.noPause = false;         //sets whether or not to allow pausing (useful for bosses to prevent desync)
-global.autosave = false;        //keeps track of whether or not to autosave the next time the player is created
-global.noDeath = false;         //keeps track of whether to give the player god mode
-global.infJump = false;         //keeps track of whether to give the player infinite jump
+global.gameStarted = false;     // determines whether the game is in progress (enables saving, restarting, etc.)
+global.noPause = false;         // sets whether or not to allow pausing (useful for bosses to prevent desync)
+global.noRestart = false;       // sets whether or not to allow restart
+global.autosave = false;        // keeps track of whether or not to autosave the next time the player is created
+global.noDeath = false;         // keeps track of whether to give the player god mode
+global.infJump = false;         // keeps track of whether to give the player infinite jump
 
-global.gamePaused = false;      //keeps track of whether the game is paused or not
-global.pauseSurf = -1;       //stores the screen surface when the game is paused
-global.pauseDelay = 0;      //sets pause delay so that the player can't quickly pause buffer
+global.gamePaused = false;      // keeps track of whether the game is paused or not
+global.pauseSurf = -1;       // stores the screen surface when the game is paused
+global.pauseDelay = 0;      // sets pause delay so that the player can't quickly pause buffer
 
-global.currentMusicID = -1;  //keeps track of what song the current music is
-global.currentMusic = -1;    //keeps track of current main music instance
-global.deathSound = -1;     //keeps track of death sound when the player dies
-global.gameOverMusic = -1;   //keeps track of game over music instance
-global.musicFading = false;     //keeps track of whether the music is being currently faded out
-global.currentGain = 0;     //keeps track of current track gain when a song is being faded out
+global.currentMusicID = -1;  // keeps track of what song the current music is
+global.currentMusic = -1;    // keeps track of current main music instance
+global.deathSound = -1;     // keeps track of death sound when the player dies
+global.gameOverMusic = -1;   // keeps track of game over music instance
+global.musicFading = false;     // keeps track of whether the music is being currently faded out
+global.currentGain = 0;     // keeps track of current track gain when a song is being faded out
 
 global.menuSelectPrev[0] = 0;     //keeps track of the previously selected option when navigating away from the difficulty menu
 global.menuSelectPrev[1] = 0;     //keeps track of the previously selected option when navigating away from the options menu

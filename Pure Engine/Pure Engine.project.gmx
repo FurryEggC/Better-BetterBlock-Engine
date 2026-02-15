@@ -274,6 +274,9 @@
       <object>objects\objBlood</object>
       <object>objects\objGameOver</object>
     </objects>
+    <objects name="blocks">
+      <object>objects\objMiniBlock</object>
+    </objects>
     <object>objects\objBlock</object>
     <object>objects\objMovingPlatform</object>
     <object>objects\objSpikeUp</object>
@@ -294,9 +297,6 @@
     <object>objects\objSaveBlocker</object>
     <object>objects\objOutsideRoomChanger</object>
     <object>objects\objRoomChangerFadeOut</object>
-    <objects name="blocks">
-      <object>objects\objMiniBlock</object>
-    </objects>
     <objects name="platforms">
       <object>objects\objPlatform</object>
       <object>objects\objMovingPlatformNoBounce</object>

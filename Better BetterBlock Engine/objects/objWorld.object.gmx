@@ -157,7 +157,7 @@ if (global.gameStarted)
     
     if (!global.gamePaused) //check if the game is currently paused
     {
-        if (scrButtonCheckPressed(global.restartButton))
+        if (!global.noRestart &amp;&amp; scrButtonCheckPressed(global.restartButton))
         {
             //stop death sound/music
             audio_stop_sound(global.deathSound);
@@ -174,7 +174,7 @@ if (global.gameStarted)
                 alarm[0] = -1;   //reset alarm that pauses music
             }
             
-            scrSaveGame(false); //save death/time
+            scrSaveGame(false, false); //save death/time
             scrLoadGame(false); //load the game
         }
         
@@ -241,7 +241,7 @@ if (global.debugMode &amp;&amp; global.gameStarted &amp;&amp; !global.gamePaused
     {
         with (objPlayer)
         {
-            scrSaveGame(true);
+            scrSaveGame(true, true);
             audio_play_sound(sndItem,0,false);
         }
     }

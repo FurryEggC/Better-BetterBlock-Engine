@@ -28,6 +28,8 @@
             <string>image_speed = 0;
 canSave = true;
 grav = 1;       //sets which player gravity this save works with
+precise = false;  // sets if save precisely (y-align)
+
 </string>
           </argument>
         </arguments>
@@ -133,7 +135,7 @@ if (canSave &amp;&amp; instance_exists(objPlayer) &amp;&amp; global.grav == grav
         image_index = 1;
         image_speed = 0.017;
         audio_play_sound(sndSave,0,false);
-        scrSaveGame(true);
+        scrSaveGame(true, precise);
     }
 }
 </string>

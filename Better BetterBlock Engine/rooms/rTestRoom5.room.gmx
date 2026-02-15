@@ -10,15 +10,14 @@
   <persistent>0</persistent>
   <colour>16777088</colour>
   <showcolour>-1</showcolour>
-  <code>// with objBlock visible = 1;
-with objSavePrecise image_blend = c_red;</code>
+  <code>// with objBlock visible = 1;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1296</w>
-    <h>768</h>
+    <w>1008</w>
+    <h>600</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>
@@ -28,8 +27,8 @@ with objSavePrecise image_blend = c_red;</code>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>0</page>
-    <xoffset>-130</xoffset>
-    <yoffset>-38</yoffset>
+    <xoffset>5</xoffset>
+    <yoffset>67</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -64,7 +63,6 @@ with objSavePrecise image_blend = c_red;</code>
     <instance objName="objBlock" x="352" y="448" name="inst_ACC31BBD" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="32" y="352" name="inst_F9A2F3B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBetterBlock" x="64" y="352" name="inst_029A026F" locked="0" code="image_blend = c_red;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSavePrecise" x="288" y="384" name="inst_9A8377C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTriggerButton" x="736" y="448" name="inst_CC8429E6" locked="0" code="obj[0] = inst_AF834EAB;&#xA;obj[1] = inst_5720BA40;&#xA;obj[2] = inst_E90503A5;&#xA;obj[3] = inst_45135E6B;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeTriggerUp" x="480" y="544" name="inst_5720BA40" locked="0" code="toX = 66;&#xA;toY = 66;&#xA;time = 50;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeTriggerUp" x="384" y="544" name="inst_AF834EAB" locked="0" code="dir = 90;&#xA;spd = 4;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -108,7 +106,8 @@ with objSavePrecise image_blend = c_red;</code>
     <instance objName="objBlock" x="320" y="64" name="inst_8FD9D0C1" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="448" y="64" name="inst_D172D4E7" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="576" y="64" name="inst_11AFC588" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSavePrecise" x="32" y="160" name="inst_716BCC76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSave" x="32" y="160" name="inst_0AD94E67" locked="0" code="precise = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSave" x="64" y="544" name="inst_36F3A342" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bOriginal" x="0" y="544" w="32" h="32" xo="32" yo="32" id="10001992" name="inst_720D942E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -160,9 +160,6 @@
     <instance objName="objSpikeDown" x="544" y="416" name="inst_BDDF921C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="608" y="416" name="inst_D9A652C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="640" y="416" name="inst_F4EFBCFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSavePrecise" x="704" y="224" name="inst_16006795" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSavePrecise" x="64" y="352" name="inst_1208472D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSavePrecise" x="704" y="480" name="inst_65742BB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objOutsideRoomChanger" x="32" y="-32" name="inst_8D8F5AF2" locked="0" code="roomTo = rTestRoom6;" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objOutsideRoomChanger" x="32" y="608" name="inst_087C7E08" locked="0" code="roomTo = rTestRoom8;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayMusicByListSequence" x="-32" y="0" name="inst_D62E5328" locked="0" code="musicList[0] = musOnDeath;&#xA;musicList[1] = sndJump;&#xA;musicList[2] = sndTrigger;&#xA;musicList[3] = sndBlockChange;&#xA;musicList[4] = sndGainStar;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
