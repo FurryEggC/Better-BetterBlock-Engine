@@ -98,9 +98,9 @@ bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_i
           <argument>
             <kind>1</kind>
             <string>/// Default Skin
-can_change = 1;
-can_blend = 1;
-total_skin = 5;
+canChange = true;
+canBlend = true;
+totalSkin = 5;
 
 /// convenient for other object detection
 animationRunning = false;
@@ -418,7 +418,7 @@ bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_i
 /// skin change
 var saveSkinConfig = false;
 
-if (can_change) {
+if (canChange) {
     if scrButtonCheckPressed(global.skinLeftButton) {
         global.skin -= 1;
         saveSkinConfig = true;
@@ -428,15 +428,15 @@ if (can_change) {
         saveSkinConfig = true;
     }
     
-    if (global.skin &lt; 0) {global.skin += total_skin;}
-    else if (global.skin &gt;= total_skin) {global.skin -= total_skin;}
+    if (global.skin &lt; 0) {global.skin += totalSkin;}
+    else if (global.skin &gt;= totalSkin) {global.skin -= totalSkin;}
     
     if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) specialDraw = instance_exists(objColorfulEffectControl);
     else specialDraw = 0;
 }
 
 // change blend in 3, 4 and dotkid
-if (can_blend) {
+if (canBlend) {
     if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) {
         global.skinBlend += 3*scrButtonCheck(global.upButton) - 3*scrButtonCheck(global.downButton);
         global.skinBlend = clamp(global.skinBlend,0,256 * 5);

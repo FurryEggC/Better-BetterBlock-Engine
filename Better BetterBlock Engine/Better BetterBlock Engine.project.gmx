@@ -298,8 +298,8 @@
       <script>scripts\scrSetGlobalOptions.gml</script>
       <script>scripts\scrSaveConfig.gml</script>
       <script>scripts\scrLoadConfig.gml</script>
+      <script>scripts\scrSaveSaveMap.gml</script>
       <script>scripts\scrSaveGame.gml</script>
-      <script>scripts\scrSaveGamePrecise.gml</script>
       <script>scripts\scrLoadGame.gml</script>
       <script>scripts\scrSetRoomCaption.gml</script>
       <script>scripts\scrDrawButtonInfo.gml</script>

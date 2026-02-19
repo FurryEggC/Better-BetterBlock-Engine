@@ -1,6 +1,7 @@
-///scrSaveGame(saveposition, precise)
-///saves the game
-///argument0 - sets whether the game should save the player's current location or just save the deaths/time
+/// scrSaveGame(saveposition, precise)
+/// saves the game
+/// argument0 - sets whether the game should save the player's current location or just save the deaths/time
+/// argument1 - sets whether to save precisely
 
 var savePosition = argument0;
 var precise = argument1;
@@ -79,21 +80,8 @@ ds_map_add(saveMap,"saveGameClear",global.saveGameClear);
 //add md5 hash to verify saves and make them harder to hack
 ds_map_add(saveMap,"mapMd5",md5_string_unicode(json_encode(saveMap)+global.md5StrAdd));
 
-//save the map to a file
-if (global.extraSaveProtection) //use ds_map_secure function
-{
-    ds_map_secure_save(saveMap,"Data\save"+string(global.savenum));
-}
-else    //use text file
-{
-    //open the save file
-    var f = file_text_open_write("Data\save"+string(global.savenum));
-    
-    //write map to the save file with base64 encoding
-    file_text_write_string(f,base64_encode(json_encode(saveMap)));
-    
-    file_text_close(f);
-}
+// save ds_map to the global
+ds_map_copy(global.toSaveMap, saveMap);
 
-//destroy the map
 ds_map_destroy(saveMap);
+

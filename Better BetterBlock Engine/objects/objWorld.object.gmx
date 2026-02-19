@@ -311,10 +311,18 @@ if (global.debugVisuals)
             <string>/// function keys
 
 if (keyboard_check_pressed(vk_escape)) {
+    if (global.gameStarted) {
+        scrSaveGame(false, false);  // update saveMap before exit
+        scrSaveSaveMap();  // save saveMap into file
+    }
     game_end();
 }
 
 if (keyboard_check_pressed(vk_f2)) {
+    if (global.gameStarted) {
+        scrSaveGame(false, false);  // update saveMap before exit
+        scrSaveSaveMap();  // save saveMap into file
+    }
     scrRestartGame();
     exit;
 }
@@ -334,7 +342,7 @@ if (keyboard_check_pressed(vk_f5) &amp;&amp; !global.gamePaused) {
 if (keyboard_check(vk_control) &amp;&amp; keyboard_check_pressed(ord("M")) &amp;&amp; !global.gamePaused) {
     // toggle mute music setting
     scrToggleMusic();
-    scrSaveConfig();    //save mute setting
+    scrSaveConfig();    // save mute setting
 }
 
 </string>
