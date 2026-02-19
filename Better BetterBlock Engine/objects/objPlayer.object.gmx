@@ -414,11 +414,17 @@ bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_i
           <argument>
             <kind>1</kind>
             <string>/// Skin Changing And Bow System
-{
+var skinLeft = scrButtonCheckPressed(global.skinLeftButton);
+var skinRight = scrButtonCheckPressed(global.skinRightButton);
+var skinUp = scrButtonCheck(global.upButton);
+var skinDown = scrButtonCheck(global.downButton);
+var bow = scrButtonCheckPressed(global.bowButton);
+
+if (skinLeft || skinRight || skinUp || skinDown || bow) {
     // skin change
     if (can_change) {
-        if scrButtonCheckPressed(global.skinLeftButton) global.skin -= 1;
-        if scrButtonCheckPressed(global.skinRightButton) global.skin += 1;
+        if skinLeft global.skin -= 1;
+        if skinRight global.skin += 1;
         
         if (global.skin &lt; 0) {global.skin += total_skin;}
         else if (global.skin &gt;= total_skin) {global.skin -= total_skin;}
@@ -430,7 +436,7 @@ bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_i
     // change blend in 3, 4 and dotkid
     if (can_blend) {
         if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) {
-            global.skinBlend += 3*scrButtonCheck(global.upButton) - 3*scrButtonCheck(global.downButton);
+            global.skinBlend += 3*skinUp - 3*skinDown;
             global.skinBlend = clamp(global.skinBlend,0,256 * 5);
             image_blend = make_color_hsv((global.skinBlend) mod 256, scrColorBlendFunction(global.skinBlend), clamp(global.skinBlend, 0, 255));
         }
@@ -438,7 +444,7 @@ bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_i
     }
     
     // bow
-    if scrButtonCheckPressed(global.bowButton) global.bow = 1 - global.bow;
+    if bow global.bow = 1 - global.bow;
     
     scrSaveGame(false, false);  // save skin &amp; bow config
 }
