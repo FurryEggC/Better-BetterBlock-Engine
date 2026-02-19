@@ -416,8 +416,9 @@ bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_i
             <string>/// Skin Changing And Bow System
 
 /// skin change
+var saveSkinConfig = false;
+
 if (can_change) {
-    var saveSkinConfig = false;
     if scrButtonCheckPressed(global.skinLeftButton) {
         global.skin -= 1;
         saveSkinConfig = true;
