@@ -452,7 +452,7 @@ if scrButtonCheckPressed(global.bowButton) {
 }
 
 // release tune key and save tune
-if (saveSkinConfig || scrButtonCheckReleased(global.upButton) || scrButtonCheckReleased(global.upButton)) {
+if (saveSkinConfig || scrButtonCheckReleased(global.upButton) || scrButtonCheckReleased(global.downButton)) {
     scrSaveGame(false, false);  // save skin &amp; bow config
 }
 
