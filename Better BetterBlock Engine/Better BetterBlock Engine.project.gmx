@@ -337,6 +337,7 @@
       <script>scripts\scrCreateShadow.gml</script>
       <script>scripts\scrShadeFollow.gml</script>
       <script>scripts\scrArrayContain.gml</script>
+      <script>scripts\scrTriggerPack.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -492,13 +493,18 @@
       <object>objects\objFreeTrigger</object>
       <object>objects\objSmoothCreate</object>
       <object>objects\objSmoothDestroy</object>
-      <object>objects\objTriggerButton</object>
+      <object>objects\objFreeTriggerButton</object>
       <object>objects\objKillerTrigger</object>
       <object>objects\objSpikeTriggerUp</object>
       <object>objects\objSpikeTriggerRight</object>
       <object>objects\objSpikeTriggerLeft</object>
       <object>objects\objSpikeTriggerDown</object>
       <object>objects\objCherryTrigger</object>
+    </objects>
+    <objects name="newTrigger">
+      <object>objects\objTrigger</object>
+      <object>objects\objTriggerButton</object>
+      <object>objects\objMoveThis</object>
     </objects>
     <objects name="misc">
       <object>objects\objSaveFlip</object>
