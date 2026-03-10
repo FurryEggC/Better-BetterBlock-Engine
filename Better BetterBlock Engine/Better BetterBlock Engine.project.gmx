@@ -432,6 +432,7 @@
       <object>objects\objConstantBazierMotionTest</object>
       <object>objects\objShadeTest</object>
       <object>objects\objShadeEffectTest</object>
+      <object>objects\objDrawTheirXY</object>
     </objects>
     <objects name="slopes">
       <object>objects\objSlope</object>
@@ -626,6 +627,7 @@
     <room>rooms\rTestRoom8</room>
     <room>rooms\rTestRoom9</room>
     <room>rooms\rTestRoom10</room>
+    <room>rooms\rTestRoom11</room>
     <room>rooms\rTemplate</room>
   </rooms>
   <help>

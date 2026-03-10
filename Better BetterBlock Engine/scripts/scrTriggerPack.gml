@@ -1,10 +1,26 @@
 #define scrTriggerPack
 /*
-    OK This is a script pack, i don't know how to unpack it well just that it's good
+        OK This is a script pack, i don't know how to unpack it well just
+    that it's good
     
-    This pack contains some useful trigger functions
-    You just need to write them in creation code of new Triggers
-    And they would work as you thought
+        This pack contains some useful trigger functions, you just need to
+    write them in creation code of new Triggers, And they would work as you
+    thought.
+    
+        As you see these moves are one dimentional (except path), and these
+    are scripts that recommend to call:
+    
+        scrPath();
+        scrMove();
+        scrMoveDir();
+        scrMoveLen();
+        scrMoveLenDir();
+        scrMoveLenXY();
+        scrMoveExp();
+        scrMoveBazier();
+        scrMoveBazierXY();
+        
+        You know what they mean after you see the foot script there.
 */
 
 #define scrPath
@@ -15,11 +31,37 @@ scrInitMove(argument0, 0, argument1, argument2, argument3, argument4, 0, 0, 0, 0
 
 
 #define scrMove
-/// scrMove(id, infinite, dir, spd, v, h, len)
+/// scrMove(id, v, h)
 
-var pattern = 2;
-if (argument1) pattern = 1;
-scrInitMove(argument0, pattern, 0, argument3, 0, 1, argument2, argument6, argument4, argument5, 0, 0, 0, 0, 0, 0);
+scrInitMove(argument0, 1, 0, 0, 0, 1, 0, 0, argument1, argument2, 0, 0, 0, 0, 0, 0);
+
+
+
+#define scrMoveDir
+/// scrMoveDir(id, dir, spd)
+
+scrInitMove(argument0, 1, 0, argument2, 0, 1, argument1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+
+
+#define scrMoveLen
+/// scrMoveLen(id, v, h, len)
+
+scrInitMove(argument0, 2, 0, 0, 0, 1, 0, argument3, argument1, argument2, 0, 0, 0, 0, 0, 0);
+
+
+
+#define scrMoveLenDir
+/// scrMoveLenDir(id, dir, spd, len)
+
+scrInitMove(argument0, 2, 0, argument2, 0, 1, argument1, argument3, 0, 0, 0, 0, 0, 0, 0, 0);
+
+
+
+#define scrMoveLenXY
+/// scrMoveLenXY(id, destX, destY, time)
+
+scrInitMove(argument0, 2, 0, 0, 0, 1, 0, 0, 0, 0, argument1, argument2, 0, 0, 0, argument3);
 
 
 
@@ -74,4 +116,3 @@ with (moveObj) {
 
 triggerArray[len] = moveObj;
 len += 1;
-

@@ -39,7 +39,7 @@ pattern = 0;
     
     0. (pth, spd, enda, scl)
     1. (dir, spd) / (v, h)
-    2. (len) + (dir, spd) / (v, h)
+    2. [destX, destY, time] / [(len) + (dir, spd) / (v, h)]
     3. (expt) + (dir, len) / (destX, destY)
     4. (time, pr1, pr2) + (len, dir) / (destX, destY)
 */
@@ -86,6 +86,13 @@ t = 0;
             <string>/// Moving Actions
 
 if (moveNow) {
+    if (t == 0) {
+        with (target) {
+            xs = x;
+            ys = y;
+        }
+    }
+    
     t += 1;
     
     // move check
@@ -101,7 +108,7 @@ if (moveNow) {
         // stop moving
         moveNow = false;
         with (target) {
-            if (spd == 0) {
+            if (other.spd == 0) {
                 vspeed = other.v;
                 hspeed = other.h;
             } else {
@@ -110,28 +117,47 @@ if (moveNow) {
             }
         }
     } else if (pattern == 2) {
-        with (target) {
-            if (sqr(x - xstart) + sqr(y - ystart) &lt; sqr(other.len)) {
-                if (speed == 0) {
-                    vspeed = other.v;
-                    hspeed = other.h;
+        if (time == 0) {
+            // move without destX, destY
+            with (target) {
+                if (sqr(x - xs) + sqr(y - ys) &lt; sqr(other.len)) {
+                    if (other.spd == 0) {
+                        vspeed = other.v;
+                        hspeed = other.h;
+                    } else {
+                        speed = other.spd;
+                        direction = other.dir;
+                    }
                 } else {
-                    speed = other.spd;
-                    direction = other.dir;
+                    speed = 0;
+                    vspeed = 0;
+                    hspeed = 0;
+                    
+                    // stop moving
+                    other.moveNow = false;
                 }
-            } else {
-                speed = 0;
-                vspeed = 0;
-                hspeed = 0;
-                
-                // stop moving
-                other.moveNow = false;
+            }
+        } else {
+            // move with destX, destY, t
+            var moveRate = t / time;
+            
+            with (target) {
+                if (moveRate &lt; 1) {
+                    x = lerp(xs, other.destX, moveRate);
+                    y = lerp(ys, other.destY, moveRate);
+                } else {
+                    x = other.destX;
+                    y = other.destY;
+                    
+                    // stop moving
+                    other.moveNow = false;
+                }
             }
         }
     } else if (pattern == 3) {
         if (destX == 0 &amp;&amp; destY == 0) { 
-            destX = target.xstart + lengthdir_x(other.len, other.dir);
-            destY = target.ystart + lengthdir_y(other.len, other.dir);
+            destX = target.xs + lengthdir_x(other.len, other.dir);
+            destY = target.ys + lengthdir_y(other.len, other.dir);
         }
         
         with (target) {
@@ -150,13 +176,13 @@ if (moveNow) {
         var bazier_t = t / time;
         
         if (destX != 0 || destY != 0) {
-            len = point_distance(target.xstart, target.ystart, destX, destY);
-            dir = point_direction(target.xstart, target.ystart, destX, destY);
+            len = point_distance(target.xs, target.ys, destX, destY);
+            dir = point_direction(target.xs, target.ys, destX, destY);
         }
         
         with (target) {
-            if (bazier_t &lt; 1) {
-                scrBazierMove(bazier_t, other.dir, other.len, other.pr1, other.pr2, xstart, ystart);
+            if (bazier_t &lt;= 1) {
+                scrBazierMove(bazier_t, other.dir, other.len, other.pr1, other.pr2, xs, ys);
             } else {
                 // stop moving
                 other.moveNow = false;
