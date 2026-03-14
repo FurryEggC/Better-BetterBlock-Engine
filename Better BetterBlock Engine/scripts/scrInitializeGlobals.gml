@@ -51,7 +51,6 @@ global.pauseSurf = -1;       // stores the screen surface when the game is pause
 global.pauseDelay = 0;      // sets pause delay so that the player can't quickly pause buffer
 
 global.toSaveMap = ds_map_create();  // use a ds_map to store the information, preventing IO abuse
-scrSaveGame(false, false);  // this would initialize global.toSaveMap
 
 global.currentMusicID = -1;  // keeps track of what song the current music is
 global.currentMusic = -1;    // keeps track of current main music instance

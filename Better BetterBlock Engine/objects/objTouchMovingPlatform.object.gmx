@@ -80,7 +80,7 @@ if (speed != 0 || yspeed != 0)  //make sure the platform is moving before doing 
         }
     }
     
-    with (instance_place(x,y-(2*global.grav),objPlayer))
+    with (instance_place(x,y-2*global.grav,objPlayer))
     {
         y += other.vspeed + other.yspeed;
         if (place_free(x+other.hspeed,y)) x += other.hspeed;

@@ -1,105 +1,104 @@
-/// scrLoadGame(loadfile)
+/// scrLoadGame(loadFromFile)
 /// loads the game
-/// argument0 - sets whether or not to read the save file when loading the game
+/// argument0 - whether to load from file (true) or just reset from current save point (false)
 
-var loadFile = argument0;
+var loadFromFile = argument0;
+var saveValid = true;
+var saveMap = noone;
 
-var saveMap = ds_map_create();
-ds_map_copy(saveMap, global.toSaveMap);
-
-// only load save data from the save file if the script is currently set to (we should only need to load these on first load because the game stores them afterwards)
-if (loadFile) {
-    // load the save map
-    
-    if (global.extraSaveProtection) {  // use ds_map_secure function
-        saveMap = ds_map_secure_load("Data\save"+string(global.savenum));
+if (loadFromFile) {
+    // read datas from file
+    if (global.extraSaveProtection) {
+        saveMap = ds_map_secure_load("Data\save" + string(global.savenum));
+    } else {
+        var f = file_text_open_read("Data\save" + string(global.savenum));
+        if (f >= 0) {
+            var str = file_text_read_string(f);
+            file_text_close(f);
+            saveMap = json_decode(base64_decode(str));
+        } else {
+            saveMap = -1;
+        }
     }
-    else {   // use text file
-        var f = file_text_open_read("Data\save"+string(global.savenum));
-        
-        saveMap = json_decode(base64_decode(file_text_read_string(f)));
-        
-        file_text_close(f);
-    }
-}
-    
-var saveValid = true;   // keeps track of whether or not the save being loaded is valid
 
-if (saveMap != -1) {  // check if the save map loaded correctly
-    global.death = ds_map_find_value(saveMap,"death");
-    global.time = ds_map_find_value(saveMap,"time");
-    global.timeMicro = ds_map_find_value(saveMap,"timeMicro");
-    
-    global.difficulty = ds_map_find_value(saveMap,"difficulty");
-    global.saveRoom = ds_map_find_value(saveMap,"saveRoom");
-    global.savePlayerX = ds_map_find_value(saveMap,"savePlayerX");
-    global.savePlayerY = ds_map_find_value(saveMap,"savePlayerY");
-    global.saveGrav = ds_map_find_value(saveMap,"saveGrav");
-    
-    global.saveJump = ds_map_find_value(saveMap,"saveJump");
-    global.saveDotkid = ds_map_find_value(saveMap,"saveDotkid");
-    
-    global.saveSkin = ds_map_find_value(saveMap,"saveSkin");
-    global.saveSkinBlend = ds_map_find_value(saveMap,"saveSkinBlend");
-    global.saveBow = ds_map_find_value(saveMap,"saveBow");
-    
-    if (is_string(global.saveRoom)) {  //check if the saved room loaded properly
-        if (!room_exists(asset_get_index(global.saveRoom)))  //check if the room index in the save is valid
+    if (saveMap == -1) {
+        saveValid = false;
+    } else {
+        // read datas from map
+        global.death = saveMap[? "death"];
+        global.time = saveMap[? "time"];
+        global.timeMicro = saveMap[? "timeMicro"];
+        
+        global.difficulty = saveMap[? "difficulty"];
+        global.saveRoom = saveMap[? "saveRoom"];
+        global.savePlayerX = saveMap[? "savePlayerX"];
+        global.savePlayerY = saveMap[? "savePlayerY"];
+        global.saveGrav = saveMap[? "saveGrav"];
+        
+        global.saveJump = saveMap[? "saveJump"];
+        global.saveDotkid = saveMap[? "saveDotkid"];
+        
+        global.saveSkin = saveMap[? "saveSkin"];
+        global.saveSkinBlend = saveMap[? "saveSkinBlend"];
+        global.saveBow = saveMap[? "saveBow"];
+        
+        if (is_string(global.saveRoom)) {
+            if (!room_exists(asset_get_index(global.saveRoom))) {
+                saveValid = false;
+            }
+        } else {
             saveValid = false;
+        }
+
+        for (var i = 0; i < global.secretItemTotal; i++) {
+            global.saveSecretItem[i] = saveMap[? "saveSecretItem[" + string(i) + "]"];
+        }
+        for (var i = 0; i < global.bossItemTotal; i++) {
+            global.saveBossItem[i] = saveMap[? "saveBossItem[" + string(i) + "]"];
+        }
+        
+        global.saveGameClear = saveMap[? "saveGameClear"];
+        
+        // MD5 check
+        var mapMd5 = saveMap[? "mapMd5"];
+        if (!is_string(mapMd5)) mapMd5 = "";
+        
+        ds_map_delete(saveMap, "mapMd5");
+        var genMd5 = md5_string_unicode(json_encode(saveMap) + global.md5StrAdd);
+
+        if (mapMd5 != genMd5) {
+            saveValid = false;
+        }
+
+        ds_map_destroy(saveMap);
+    }
+} else {
+    // ok I think save is valid when not considering file, so I do nothing
+
+    /*
+    if (is_string(global.saveRoom)) {
+        if (!room_exists(asset_get_index(global.saveRoom))) {
+            saveValid = false;
+        }
     } else {
         saveValid = false;
     }
-    
-    for (var i = 0; i < global.secretItemTotal; i++) {
-        global.saveSecretItem[i] = ds_map_find_value(saveMap,"saveSecretItem["+string(i)+"]");
-    }
-    
-    for (var i = 0; i < global.bossItemTotal; i++) {
-        global.saveBossItem[i] = ds_map_find_value(saveMap,"saveBossItem["+string(i)+"]");
-    }
-    
-    global.saveGameClear = ds_map_find_value(saveMap,"saveGameClear");
-    
-    //load md5 string from the save map
-    var mapMd5 = ds_map_find_value(saveMap,"mapMd5");
-    
-    //check if md5 is not a string in case the save was messed with or got corrupted
-    if (!is_string(mapMd5))
-        mapMd5 = "";   //make it a string for the md5 comparison
-    
-    //generate md5 string to compare with
-    ds_map_delete(saveMap,"mapMd5");
-    var genMd5 = md5_string_unicode(json_encode(saveMap)+global.md5StrAdd);
-    
-    if (mapMd5 != genMd5)   //check if md5 hash is invalid
-        saveValid = false;
-    
-    //destroy the map
-    ds_map_destroy(saveMap);
-} else {
-    //save map didn't load correctly, set the save to invalid
-    saveValid = false;
+    */
 }
 
-if (!saveValid) //check if the save is invalid
-{
-    //save is invalid, restart the game
-    
+// Save invalid, restart
+if (!saveValid) {
     show_message("Save invalid!");
-    
     scrRestartGame();
-    
     exit;
 }
 
-//set game variables and set the player's position
 
-with (objPlayer) //destroy player if it exists
-    instance_destroy();
+with (objPlayer) instance_destroy();
 
-global.gameStarted = true;  //sets game in progress (enables saving, restarting, etc.)
-global.noPause = false;     //disable no pause mode
-global.autosave = false;    //disable autosaving since we're loading the game
+global.gameStarted = true;
+global.noPause = false;
+global.autosave = false;
 
 global.grav = global.saveGrav;
 global.jump = global.saveJump;
@@ -109,19 +108,15 @@ global.skin = global.saveSkin;
 global.skinBlend = global.saveSkinBlend;
 global.bow = global.saveBow;
 
-for (var i = 0; i < global.secretItemTotal; i++)
-{
+for (var i = 0; i < global.secretItemTotal; i++) {
     global.secretItem[i] = global.saveSecretItem[i];
 }
-
-for (var i = 0; i < global.bossItemTotal; i++)
-{
+for (var i = 0; i < global.bossItemTotal; i++) {
     global.bossItem[i] = global.saveBossItem[i];
 }
 
 global.gameClear = global.saveGameClear;
 
-instance_create(global.savePlayerX,global.savePlayerY,objPlayer);
-
+instance_create(global.savePlayerX, global.savePlayerY, objPlayer);
 room_goto(asset_get_index(global.saveRoom));
 

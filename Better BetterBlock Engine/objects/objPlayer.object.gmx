@@ -266,6 +266,70 @@ image_alpha = 1;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Skin Changing And Bow System
+
+/// skin change
+var saveSkinConfig = false;
+
+if (canChange) {
+    if scrButtonCheckPressed(global.skinLeftButton) {
+        global.skin -= 1;
+        saveSkinConfig = true;
+    }
+    if scrButtonCheckPressed(global.skinRightButton) {
+        global.skin += 1;
+        saveSkinConfig = true;
+    }
+    
+    if (global.skin &lt; 0) {global.skin += totalSkin;}
+    else if (global.skin &gt;= totalSkin) {global.skin -= totalSkin;}
+    
+    if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) specialDraw = instance_exists(objColorfulEffectControl);
+    else specialDraw = 0;
+}
+
+// change blend in 3, 4 and dotkid
+if (canBlend) {
+    if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) {
+        global.skinBlend += 3*scrButtonCheck(global.upButton) - 3*scrButtonCheck(global.downButton);
+        global.skinBlend = clamp(global.skinBlend,0,256 * 5);
+        image_blend = make_color_hsv((global.skinBlend) mod 256, scrColorBlendFunction(global.skinBlend), clamp(global.skinBlend, 0, 255));
+    }
+    else image_blend = c_white;
+}
+
+// bow
+if scrButtonCheckPressed(global.bowButton) {
+    global.bow = 1 - global.bow;
+    saveSkinConfig = true;
+}
+
+// release tune key and save tune
+if (saveSkinConfig || scrButtonCheckReleased(global.upButton) || scrButtonCheckReleased(global.downButton)) {
+    scrSaveGame(false, false);  // save skin &amp; bow config
+}
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Death Check And Animation
 
 // check if player has left the room
@@ -397,70 +461,6 @@ bottomToOrigin = (sprite_get_bbox_bottom(mask_index) - sprite_get_yoffset(mask_i
       </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Skin Changing And Bow System
-
-/// skin change
-var saveSkinConfig = false;
-
-if (canChange) {
-    if scrButtonCheckPressed(global.skinLeftButton) {
-        global.skin -= 1;
-        saveSkinConfig = true;
-    }
-    if scrButtonCheckPressed(global.skinRightButton) {
-        global.skin += 1;
-        saveSkinConfig = true;
-    }
-    
-    if (global.skin &lt; 0) {global.skin += totalSkin;}
-    else if (global.skin &gt;= totalSkin) {global.skin -= totalSkin;}
-    
-    if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) specialDraw = instance_exists(objColorfulEffectControl);
-    else specialDraw = 0;
-}
-
-// change blend in 3, 4 and dotkid
-if (canBlend) {
-    if (global.skin == 3 || global.skin == 4 || global.dotkid == 1) {
-        global.skinBlend += 3*scrButtonCheck(global.upButton) - 3*scrButtonCheck(global.downButton);
-        global.skinBlend = clamp(global.skinBlend,0,256 * 5);
-        image_blend = make_color_hsv((global.skinBlend) mod 256, scrColorBlendFunction(global.skinBlend), clamp(global.skinBlend, 0, 255));
-    }
-    else image_blend = c_white;
-}
-
-// bow
-if scrButtonCheckPressed(global.bowButton) {
-    global.bow = 1 - global.bow;
-    saveSkinConfig = true;
-}
-
-// release tune key and save tune
-if (saveSkinConfig || scrButtonCheckReleased(global.upButton) || scrButtonCheckReleased(global.downButton)) {
-    scrSaveGame(false, false);  // save skin &amp; bow config
-}
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -622,7 +622,7 @@ else    //player is not moving
     }
 }
 
-if (!place_meeting(x,y+(4*global.grav),objPlatform)){onPlatform = false};
+if (!place_meeting(x, y+global.grav, objPlatform)) {onPlatform = false};
 
 var slideBlockTouching = instance_place(x,y+(global.grav),objSlideBlock);   //check if on a slide block
 
@@ -947,13 +947,16 @@ if (!inBubble) {
             <kind>1</kind>
             <string>if (scrIsBetterPlatform(other) || scrIsBetterBlock(other)) exit;
 
+var offset = 9;
+if (global.dotkid) offset = 1;
+
 if (global.grav == 1)   //normal
 {
-    if (y-vspeed/2 &lt;= other.y)
+    if (y-vspeed &lt;= other.y)
     {
         if (other.vspeed &gt;= 0)
         {
-            y = other.y-9;
+            y = other.y-offset;
             vspeed = other.vspeed;
         }
         
@@ -963,11 +966,11 @@ if (global.grav == 1)   //normal
 }
 else    //flipped
 {
-    if (y-vspeed/2 &gt;= other.y+other.sprite_height-1)
+    if (y-vspeed &gt;= other.y+other.sprite_height-1)
     {
         if ((other.vspeed*-1) &lt;= 0)
         {
-            y = other.y+other.sprite_height+8;
+            y = other.y+other.sprite_height+offset-1;
             vspeed = -1*other.vspeed;
         }
         

@@ -28,13 +28,11 @@ if (savePosition)
         }
     }
     
-    for (var i = 0; i < global.secretItemTotal; i++)
-    {
+    for (var i = 0; i < global.secretItemTotal; i++) {
         global.saveSecretItem[i] = global.secretItem[i];
     }
     
-    for (var i = 0; i < global.bossItemTotal; i++)
-    {
+    for (var i = 0; i < global.bossItemTotal; i++) {
         global.saveBossItem[i] = global.bossItem[i];
     }
     
@@ -44,44 +42,4 @@ if (savePosition)
 global.saveSkin = global.skin;
 global.saveSkinBlend = global.skinBlend;
 global.saveBow = global.bow;
-
-//create a map for save data
-var saveMap = ds_map_create();
-
-ds_map_add(saveMap,"death",global.death);
-ds_map_add(saveMap,"time",global.time);
-ds_map_add(saveMap,"timeMicro",global.timeMicro);
-
-ds_map_add(saveMap,"difficulty",global.difficulty);
-ds_map_add(saveMap,"saveRoom",global.saveRoom);
-ds_map_add(saveMap,"savePlayerX",global.savePlayerX);
-ds_map_add(saveMap,"savePlayerY",global.savePlayerY);
-ds_map_add(saveMap,"saveGrav",global.saveGrav);
-
-ds_map_add(saveMap,"saveJump",global.saveJump);
-ds_map_add(saveMap,"saveDotkid",global.saveDotkid);
-
-ds_map_add(saveMap,"saveSkin",global.saveSkin);
-ds_map_add(saveMap,"saveSkinBlend",global.saveSkinBlend);
-ds_map_add(saveMap,"saveBow",global.saveBow);
-
-for (var i = 0; i < global.secretItemTotal; i++)
-{
-    ds_map_add(saveMap,"saveSecretItem["+string(i)+"]",global.saveSecretItem[i]);
-}
-
-for (var i = 0; i < global.bossItemTotal; i++)
-{
-    ds_map_add(saveMap,"saveBossItem["+string(i)+"]",global.saveBossItem[i]);
-}
-
-ds_map_add(saveMap,"saveGameClear",global.saveGameClear);
-
-//add md5 hash to verify saves and make them harder to hack
-ds_map_add(saveMap,"mapMd5",md5_string_unicode(json_encode(saveMap)+global.md5StrAdd));
-
-// save ds_map to the global
-ds_map_copy(global.toSaveMap, saveMap);
-
-ds_map_destroy(saveMap);
 

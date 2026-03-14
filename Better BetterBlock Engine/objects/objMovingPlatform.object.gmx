@@ -72,7 +72,7 @@ bounce = true;  //set the platform to bounce against walls
         }
     }
     
-    with (instance_place(x,y-(2*global.grav),objPlayer))
+    with (instance_place(x,y-global.grav,objPlayer))
     {
         y += other.vspeed + other.yspeed;
         if (place_free(x+other.hspeed,y)) x += other.hspeed;
