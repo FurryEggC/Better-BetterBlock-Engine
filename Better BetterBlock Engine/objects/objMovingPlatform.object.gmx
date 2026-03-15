@@ -51,46 +51,22 @@ bounce = true;  //set the platform to bounce against walls
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (speed != 0 || yspeed != 0)  //make sure the platform is moving before doing collision checks
-{
-    if (bounce)
-    {
-        if (instance_place(x+hspeed,y,objBlock)) {hspeed = -hspeed;}
-        
-        if (instance_place(x,y+vspeed+yspeed,objBlock)) 
-        {
-            if (vspeed != 0) 
-            {
-                yspeed = -vspeed;
-                vspeed = 0;
-            }
-            else 
-            {
-                vspeed = -yspeed;
-                yspeed = 0;
-            }
+            <string>/// Bounce off walls, carry the player horizontally and upwards
+// Code taken from verve engine, modify platform behaviour
+
+if (speed != 0) {
+    if (bounce) {
+        if (place_meeting(x + hspeed, y, objBlock)) hspeed = -hspeed;
+        if (place_meeting(x, y + vspeed, objBlock)) vspeed = -vspeed;
+    }
+    
+    with (instance_place(x, y - (2*global.grav), objPlayer)) {
+        if (place_free(x + hspeed + other.hspeed, y)) {
+            x += other.hspeed;
         }
     }
-    
-    with (instance_place(x,y-global.grav,objPlayer))
-    {
-        y += other.vspeed + other.yspeed;
-        if (place_free(x+other.hspeed,y)) x += other.hspeed;
-    }
-    
-    y += yspeed;
-    
-    if (vspeed &lt; 0)
-    {
-        yspeed = vspeed;
-        vspeed = 0;
-    }
-    if (yspeed &gt; 0) 
-    {
-        vspeed = yspeed;
-        yspeed = 0;
-    }
 }
+
 </string>
           </argument>
         </arguments>

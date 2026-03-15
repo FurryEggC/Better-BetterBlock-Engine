@@ -101,6 +101,7 @@
     <instance objName="objCherryMoreMotion" x="432" y="256" name="inst_CDDB2B3E" locked="0" code="motion = 3;&#xA;&#xA;dir = 30;&#xA;length = 5;&#xA;cycle = 50;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objConstantBazierMotionTest" x="512" y="80" name="inst_A7B748CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="656" y="224" name="inst_501D6D72" locked="0" code="scrMoveExp(inst_8D3991DE, 672, 160, 0.05);&#xA;&#xA;" scaleX="0.5" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objMovingPlatform" x="64" y="448" name="inst_184ADACE" locked="0" code="vspeed = 9;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bOriginal" x="0" y="544" w="32" h="32" xo="32" yo="32" id="10001992" name="inst_720D942E" depth="7" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

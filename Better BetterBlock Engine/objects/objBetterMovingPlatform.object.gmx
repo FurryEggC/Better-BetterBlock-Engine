@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>yspeed = 0;
-player = noone;
+            <string>player = noone;
 wasCarrying = false;
 image_speed = 0;
 bbox_tPrevious = bbox_top;

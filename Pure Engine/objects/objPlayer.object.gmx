@@ -222,6 +222,67 @@ image_alpha = 1;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Skin Changing And Bow System
+
+/// skin change
+var saveSkinConfig = false;
+
+if (can_change) {
+    if scrButtonCheckPressed(global.skinLeftButton) {
+        global.skin -= 1;
+        saveSkinConfig = true;
+    }
+    if scrButtonCheckPressed(global.skinRightButton) {
+        global.skin += 1;
+        saveSkinConfig = true;
+    }
+    
+    if (global.skin &lt; 0) {global.skin += total_skin;}
+    else if (global.skin &gt;= total_skin) {global.skin -= total_skin;}
+}
+
+// change blend in 3, 4 and dotkid
+if (can_blend) {
+    if (global.skin == 3 || global.skin == 4) {
+        global.skinBlend += 3*scrButtonCheck(global.upButton) - 3*scrButtonCheck(global.downButton);
+        global.skinBlend = clamp(global.skinBlend,0,256 * 5);
+        image_blend = make_color_hsv((global.skinBlend) mod 256, scrColorBlendFunction(global.skinBlend), clamp(global.skinBlend, 0, 255));
+    }
+    else image_blend = c_white;
+}
+
+// bow
+if scrButtonCheckPressed(global.bowButton) {
+    global.bow = 1 - global.bow;
+    saveSkinConfig = true;
+}
+
+// release tune key and save tune
+if (saveSkinConfig || scrButtonCheckReleased(global.upButton) || scrButtonCheckReleased(global.upButton)) {
+    scrSaveGame(false, false);  // save skin &amp; bow config
+}
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Death Check And Animation
 
 // check if player has left the room
@@ -303,67 +364,6 @@ else    //touching a vine
       </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Skin Changing And Bow System
-
-/// skin change
-var saveSkinConfig = false;
-
-if (can_change) {
-    if scrButtonCheckPressed(global.skinLeftButton) {
-        global.skin -= 1;
-        saveSkinConfig = true;
-    }
-    if scrButtonCheckPressed(global.skinRightButton) {
-        global.skin += 1;
-        saveSkinConfig = true;
-    }
-    
-    if (global.skin &lt; 0) {global.skin += total_skin;}
-    else if (global.skin &gt;= total_skin) {global.skin -= total_skin;}
-}
-
-// change blend in 3, 4 and dotkid
-if (can_blend) {
-    if (global.skin == 3 || global.skin == 4) {
-        global.skinBlend += 3*scrButtonCheck(global.upButton) - 3*scrButtonCheck(global.downButton);
-        global.skinBlend = clamp(global.skinBlend,0,256 * 5);
-        image_blend = make_color_hsv((global.skinBlend) mod 256, scrColorBlendFunction(global.skinBlend), clamp(global.skinBlend, 0, 255));
-    }
-    else image_blend = c_white;
-}
-
-// bow
-if scrButtonCheckPressed(global.bowButton) {
-    global.bow = 1 - global.bow;
-    saveSkinConfig = true;
-}
-
-// release tune key and save tune
-if (saveSkinConfig || scrButtonCheckReleased(global.upButton) || scrButtonCheckReleased(global.upButton)) {
-    scrSaveGame(false, false);  // save skin &amp; bow config
-}
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -574,29 +574,22 @@ else scrKillPlayer();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.grav == 1)   //normal
-{
-    if (y-vspeed/2 &lt;= other.y)
-    {
-        if (other.vspeed &gt;= 0)
-        {
-            y = other.y-9;
-            vspeed = other.vspeed;
-        }
+            <string>var offset = 9;
+
+if (global.grav == 1) {
+    //normal
+    if (y-vspeed-2 &lt;= other.y) {
+        y = other.y-offset;
+        vspeed = other.vspeed;
         
         onPlatform = true;
         event_user(0);
     }
-}
-else    //flipped
-{
-    if (y-vspeed/2 &gt;= other.y+other.sprite_height-1)
-    {
-        if ((other.vspeed*-1) &lt;= 0)
-        {
-            y = other.y+other.sprite_height+8;
-            vspeed = -1*other.vspeed;
-        }
+} else {
+    //flipped
+    if (y-vspeed+2 &gt;= other.y+other.sprite_height-1) {
+        y = other.y+other.sprite_height+offset-1;
+        vspeed = other.vspeed;
         
         onPlatform = true;
         event_user(0);
