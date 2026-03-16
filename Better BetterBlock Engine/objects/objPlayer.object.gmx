@@ -653,7 +653,6 @@ if (global.adAlign &amp;&amp; place_meeting(x,y+(global.grav),objBlock) &amp;&am
     if (scrButtonCheckPressed(global.alignRightButton)) {hspeed += 1;}
 }
 
-
 // walljumps
 scrVineAction();
 
@@ -952,23 +951,20 @@ if (!inBubble) {
             <string>if (scrIsBetterPlatform(other) || scrIsBetterBlock(other)) exit;
 
 var offset = 9;
-if (global.dotkid) offset = 1;
+if (global.dotkid) offset = 2;
 
-if (global.grav == 1)   //normal
-{
-    if (y-vspeed-2 &lt;= other.y)
-    {
+if (global.grav == 1) {
+    // normal
+    if (y-vspeed-abs(other.vspeed) &lt;= other.y) {
         y = other.y-offset;
         vspeed = other.vspeed;
         
         onPlatform = true;
         event_user(0);
     }
-}
-else    //flipped
-{
-    if (y-vspeed+2 &gt;= other.y+other.sprite_height-1)
-    {
+} else {
+    // flipped
+    if (y-vspeed+abs(other.vspeed) &gt;= other.y+other.sprite_height-1) {
         y = other.y+other.sprite_height+offset-1;
         vspeed = other.vspeed;
         
@@ -976,6 +972,7 @@ else    //flipped
         event_user(0);
     }
 }
+
 </string>
           </argument>
         </arguments>
@@ -1246,7 +1243,7 @@ if (specialDraw) shader_reset();
           <argument>
             <kind>1</kind>
             <string>/// debug draw
-//draw_text(x, y - 40, hitTimes);
+// draw_text(x, y - 40, onPlatform);
 
 </string>
           </argument>

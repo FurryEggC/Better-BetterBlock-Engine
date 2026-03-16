@@ -56,6 +56,8 @@ if (!global.delayBow)   //only snap to the player if bow delay setting is off
 if (global.bow) visible = 1;
 else visible = 0;
 
+if (global.dotkid) visible = 0;
+
 event_user(0);
 </string>
           </argument>
