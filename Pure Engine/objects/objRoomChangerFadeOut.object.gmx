@@ -30,8 +30,10 @@
 warpX = 0;
 warpY = 0;
 roomTo = rTemplate;
-fadeTime = 3;  // make sure fadeTime &gt; 1, while this object make sure 1 second wait in black screen
+fadeTime = 3;
+fadeRate = 0.7;  // rate of fading time
 fadeColor = c_black;
+fadeSound = true;
 
 
 draw = 0;
@@ -81,7 +83,7 @@ alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var _frame = (fadeTime - 1) * 50;
+            <string>var _frame = fadeTime * (1 - fadeRate) * 50;
 
 if (draw) {alpha += 1 / _frame;}
 
@@ -108,14 +110,16 @@ if (draw) {alpha += 1 / _frame;}
           <argument>
             <kind>1</kind>
             <string>var frame = fadeTime * 50;
-
+    
 draw = 1;
 alarm[0] = frame;
 with objPlayer instance_destroy();
 
-with objWorld {
-    fadeTime = frame;
-    event_user(0);
+if (fadeSound) {
+    with objWorld {
+        fadeTime = frame;
+        event_user(0);
+    }
 }
 
 </string>
@@ -145,7 +149,7 @@ with objWorld {
 var _alpha = draw_get_alpha();
 
 draw_set_alpha(alpha);
-draw_rectangle_colour(0,0,view_wview[view_current],view_hview[view_current],fadeColor,fadeColor,fadeColor,fadeColor,0);
+draw_rectangle_colour(0,0,800,608,fadeColor,fadeColor,fadeColor,fadeColor,0);
 
 draw_set_alpha(_alpha);
 </string>
