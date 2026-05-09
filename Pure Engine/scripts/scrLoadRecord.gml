@@ -7,11 +7,12 @@ var saveMap;
 
 if (global.extraSaveProtection) {
     // use ds_map_secure function
-    saveMap = ds_map_secure_load("\Data\record");
+    saveMap = ds_map_secure_load("Data\record");
 } else {
     // use text file
-
-    var f = file_text_open_read("\Data\record");
+    if (!file_exists("Data\record")) return -1;
+    
+    var f = file_text_open_read("Data\record");
     
     saveMap = json_decode(base64_decode(file_text_read_string(f)));
     

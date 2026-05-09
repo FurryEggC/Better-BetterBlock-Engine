@@ -49,9 +49,9 @@ saveMap[? "mapMd5"] = md5_string_unicode(json_encode(saveMap) + global.md5StrAdd
 
 // save map to file
 if (global.extraSaveProtection) {
-    ds_map_secure_save(saveMap, "\Data\record");
+    ds_map_secure_save(saveMap, "Data\record");
 } else {
-    var f = file_text_open_write("\Data\record");
+    var f = file_text_open_write("Data\record");
     file_text_write_string(f, base64_encode(json_encode(saveMap)));
     file_text_close(f);
 }
