@@ -44,6 +44,24 @@ bulletSpd = 16;  // speed of bullet
 hitTimes = 0;  // hit limit of death, 0 to off hitMode
 hitGap = 50;  // hit decrease after frames
 
+
+/// ------------------- Frame Indicator
+fmJump1 = 0;
+fmPause1 = 0;
+fmJump2 = 0;
+fmPause2 = 0;
+
+frameCur = 0;
+frameStartReq = false;
+frameStart = false;
+fmFall = false;
+fmBonk1 = false;
+fmBonk2 = false;
+fmExceed1 = false;
+fmExceed2 = false;
+
+onBlock = true;
+
 /// ------------------- New Gimmicks
 inBubble = noone;  // the condition of inBubble, noone bubble
 bubbleSpdMax = 3;  // the speed of inBubble
@@ -423,6 +441,36 @@ else  {  // normal kid
             <string>/// After Collision
 // this means code here, player could through the wall or sth...
 
+/// Frame Indicator
+if (frameStart) {
+    frameCur++;
+}
+
+if (!onBlock &amp;&amp; vspeed &gt; 0 &amp;&amp; scrButtonCheck(global.jumpButton)) {
+    // press long
+    if (!fmBonk1 &amp;&amp; djump &amp;&amp; !fmExceed1) {
+        // release first jump
+        fmJump1 = frameCur;
+        frameCur = 0;
+        fmExceed1 = true;
+    }
+    if (!fmBonk2 &amp;&amp; !djump &amp;&amp; !fmExceed2) {
+        // release djump
+        fmJump2 = frameCur;
+        frameCur = 0;
+        fmExceed2 = true;
+    }
+    
+    
+}
+
+if (vspeed &gt; 0 &amp;&amp; !onBlock &amp;&amp; !frameStart) {
+    // walkoff
+    event_user(4);
+    frameStart = true;
+    frameCur = 2;
+    fmFall = true;
+}
 </string>
           </argument>
         </arguments>
@@ -625,6 +673,12 @@ else    //player is not moving
 if (!place_meeting(x, y+global.grav, objPlatform)) {
     if (onPlatform) {
         onPlatform = false;
+    }
+}
+
+if (onBlock) {
+    if (!place_meeting(x, y+global.grav, objBlock)) {
+        onBlock = false;
     }
 }
 
@@ -1063,6 +1117,41 @@ with (other){
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Init Frame Record
+fmJump1 = 0;
+fmPause1 = 0;
+fmJump2 = 0;
+fmPause2 = 0;
+
+frameCur = 1;
+fmFall = false;
+fmBonk1 = false;
+fmBonk2 = false;
+fmExceed1 = false;
+fmExceed2 = false;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
@@ -1148,6 +1237,26 @@ if (inBubble) {
     inBubble = noone;
 }
 
+// Frame Indicator
+if (djump) {
+    // bonk with first jump
+    if (scrButtonCheck(global.jumpButton)) {
+        // pressing, let it off
+        fmJump1 = frameCur + 1;
+        frameCur = -1;
+        fmBonk1 = true;
+    }
+    // else, do nothing
+} else {
+    if (scrButtonCheck(global.jumpButton)) {
+        // pressing, let it off
+        fmJump2 = frameCur + 1;
+        frameCur = -1;
+        fmBonk2 = true;
+    }
+    // bonk with second jump
+}
+
 </string>
           </argument>
         </arguments>
@@ -1171,12 +1280,21 @@ if (inBubble) {
           <argument>
             <kind>1</kind>
             <string>/// On Block action
+onBlock = true;
 djump = global.jump - 1;
 
 // Bubble Broke
 if (inBubble) {
     with inBubble event_user(0);
     inBubble = noone;
+}
+
+// Frame Indicator
+if (frameStart) {
+    // update p2
+    fmPause2 = frameCur + 1;
+    frameCur = 0;
+    frameStart = false;
 }
 
 </string>

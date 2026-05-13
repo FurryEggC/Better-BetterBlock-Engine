@@ -351,6 +351,7 @@
     <font>fonts\fDefault18</font>
     <font>fonts\fDefault12</font>
     <font>fonts\fTouchMovingPlatformHint</font>
+    <font>fonts\fFrameIndicator</font>
   </fonts>
   <objects name="objects">
     <objects name="world">
@@ -606,6 +607,7 @@
       <object>objects\objShadeEffect</object>
       <object>objects\objCreateFlashLight</object>
       <object>objects\objSuddenFlashLight</object>
+      <object>objects\objFrameIndicator</object>
     </objects>
   </objects>
   <rooms name="rooms">

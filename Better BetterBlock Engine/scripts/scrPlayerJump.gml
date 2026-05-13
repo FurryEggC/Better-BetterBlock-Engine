@@ -24,6 +24,11 @@ if (onPlatform || place_meeting(x,y+(global.grav),objBlock)
             event_user(0);  // delete other
         }
     }
+    
+    // starting a jump
+    // frame record:
+    event_user(4);  // init frame
+    frameStart = true;
 }
 else if (djump >= 1 || place_meeting(x,y+(global.grav),objWater2) 
                     || (global.infJump || global.debugInfJump)) {
@@ -36,4 +41,9 @@ else if (djump >= 1 || place_meeting(x,y+(global.grav),objWater2)
         // refresh jumps
         djump = global.jump - 1;
     }
+    
+    // using djump
+    // frame record:
+    fmPause1 = frameCur;
+    frameCur = 1;
 }
