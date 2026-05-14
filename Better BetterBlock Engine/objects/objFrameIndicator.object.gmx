@@ -8,7 +8,69 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="64">
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>j1 = "0";
+p1 = "0";
+j2 = "0";
+p2 = "0";
+b1 = "";
+b2 = "";
+fall = false;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (instance_exists(objPlayer)) {
+    j1 = "0";
+    p1 = "0";
+    j2 = "0";
+    p2 = "0";
+    b1 = "";
+    b2 = "";
+    fall = false;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="73">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -31,31 +93,26 @@ draw_set_valign(fa_middle);
 draw_set_font(fFrameIndicator);
 draw_set_alpha(1);
 
-var j1 = "0";
-var p1 = "0";
-var j2 = "0";
-var p2 = "0";
-var b1 = "";
-var b2 = "";
-var fall = false;
-
 with (objPlayer) {
-    j1 = string(fmJump1);
-    j2 = string(fmJump2);
-    p1 = string(fmPause1);
-    p2 = string(fmPause2);
+    if (fmJump1 == 23) other.j1 = "F";
+    else other.j1 = string(fmJump1);
+    if (fmJump2 == 19) other.j2 = "F";
+    else other.j2 = string(fmJump2);
     
-    if (fmBonk1) b1 = "B";
-    if (fmBonk2) b2 = "B";
+    other.p1 = string(fmPause1);
+    other.p2 = string(fmPause2);
     
-    fall = fmFall;
+    if (fmBonk1) other.b1 = "B";
+    if (fmBonk2) other.b2 = "B";
+    
+    other.fall = fmFall;
 }
 
 var str = "";
 if (fall) {
-    str = "W+" + p1 + "+" + j2 + b2 + "+" + p2;
+    str = "W + " + p1 + " + " + j2 + b2 + " + " + p2;
 } else {
-    str = j1 + b1 + "+" + p1 + "+" + j2 + b2 + "+" + p2;
+    str = j1 + b1 + " + " + p1 + " + " + j2 + b2 + " + " + p2;
 }
 
 scrDrawTextOutline(x,y,str,c_black,c_white);
