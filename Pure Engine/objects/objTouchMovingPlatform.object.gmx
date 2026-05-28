@@ -61,10 +61,12 @@ jumps = -1;
     hspeed = hspd;
     moving = 1;
     
+    
     with other {
-        vspeed = other.vspd;
+        if (vspeed &gt;= 0) vspeed = other.vspd;
         hspeed = other.hspd;
     }
+    
 }
 
 </string>
