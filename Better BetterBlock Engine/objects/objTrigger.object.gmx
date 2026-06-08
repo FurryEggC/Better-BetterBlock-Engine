@@ -27,10 +27,7 @@
             <kind>1</kind>
             <string>// ok i modified this system
 // now this new trigger system could move anything
-
-/*
-    scr
-*/
+// see scrTriggerPack
 
 len = 0;
 triggerArray[0] = noone;

@@ -16,8 +16,8 @@
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1296</w>
-    <h>768</h>
+    <w>1280</w>
+    <h>762</h>
     <showGrid>0</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>
@@ -26,9 +26,9 @@
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>0</page>
-    <xoffset>-46</xoffset>
-    <yoffset>-24</yoffset>
+    <page>1</page>
+    <xoffset>-141</xoffset>
+    <yoffset>-15</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -148,22 +148,22 @@
     <instance objName="objSpikeRight" x="416" y="416" name="inst_C1657A79" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMovingPlatform" x="480" y="448" name="inst_D186CEEC" locked="0" code="hspeed = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMovingPlatform" x="640" y="64" name="inst_E89397D0" locked="0" code="hspeed = 1;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objFreeTrigger" x="736" y="224" name="inst_4C9535DE" locked="0" code="obj[0] = inst_BF64425B;&#xA;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="800" y="32" name="inst_7C3C7C6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objFreeTrigger" x="96" y="192" name="inst_5F352106" locked="0" code="obj[0] = inst_B2FE5D48;&#xA;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objFreeTrigger" x="96" y="384" name="inst_8014BBBA" locked="0" code="obj[0] = inst_586DFFDA;&#xA;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objSpikeTriggerUp" x="736" y="288" name="inst_BF64425B" locked="0" code="v = -12;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpikeTriggerDown" x="64" y="384" name="inst_586DFFDA" locked="0" code="h = 8;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="32" y="128" name="inst_0206EA98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSave" x="32" y="64" name="inst_47831E01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpikeTriggerUp" x="96" y="320" name="inst_B2FE5D48" locked="0" code="v = -15;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSpikeTriggerLeft" x="736" y="416" name="inst_34CB672B" locked="0" code="h = -10;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objFreeTrigger" x="704" y="416" name="inst_C57A7ABD" locked="0" code="obj[0] = inst_34CB672B;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSave" x="672" y="512" name="inst_3D11AEDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objShadeEffectTest" x="-32" y="0" name="inst_F4E1CF42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSetPlayerHitMode" x="-64" y="0" name="inst_FFFFFA2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objOutsideRoomChanger" x="32" y="608" name="inst_51E6EF1A" locked="0" code="roomTo = rTestRoom7;" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFrameIndicator" x="256" y="64" name="inst_604289FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="736" y="224" name="inst_9023F099" locked="0" code="scrMove(inst_3C58EA5D, -12, 0);&#xA;visible = false;&#xA;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSpikeUp" x="736" y="288" name="inst_3C58EA5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="704" y="416" name="inst_108446C8" locked="0" code="scrMove(inst_63706DA3, 0, -6);&#xA;visible = false;&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="96" y="192" name="inst_BF3B9F0B" locked="0" code="scrMove(inst_FF897D8A, -15, 0);&#xA;visible = false;&#xA;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="96" y="384" name="inst_306E606C" locked="0" code="scrMove(inst_90218082, 0, 8);&#xA;visible = false;&#xA;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objSpikeLeft" x="736" y="416" name="inst_63706DA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSpikeUp" x="96" y="320" name="inst_FF897D8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSpikeDown" x="64" y="384" name="inst_90218082" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bOriginal" x="0" y="544" w="32" h="32" xo="32" yo="32" id="10001992" name="inst_720D942E" depth="7" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

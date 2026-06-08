@@ -491,19 +491,9 @@
       <object>objects\objSpikeMotionLeft</object>
       <object>objects\objSpikeMotionUp</object>
     </objects>
-    <objects name="triggers">
-      <object>objects\objFreeTrigger</object>
+    <objects name="trigger">
       <object>objects\objSmoothCreate</object>
       <object>objects\objSmoothDestroy</object>
-      <object>objects\objFreeTriggerButton</object>
-      <object>objects\objKillerTrigger</object>
-      <object>objects\objSpikeTriggerUp</object>
-      <object>objects\objSpikeTriggerRight</object>
-      <object>objects\objSpikeTriggerLeft</object>
-      <object>objects\objSpikeTriggerDown</object>
-      <object>objects\objCherryTrigger</object>
-    </objects>
-    <objects name="newTrigger">
       <object>objects\objTrigger</object>
       <object>objects\objTriggerButton</object>
       <object>objects\objMoveThis</object>
